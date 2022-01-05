@@ -1,6 +1,6 @@
 <!-- MOBILE MENU START -->
 <div class="menu hidden" id="dropdownMenu">
-  <button (click)="closeDropdown()" class="w-min h-min">
+  <button (click)="this.anim.closeDropdown()" class="w-min h-min">
     <object data="/assets/close.svg" type="image/svg+xml"
     class="flex w-10 h-10 mx-0 pointer-events-none"
     aria-label="Close menu"
@@ -20,7 +20,7 @@
 
 <img src="/assets/logo.png" type="image/png" class="logo" aria-label="SQD Board's Logo Image" alt="SQD Board's Logo Image" id="logo" />
 <nav class="navbar">
-  <button class="w-min mx-2" (click)="openDropdown()" id="openMenu">
+  <button class="w-min mx-2" (click)="this.anim.openDropdown()" id="openMenu">
     <object data="/assets/menu.svg" type="image/svg+xml"
     class="graphic_button sm:col-start-1 sm:row-start-1 sm:hidden pointer-events-none"
     aria-label="Open menu"
@@ -61,22 +61,17 @@
   <div class="currentDeals snap-x">
     <!-- This goes like a list of divs, each containing info, related to the deal. -->
     <!-- Should be synced with database and not be static (deals are updated automatically with corresponding Description, Button and Illustration) -->
-    <div class="deal">
-      <img src="/assets/dealIllustrs/config_il.png" alt="" class="dealIllustr">
+    <div *ngFor="let deal of deals" class="deal">
+      <img src="{{deal.illustr}}" alt="" class="dealIllustr">
       <div class="dealInfo">
-        <p class="dealTitle"><b>Configurator</b></p>
-        <p class="dealDesc">Configurator is a perfect tool to customise your keyboard. Here, you can Compare, View Details and Observe you keyboard even before it arrives to you!</p>
-        <button class="toDeal">Coming Soon!</button>
+        <p class="dealTitle"><b>{{deal.name}}</b></p>
+        <p class="dealDesc">{{deal.desc}}</p>
+        <button class="toDeal" *ngIf="!deal.toDeal">To Deal!</button>
+        <button class="toDeal" *ngIf="deal.toDeal">{{deal.toDeal}}</button>
       </div>
     </div>
-    <div class="deal">
-      <img src="/assets/dealIllustrs/kbdfans_partnership.webp" alt="" class="dealIllustr">
-      <div class="dealInfo">
-        <div class="w-full h-14 bg-transparent row-start-1 col-start-1"></div>
-        <p class="dealTitle"><b>KBDFans Partnership</b></p>
-        <p class="dealDesc">We've successfully partnered with KBDFans to deliver even more high-quality keyboard experience! Check out our new stock. *Sample deal, neither official partnership has been signed nor proposed.</p>
-        <button class="toDeal">To Store!</button>
-      </div>
+    <div *ngIf="deals?.length === 0">
+      <h1 class="failedToLoad">Deals failed to load!</h1>
     </div>
   </div>
 </main>
