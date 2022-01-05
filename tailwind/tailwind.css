@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .text-xxs {
+        font-size: 0.5rem;
+        line-height: 0.75rem;
+    }
+}
+
+@layer components {
+    .navbar {
+        @apply  grid grid-cols-auto-[2] sm:grid-cols-auto-[3]
+                z-10 sticky top-0
+                items-center
+                py-2 sm:px-perc-[8] md:px-perc-[14]
+                shadow-md bg-white;
+    }
+    .logo {
+        @apply  flex
+                object-contain
+                w-40 md:w-60
+                m-3 md:m-5 mx-auto md:mx-auto
+                select-none;
+    }
+    .text_button {
+        @apply  flex
+                font-sans text-gray-900 font-bold
+                text-xl md:text-2xl
+                self-center;
+    }
+    .graphic_button {
+        @apply  flex
+                w-8 h-8 sm:w-8 sm:h-8 md:w-9 md:h-9
+                mx-1 sm:mx-1.5 md:mx-2;
+    }
+    .menu {
+        @apply  flex flex-col w-full h-full
+                fixed top-0
+                bg-white
+                z-20
+                gap-y-2 px-3 pt-[60px];
+    }
+    .menu a {
+        @apply  flex flex-col gap-y-2
+                text-xl text-gray-900 font-sans font-bold
+                mx-2
+                py-1;
+    }
+    .menu hr {
+        @apply  block h-[2px] bg-gray-900 rounded-full w-0
+                place-self-start;
+    }
+    main {
+        @apply  flex justify-center flex-col gap-y-3 sm:gap-y-6
+                mt-3 sm:mt-6 sm:px-perc-[6] md:px-perc-[9];
+    }
+    .currentDeals {
+        @apply  grid snap-mandatory overflow-scroll;
+        grid-auto-columns: 100%;
+        grid-auto-flow: column;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        --tw-pan-x: auto;
+        touch-action: var(--tw-touch-action);
+    }
+    .currentDeals::-webkit-scrollbar {
+        display: none;
+    }
+    .titleBig {
+        @apply  text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900;
+    }
+    .deal {
+        @apply  grid grid-rows-auto-[2] grid-cols-auto-[1]
+                gap-y-3 mx-2 first:ml-2 first:mr-2 last:ml-2 last:mr-2
+                rounded-xl
+                bg-white
+                snap-center;
+    }
+    .dealInfo {
+        @apply  grid grid-rows-auto-[4] gap-y-1 md:gap-y-3
+                bg-gradient-to-t from-zinc-900
+                row-start-2 col-start-1
+                font-sans text-white
+                rounded-b-xl
+                md:px-perc-[15]
+                pt-20;
+    }
+    .dealTitle {
+        @apply  flex col-start-1 row-start-2
+                mx-3 text-xl md:text-3xl;
+    }
+    .dealDesc {
+        @apply  flex col-start-1 row-start-3
+                font-light
+                mx-3
+                text-base md:text-2xl;
+    }
+    .toDeal {
+        @apply  flex col-start-1 row-start-4
+                m-3
+                w-fit bg-white rounded-lg
+                p-2 gap-x-2
+                text-black
+                text-base md:text-lg
+                after:content-[url('/assets/arrow.svg')];
+    }
+    .dealIllustr {
+        @apply  flex row-span-full col-span-full
+                justify-self-center self-center
+                object-cover w-full
+                h-96 md:h-[41rem]
+                rounded-xl
+                cursor-default select-none;
+    }
+    footer {
+        @apply  flex flex-col mt-40 mx-2 pb-2
+                before:w-full before:h-0.5 before:bg-gray-900 before:rounded-full
+                gap-y-2;
+    }
+    footer ul {
+        @apply  flex flex-row flex-wrap
+                justify-center
+                gap-x-1.5;
+    }
+    footer ul li {
+        @apply  flex gap-x-1.5
+                after:inline-flex after:h-[75%] after:w-[1.3px] after:bg-gray-900 last:after:hidden
+                after:self-center;
+    }
+    footer ul li a {
+        @apply  text-sm font-sans;
+    }
+    .mediaIcon {
+        @apply  flex w-8 h-8 pointer-events-none;
+    }
+}

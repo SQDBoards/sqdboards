@@ -41,8 +41,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "15kb",
+                  "maximumError": "50kb"
                 }
               ],
               "fileReplacements": [
@@ -97,6 +97,16 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "sqd-keyboards:build:production",
+            "firebaseProject": "sqd-keyboards",
+            "firebaseHostingSite": "sqd-keyboards"
           }
         }
       }

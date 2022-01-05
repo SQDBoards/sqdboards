@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sqd-keyboards"
+  },
+  "targets": {
+    "sqd-keyboards": {
+      "hosting": {
+        "sqd-keyboards": [
+          "sqd-keyboards"
+        ]
+      }
+    }
+  }
+}
