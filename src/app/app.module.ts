@@ -1,17 +1,27 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { SQDBoardsMain } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { FofNotFoundComponent } from './fof-not-found/fof-not-found.component';
 
 @NgModule({
   declarations: [
-    SQDBoardsMain
+    SQDBoardsMain,
+    HomeComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent },
+      { path: 'aboutus', component: AboutusComponent },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '**', component: FofNotFoundComponent },
+    ]),
     HttpClientModule
   ],
   providers: [],

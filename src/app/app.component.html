@@ -7,13 +7,13 @@
     id="closeMenu"></object>
   </button>
   <div class="flex flex-col mt-4 gap-y-2">
-    <a>Home</a>
+    <a (click)="this.anim.closeDropdown()" routerLink="/home">Home</a>
     <hr>
-    <a>Configurator</a>
+    <a (click)="this.anim.closeDropdown()">Configurator</a>
     <hr>
-    <a>Contacts</a>
+    <a (click)="this.anim.closeDropdown()">Contacts</a>
     <hr>
-    <a>About Us</a>
+    <a (click)="this.anim.closeDropdown()" routerLink="/aboutus">About Us</a>
   </div>
 </div>
 <!-- MOBILE MENU END -->
@@ -29,9 +29,9 @@
 
   <!-- Medium screen only buttons START -->
   <div class="hidden sm:flex col-span-full justify-self-center sm:gap-6 row-start-1">
-    <button class="text_button" href="/?sightid=10">Home</button>
-    <button class="text_button" href="/?sightid=20">Configurator</button>
-    <button class="text_button" href="/?sightid=30">Account</button>
+    <button class="text_button" routerLink="/home" routerLinkActive="activeRouter">Home</button>
+    <button class="text_button" routerLink="/configurator" routerLinkActive="activeRouter">Configurator</button>
+    <button class="text_button" routerLink="/aboutus" routerLinkActive="activeRouter">About Us</button>
   </div>
   <!-- Medium screen only buttons END -->
 
@@ -56,25 +56,9 @@
   </div>
   <!-- User personal zone END -->
 </nav>
-<main>
-  <p class="titleBig">Latest deals: </p>
-  <div class="currentDeals snap-x">
-    <!-- This goes like a list of divs, each containing info, related to the deal. -->
-    <!-- Should be synced with database and not be static (deals are updated automatically with corresponding Description, Button and Illustration) -->
-    <div *ngFor="let deal of deals" class="deal">
-      <img src="{{deal.illustr}}" alt="" class="dealIllustr">
-      <div class="dealInfo">
-        <p class="dealTitle"><b>{{deal.name}}</b></p>
-        <p class="dealDesc">{{deal.desc}}</p>
-        <button class="toDeal" *ngIf="!deal.toDeal">To Deal!</button>
-        <button class="toDeal" *ngIf="deal.toDeal">{{deal.toDeal}}</button>
-      </div>
-    </div>
-    <div *ngIf="deals?.length === 0">
-      <h1 class="failedToLoad">Deals failed to load!</h1>
-    </div>
-  </div>
-</main>
+
+<router-outlet></router-outlet>
+
 <footer>
   <ul>
     <li>
