@@ -122,8 +122,8 @@
                 cursor-default select-none;
     }
     footer {
-        @apply  flex flex-col mt-28 mx-2 pb-2
-                static bottom-0
+        @apply  flex flex-col mt-28 px-2 pb-2
+                relative bottom-0
                 before:w-full before:h-0.5 before:bg-gray-900 before:rounded-full
                 gap-y-2 sm:gap-y-3;
     }
