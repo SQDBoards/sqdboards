@@ -1,14 +1,6 @@
 {
   "hosting": [
     {
-      "public": "public",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ]
-    },
-    {
       "target": "sqd-keyboards",
       "public": "dist/sqd-keyboards",
       "ignore": [
