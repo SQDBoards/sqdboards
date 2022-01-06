@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npx tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --minify && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "twcss": "TAILWIND_MODE=watch tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --watch"
