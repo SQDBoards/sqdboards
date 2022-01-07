@@ -2,18 +2,20 @@
     <p class="titleBig">Latest deals: </p>
     <div class="currentDeals snap-x">
       <!-- This goes like a list of divs, each containing info, related to the deal. -->
-      <!-- Should be synced with database and not be static (deals are updated automatically with corresponding Description, Button and Illustration) -->
-      <div *ngFor="let deal of deals" class="deal">
+      <!-- Should be synced with database and not be static (deals are updated automatically with corresponding Description, Button and Illustration) -->  
+      <div *ngFor="let deal of (deals$ | async)" class="deal">
         <img src="{{deal.illustr}}" alt="" class="dealIllustr">
         <div class="dealInfo">
           <p class="dealTitle"><b>{{deal.name}}</b></p>
           <p class="dealDesc">{{deal.desc}}</p>
-          <button class="toDeal" *ngIf="!deal.toDeal">To Deal!</button>
-          <button class="toDeal" *ngIf="deal.toDeal">{{deal.toDeal}}</button>
+          <button class="toDeal" *ngIf="!deal.toDeal; else defaultToDeal">To Deal!</button>
+          <ng-template #defaultToDeal>
+            <button class="toDeal">{{deal.toDeal}}</button>
+          </ng-template>
         </div>
       </div>
-      <div *ngIf="deals?.length === 0">
-        <h1 class="failedToLoad">Deals failed to load!</h1>
-      </div>
     </div>
+    <ng-template #something>
+
+    </ng-template>
   </main>
