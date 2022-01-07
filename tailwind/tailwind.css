@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap');
 
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +14,12 @@
     .text-xxs {
         font-size: 0.5rem;
         line-height: 0.75rem;
+    }
+    .nav-desktop {
+        @apply  sm:px-perc-[8] md:px-perc-[14];
+    }
+    .content-desktop {
+        @apply  sm:px-perc-[6] md:px-perc-[9];
     }
 }
 
@@ -21,8 +33,9 @@
         @apply  grid grid-cols-auto-[2] sm:grid-cols-auto-[3]
                 z-10 sticky top-0
                 items-center
-                py-2 sm:px-perc-[8] md:px-perc-[14] mb-3 sm:mb-6
-                shadow-md bg-white;
+                py-2 mb-3 sm:mb-6
+                shadow-md bg-white
+                nav-desktop;
     }
     .logo {
         @apply  flex
@@ -63,7 +76,7 @@
     }
     main {
         @apply  flex justify-center flex-col gap-y-3 sm:gap-y-6
-                sm:px-perc-[6] md:px-perc-[9];
+                content-desktop;
     }
     .currentDeals {
         @apply  grid snap-mandatory overflow-scroll;
@@ -124,10 +137,10 @@
                 cursor-default select-none;
     }
     footer {
-        @apply  flex flex-col mt-28 px-2 pb-2
-                static
+        @apply  flex flex-col mt-6 px-2 pb-2
                 before:w-full before:h-0.5 before:bg-gray-900 before:rounded-full
-                gap-y-2 sm:gap-y-3;
+                gap-y-2 sm:gap-y-3
+                sm:nav-desktop;
     }
     footer ul {
         @apply  flex flex-row flex-wrap
@@ -146,6 +159,9 @@
         @apply  flex w-8 h-8 sm:w-10 sm:h-10 pointer-events-none;
     }
     .infoLong {
-        @apply  flex flex-row flex-wrap text-base font-sans text-left mx-2 gap-y-1;
+        @apply  flex flex-row flex-wrap
+        text-base sm:text-lg md:text-xl
+        font-sans text-left mx-2 gap-y-1
+        sm:content-desktop;
     }
 }

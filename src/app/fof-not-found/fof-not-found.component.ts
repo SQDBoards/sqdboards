@@ -15,7 +15,7 @@ export class FofNotFoundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
       var t = new Typed('#fof', {
-        strings: ['Page could not be found!', 'Try navigating again.'],
+        strings: ['Page could not be found =(', 'Try navigating again.'],
         typeSpeed: 45,
         backSpeed: 18,
         backDelay: 1500,
