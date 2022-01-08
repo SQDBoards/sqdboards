@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Deal } from '../deal';
 import { GetDealsService } from '../services/get-deals.service';
 
@@ -9,13 +10,17 @@ import { GetDealsService } from '../services/get-deals.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private gds: GetDealsService) {};
+  constructor(private gds$: GetDealsService) {};
 
-  deals?: Deal[];
+  deals$?: Observable<Deal[]>;
+  contentHasLoaded: boolean = false;
 
   ngOnInit(): void {
-    this.gds.getDeals().subscribe((res: any) => {
-      this.deals = res;
+    this.gds$.getDeals().subscribe((res: any) => {
+      this.contentHasLoaded = true;
+      this.deals$ = of(res);
+    }, err => {
+      console.error(err);
     });
   }
 

@@ -7,7 +7,7 @@
     "build": "npx tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --minify && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "twcss": "TAILWIND_MODE=watch tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --watch"
+    "twcss": "tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --watch"
   },
   "private": true,
   "dependencies": {

@@ -5,9 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 const Headers = {
-  headers: new HttpHeaders({'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'https://sqdboards-api.herokuapp.com'
-  })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
 @Injectable({
