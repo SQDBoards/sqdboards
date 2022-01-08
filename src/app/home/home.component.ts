@@ -13,10 +13,14 @@ export class HomeComponent implements OnInit {
   constructor(private gds$: GetDealsService) {};
 
   deals$?: Observable<Deal[]>;
+  contentHasLoaded: boolean = false;
 
   ngOnInit(): void {
     this.gds$.getDeals().subscribe((res: any) => {
+      this.contentHasLoaded = true;
       this.deals$ = of(res);
+    }, err => {
+      console.error(err);
     });
   }
 
