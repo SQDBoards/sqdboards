@@ -7,6 +7,7 @@ import { SQDBoardsMain } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FofNotFoundComponent } from './fof-not-found/fof-not-found.component';
+import { HttpCacheInterceptorModule } from '@ngneat/cashew';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FofNotFoundComponent } from './fof-not-found/fof-not-found.component';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', component: FofNotFoundComponent },
     ]),
-    HttpClientModule
+    HttpClientModule,
+    HttpCacheInterceptorModule.forRoot(),
   ],
   providers: [],
   bootstrap: [SQDBoardsMain]

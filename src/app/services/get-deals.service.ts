@@ -3,10 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Deal } from '../deal';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+import { withCache } from '@ngneat/cashew';
 
-const Headers = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-}
+const Headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +22,7 @@ export class GetDealsService {
   };
 
   getDeals(): Observable<Deal[]> {
-    return this.http.get<Deal[]>("https://sqdboards-api.herokuapp.com/getDeals", Headers).pipe(
+    return this.http.get<Deal[]>("https://sqdboards-api.herokuapp.com/getDeals", { headers: Headers, context: withCache() }).pipe(
       catchError(this.handleError<Deal[]>(`getDeals`, []))
     );
   };
