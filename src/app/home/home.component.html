@@ -2,7 +2,7 @@
     <p class="titleBig">Latest deals: </p>
     <div *ngIf="contentHasLoaded; else dealsPlaceholder" class="currentDeals snap-x">
       <div *ngFor="let deal of (deals$ | async)" class="deal">
-        <img src="{{'https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/deals/' + deal.illustr}}" alt="" class="dealIllustr">
+        <img src="{{'/assets/deals/' + deal.illustr}}" alt="" class="dealIllustr">
         <div class="dealInfo">
           <p class="dealTitle"><b>{{deal.name}}</b></p>
           <p class="dealDesc">{{deal.desc}}</p>

@@ -1,7 +1,7 @@
 <!-- MOBILE MENU START -->
 <div class="menu hidden" id="dropdownMenu">
   <button (click)="this.anim.closeDropdown()" class="w-min h-min">
-    <object data="https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/nav/close.svg" type="image/svg+xml"
+    <object data="/assets/nav/close.svg" type="image/svg+xml"
     class="flex w-10 h-10 mx-0 pointer-events-none"
     aria-label="Close menu"
     id="closeMenu"></object>
@@ -18,11 +18,13 @@
 </div>
 <!-- MOBILE MENU END -->
 
-<img src="https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/nav/logo.png" type="image/png" class="logo"
-aria-label="SQD Board's Logo Image" alt="SQD Board's Logo Image" id="logo" />
+<a href="/home" class="logo" id="logo">
+  <img src="/assets/nav/logo.png" type="image/png"
+  aria-label="SQD Board's Logo Image" alt="SQD Board's Logo Image" routerLink="/home"/>
+</a>
 <nav class="navbar">
   <button class="w-min mx-2" (click)="this.anim.openDropdown()" id="openMenu">
-    <object data="https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/nav/menu.svg" type="image/svg+xml"
+    <object data="/assets/nav/menu.svg" type="image/svg+xml"
     class="graphic_button sm:col-start-1 sm:row-start-1 sm:hidden pointer-events-none"
     aria-label="Open menu"
     alt="Site menu"></object>
@@ -38,7 +40,7 @@ aria-label="SQD Board's Logo Image" alt="SQD Board's Logo Image" id="logo" />
 
   <!-- User personal zone START -->
   <div class="flex justify-self-end sm:col-start-3 sm:row-start-1 mx-2">
-    <object data="https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/nav/account.svg" type="image/svg+xml"
+    <object data="/assets/nav/account.svg" type="image/svg+xml"
     class="graphic_button"
     aria-label="User account options"
     alt="User account options"></object>
@@ -83,12 +85,12 @@ aria-label="SQD Board's Logo Image" alt="SQD Board's Logo Image" id="logo" />
   </ul>
   <div class="flex flex-row gap-x-4 place-self-end">
     <a href="https://github.com/scriptSQD" target="_blank" rel="noopener noreferrer">
-      <object data="https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/social/github.svg" type="image/svg+xml"
+      <object data="/assets/social/github.svg" type="image/svg+xml"
       class="mediaIcon"></object>
     </a>
 
     <a href="">
-      <object data="https://cdn.jsdelivr.net/gh/SQDBoards/sqdboards-media/social/instagram.svg" type="image/svg+xml"
+      <object data="/assets/social/instagram.svg" type="image/svg+xml"
       class="mediaIcon"></object>
     </a>
   </div>

@@ -126,7 +126,7 @@
                 p-2 gap-x-2
                 text-black
                 text-base md:text-lg
-                after:content-[url('/assets/arrow.svg')];
+                after:content-[url('/assets/nav/arrow.svg')];
     }
     .dealIllustr {
         @apply  flex row-span-full col-span-full
