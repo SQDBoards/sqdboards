@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { AnimateService } from './services/animate.service';
 
 @Component({
@@ -11,15 +13,11 @@ export class SQDBoardsMain implements AfterViewInit, OnInit {
   cart: number = 0;
   lsCart = localStorage.getItem("cartItems");
 
-  constructor(public anim: AnimateService){};
+  constructor(public anim: AnimateService,
+              public auth: AuthService,
+              @Inject(DOCUMENT) public document: Document) {};
   
   ngOnInit(): void {
-    // An exmaple for myself on how to scaffold those link-provided params
-    //
-    // let product: number;
-    // this.route.queryParams.subscribe((params) => {
-    //   this.product = params['product'];
-    // });
     if(this.lsCart) {
       this.cart = JSON.parse(this.lsCart);
     } else {
@@ -28,7 +26,5 @@ export class SQDBoardsMain implements AfterViewInit, OnInit {
     }
   }
     
-  ngAfterViewInit(): void {
-    /* Animations would probably go here */
-  }
+  ngAfterViewInit(): void {}
 }
