@@ -6,6 +6,18 @@
       "ignore": [
         "**/.*"
       ],
+      "redirects": [
+        {
+          "source": "/api/:path*",
+          "destination": "https://sqdboards-api.herokuapp.com/:path",
+          "type": 301
+        },
+        {
+          "source": "/api/:path*/:params*",
+          "destination": "https://sqdboards-api.herokuapp.com/:path/:params",
+          "type": 301
+        }
+      ],
       "headers": [
         {
           "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",

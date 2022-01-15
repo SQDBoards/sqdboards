@@ -4,6 +4,7 @@ import { Deal } from '../deal';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { withCache } from '@ngneat/cashew';
+import { ErrorHandlerService } from './error-handler.service';
 
 const Headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -12,18 +13,12 @@ const Headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 })
 export class GetDealsService {
 
-  constructor(private http: HttpClient) {};
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    };
-  };
+  constructor(private http: HttpClient,
+              private errHndl: ErrorHandlerService) {};
 
   getDeals(): Observable<Deal[]> {
-    return this.http.get<Deal[]>("https://sqdboards-api.herokuapp.com/getDeals", { headers: Headers, context: withCache() }).pipe(
-      catchError(this.handleError<Deal[]>(`getDeals`, []))
+    return this.http.get<Deal[]>("/api/deals", { headers: Headers, context: withCache() }).pipe(
+      catchError(this.errHndl.handleError<Deal[]>(`getDeals`, []))
     );
   };
 
