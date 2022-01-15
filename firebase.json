@@ -6,6 +6,11 @@
       "ignore": [
         "**/.*"
       ],
+      "redirects": [{
+        "source": "/api/:path*",
+        "destination": "https://sqdboards-api.herokuapp.com/:path",
+        "type": 301
+      }],
       "headers": [
         {
           "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
