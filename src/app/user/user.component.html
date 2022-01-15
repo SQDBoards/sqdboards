@@ -1,12 +1,12 @@
 <main *ngIf="(auth.user$ | async) as user">
     <p class="titleBig flex flex-col">
         Hi, {{ user.name }}
-        <span class="text-xs font-sans text-center select-none">
+        <span class="text-xs md:text-sm font-sans text-center select-none">
             Not you? Try <button class="text-indigo-900" (click)="auth.logout({ returnTo: document.location.origin })">signing out</button>
         </span>
     </p>
 
-    <div class="flex flex-row justify-center gap-x-10 text-lg font-sans text-gray-900 font-normal border-b-2 border-gray-900 w-11/12 mx-auto" id="sectionSelector">
+    <div class="flex flex-row justify-center gap-x-10 text-lg sm:text-xl md:text-3xl lg:text-4xl font-sans text-gray-900 font-normal border-b-2 border-gray-900 w-11/12 mx-auto" id="sectionSelector">
         <a routerLink="./profile" routerLinkActive="linkActive">Profile</a>
         <a routerLink="./orders" routerLinkActive="linkActive">Orders</a>
         <a routerLink="./settings" routerLinkActive="linkActive">Settings</a>

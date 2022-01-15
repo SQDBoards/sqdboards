@@ -17,10 +17,10 @@
         line-height: 0.75rem;
     }
     .nav-desktop {
-        @apply  sm:px-perc-[8] md:px-perc-[14];
+        @apply   md:px-perc-[4] lg:px-perc-[14];
     }
     .content-desktop {
-        @apply  sm:px-perc-[6] md:px-perc-[9];
+        @apply   md:px-perc-[2] lg:px-perc-[9];
     }
 }
 
@@ -175,7 +175,7 @@
 
     /* User component */
     #sectionSelector a {
-        @apply  px-2;
+        @apply  px-2 md:py-0.5 md:px-3;
     }
 
     .linkActive {
@@ -205,20 +205,12 @@
         @apply  flex flex-row items-center gap-x-1;
     }
 
-    /* .orderDetails {
-        @apply  marker:content-['Show_more__'url(/assets/nav/arrow_right.svg)] marker:h-6 marker:object-contain;
-    }
-
-    .summaryOrder {
-        @apply  group-open:marker:content-['Show_less__'url(/assets/nav/arrow_down.svg)];
-    } */
-
     .orderIcon {
         @apply  flex w-5 h-5;
     }
 
-    .orderSpacer {
-        @apply  h-[1px] rounded-full;
+    .orderSeparator {
+        @apply  flex w-full h-0.5 sm:h-[0.175rem] bg-gray-900 group-last:hidden mt-3;
     }
 
     .icon {
