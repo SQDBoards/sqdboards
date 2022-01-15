@@ -66,15 +66,14 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "proxyConfig": "src/proxy.conf.json"
-          },
           "configurations": {
             "production": {
-              "browserTarget": "sqd-keyboards:build:production"
+              "browserTarget": "sqd-keyboards:build:production",
+              "proxyConfig": "src/proxy.conf.prod.json"
             },
             "development": {
-              "browserTarget": "sqd-keyboards:build:development"
+              "browserTarget": "sqd-keyboards:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
