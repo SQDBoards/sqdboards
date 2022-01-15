@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    color: #111827;
 }
 
 @tailwind base;
@@ -24,11 +25,7 @@
 }
 
 @layer components {
-    .failedToLoad {
-        @apply  flex text-2xl sm:text-3xl md:text-4xl
-                font-sans font-bold
-                justify-center;
-    }
+    /* Navigations */
     .navbar {
         @apply  grid grid-cols-auto-[2] sm:grid-cols-auto-[3]
                 z-10 sticky top-0
@@ -74,6 +71,9 @@
         @apply  block h-[2px] bg-gray-900 rounded-full w-0
                 mr-auto;
     }
+    /* Navigations */
+
+    /* Home component */
     main {
         @apply  flex justify-center flex-col gap-y-3 sm:gap-y-6
                 content-desktop;
@@ -90,6 +90,7 @@
     .currentDeals::-webkit-scrollbar {
         display: none;
     }
+
     .titleBig {
         @apply  text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3;
     }
@@ -136,6 +137,9 @@
                 rounded-xl
                 cursor-default select-none;
     }
+    /* Home component */
+
+    /* Navigations */
     footer {
         @apply  flex flex-col mt-6 px-2 pb-2
                 before:w-full before:h-0.5 before:bg-gray-900 before:rounded-full
@@ -158,10 +162,67 @@
     .mediaIcon {
         @apply  flex w-8 h-8 sm:w-10 sm:h-10 pointer-events-none;
     }
+    /* Navigations */
+
+    /* About Us component */
     .infoLong {
         @apply  flex flex-row flex-wrap
         text-base sm:text-lg md:text-xl
         font-sans text-left mx-2 gap-y-1
         sm:content-desktop;
     }
+    /* About Us component */
+
+    /* User component */
+    #sectionSelector a {
+        @apply  px-2;
+    }
+
+    .linkActive {
+        @apply  transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] bg-rose-100 text-gray-900 w-max z-[-1];
+    }
+
+    /* User -> Profile component */
+    .inputBlock {
+        @apply  flex flex-col justify-start gap-y-1.5;
+    }
+
+    .inputTitle {
+        @apply  text-base;
+    }
+
+    .inputField {
+        @apply  border-2 border-gray-900 text-base font-light
+                rounded-xl
+                w-9/12 px-1.5 py-0.5
+                transition-all
+                focus:border-cyan-800 focus:shadow-sm focus:shadow-cyan-800
+                invalid:border-red-600 invalid:shadow-sm invalid:shadow-red-600;
+    }
+
+    /* User -> Orders component */
+    .kbdComponent {
+        @apply  flex flex-row items-center gap-x-1;
+    }
+
+    /* .orderDetails {
+        @apply  marker:content-['Show_more__'url(/assets/nav/arrow_right.svg)] marker:h-6 marker:object-contain;
+    }
+
+    .summaryOrder {
+        @apply  group-open:marker:content-['Show_less__'url(/assets/nav/arrow_down.svg)];
+    } */
+
+    .orderIcon {
+        @apply  flex w-5 h-5;
+    }
+
+    .orderSpacer {
+        @apply  h-[1px] rounded-full;
+    }
+
+    .icon {
+        @apply  flex h-4 object-contain;
+    }
+
 }
