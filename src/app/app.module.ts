@@ -47,7 +47,7 @@ import { environment } from 'src/environments/environment';
     HttpCacheInterceptorModule.forRoot(),
     AuthModule.forRoot({
       domain: 'sqdboards.eu.auth0.com',
-      clientId: environment.auth0_clientId,
+      clientId: environment.auth0_clientId!,
       // httpInterceptor: {
       //   allowedList: [
       //     {
