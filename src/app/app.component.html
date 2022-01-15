@@ -40,10 +40,23 @@
 
   <!-- User personal zone START -->
   <div class="flex justify-self-end sm:col-start-3 sm:row-start-1 mx-2">
-    <object data="/assets/nav/account.svg" type="image/svg+xml"
-    class="graphic_button"
-    aria-label="User account options"
-    alt="User account options"></object>
+    <button *ngIf="(auth.isAuthenticated$ | async); else unauthorized" routerLink="/user">
+      <div *ngIf="auth.user$ | async as user">
+        <!-- <object data="{{ user.picture }}" type="image/svg+xml"
+        class="graphic_button pointer-events-none"
+        aria-label="User account options"
+        alt="User account options"></object> -->
+        <img src="{{ user.picture }}" alt="User profile" class="graphic_button pointer-events-none rounded-full">
+      </div>
+    </button>
+    <ng-template #unauthorized>
+      <button (click)="auth.loginWithRedirect()">
+        <object data="/assets/nav/account.svg" type="image/svg+xml"
+        class="graphic_button pointer-events-none"
+        aria-label="Login to account"
+        alt="Login to account"></object>
+      </button>
+    </ng-template>
     <div class="flex items-center">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic_button"
       aria-label="Cart"

@@ -52,3 +52,4 @@ Thumbs.db
 
 # User-set files
 /src/app/tailwind.css
+src/environments/environment.ts
