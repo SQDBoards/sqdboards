@@ -11,19 +11,28 @@ import { AnimateService } from './services/animate.service';
 export class SQDBoardsMain implements AfterViewInit, OnInit {
 
   cart: number = 0;
-  lsCart = localStorage.getItem("cartItems");
 
   constructor(public anim: AnimateService,
               public auth: AuthService,
               @Inject(DOCUMENT) public document: Document) {};
   
-  ngOnInit(): void {
-    if(this.lsCart) {
-      this.cart = JSON.parse(this.lsCart);
-    } else {
-      this.cart = 0;
-      localStorage.setItem("cartItems", JSON.stringify(this.cart));
+    initializeLocalStorage() {
+      // Cart initialization
+      if(localStorage.getItem("cartItems")) {
+        this.cart = JSON.parse(localStorage.getItem("cartItems")!);
+      } else {
+        this.cart = 0;
+        localStorage.setItem("cartItems", JSON.stringify(this.cart));
+      }
+
+      // Configurator Welcome page initialization
+      if(!localStorage.getItem('skipConfiguratorWelcome')) {
+        localStorage.setItem('skipConfiguratorWelcome', JSON.parse("false"));
+      }
     }
+
+  ngOnInit(): void {
+    this.initializeLocalStorage();
   }
     
   ngAfterViewInit(): void {}

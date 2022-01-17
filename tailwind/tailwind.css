@@ -216,5 +216,13 @@
     .icon {
         @apply  flex h-4 object-contain;
     }
+    /* User component */
 
+    /* Configurator */
+    .configuratorWelcome {
+        @apply  flex flex-col flex-wrap
+                text-base font-sans font-medium
+                sm:text-lg md:text-xl lg:text-2xl
+                gap-y-3;
+    }
 }
