@@ -10,12 +10,8 @@ export class WelcomeComponent implements OnInit {
 
   constructor() {};
 
-  checkboxTriggered(target: any) {
-    if(target.checked) {
-      localStorage.setItem('skipConfiguratorWelcome', 'true');
-    } else if (!target.checked) {
-      localStorage.setItem('skipConfiguratorWelcome', 'false');
-    }
+  dontShowAgain() {
+    localStorage.setItem('skipConfiguratorWelcome', 'true');
   }
 
   ngOnInit(): void {
