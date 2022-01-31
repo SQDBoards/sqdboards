@@ -9,8 +9,8 @@ export interface Order {
         plate: string;
     },
     modifications: {
-        switchLubing: string;
-        stabsLubing: string;
-        includeCaseFoam: string;
+        switchLubing: boolean;
+        stabsLubing: boolean;
+        includeCaseFoam: boolean;
     }
 }
