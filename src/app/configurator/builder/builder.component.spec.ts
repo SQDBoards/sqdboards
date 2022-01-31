@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KcapsComponent } from './kcaps.component';
+import { BuilderComponent } from './builder.component';
 
-describe('KcapsComponent', () => {
-  let component: KcapsComponent;
-  let fixture: ComponentFixture<KcapsComponent>;
+describe('BuilderComponent', () => {
+  let component: BuilderComponent;
+  let fixture: ComponentFixture<BuilderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KcapsComponent ]
+      declarations: [ BuilderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KcapsComponent);
+    fixture = TestBed.createComponent(BuilderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

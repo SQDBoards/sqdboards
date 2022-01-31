@@ -1,20 +1,20 @@
-<main class="content-desktop">
-    <p class="titleBig px-2 py-1 bg-rose-100 w-fit mx-auto">Welcome to the Configurator!</p>
+<main class="content-responsive">
+    <p class="titleBig notate px-2 py-1 w-fit mx-auto">Welcome to the Configurator!</p>
     <span class="configuratorWelcome">
-        <p class="text-cyan-900">We are happy to finally present this awesome tool!</p>
-        You may have already heard what Configurator is about, but let us remind you. Basically, this tool will assist you with:
+        <p>We are happy to finally present you the awesome Configurator!</p>
+        You may have already heard what Configurator is about, but let us remind you. Basically, this tool is about:
         <ul class="list-disc px-3">
-            <li>Picking right components for you keyboard,</li>
-            <li>Allowing you to see your keyboard before it arrives with the power of 3D,</li>
-            <li>Applying the most necessary modification to your new keyboard.</li>
+            <li>Helping you to pick compatible components for you keyboard,</li>
+            <li>Allowing you to see your keyboard before it arrives with the power of 3D, <em>*Work In Progress</em></li>
+            <li>Applying different modifications to your new keyboard.</li>
         </ul>
         <p class="text-red-900">Note: not all features are available as of now, as we are still working on some of them. Please, give us some time to polish the features and provide you with the best experience!</p>
         So, now that you are familiar with the Configurator's powers, you can start with it right away!
         <p class="ml-auto text-sm sm:text-base md:text-lg lg:text-xl text-right">Best wishes, your<br>SQDBoards Team!</p>
     </span>
     <span class="flex mt-4 px-3 items-center gap-x-4 text-base sm:text-lg md:text-xl lg:text-2xl font-sans">
-        <button class="flex px-2 py-1 md:px-3 md:py-1.5 lg:py-2 rounded-lg border-4 border-rose-100" routerLink="/configurator/pcb-size">Continue</button>
+        <button class="flex px-2 py-1 md:px-3 md:py-1.5 lg:py-2 rounded-lg border-4 border-rose-100" routerLink="/configurator/builder">Continue</button>
         <p class="text-sm sm:text-base md:text-lg lg:text-xl">or</p>
-        <button class="flex px-2 py-1 md:px-3 md:py-1.5 lg:py-2 rounded-lg border-4 border-rose-100" routerLink="/configurator/pcb-size" (click)="dontShowAgain()">Don't show again</button>
+        <button class="flex px-2 py-1 md:px-3 md:py-1.5 lg:py-2 rounded-lg border-4 border-rose-100" routerLink="/configurator/builder" (click)="dontShowAgain()">Don't show again</button>
     </span>
 </main>

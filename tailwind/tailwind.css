@@ -19,8 +19,11 @@
     .nav-desktop {
         @apply   md:px-perc-[4] lg:px-perc-[14];
     }
-    .content-desktop {
-        @apply   md:px-perc-[2] lg:px-perc-[9];
+    .content-responsive {
+        @apply   px-2 sm:px-4 md:px-perc-[2] lg:px-perc-[9];
+    }
+    .littleInfo {
+        @apply  text-xs md:text-sm lg:text-lg font-sans text-center select-none
     }
 }
 
@@ -76,7 +79,7 @@
     /* Home component */
     main {
         @apply  flex justify-center flex-col gap-y-3 sm:gap-y-6
-                content-desktop;
+                content-responsive;
     }
     .currentDeals {
         @apply  grid snap-mandatory overflow-scroll;
@@ -92,7 +95,7 @@
     }
 
     .titleBig {
-        @apply  text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3;
+        @apply  text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3 w-fit mx-auto;
     }
     .deal {
         @apply  grid grid-rows-auto-[2] grid-cols-auto-[1]
@@ -167,9 +170,9 @@
     /* About Us component */
     .infoLong {
         @apply  flex flex-row flex-wrap
-        text-base sm:text-lg md:text-xl
+        text-base sm:text-lg md:text-xl lg:text-2xl
         font-sans text-left mx-2 gap-y-1
-        sm:content-desktop;
+        content-responsive;
     }
     /* About Us component */
 
@@ -225,4 +228,51 @@
                 sm:text-lg md:text-xl lg:text-2xl
                 gap-y-3;
     }
+
+    /* Configurator -> Builder */
+    .animateChoice {
+        @apply transition-all opacity-0;
+    }
+    .checkbox:checked {
+        border: none;
+    }
+    .checkbox:checked + .check-icon {
+        display: flex;
+    }
+    /* Configurator -> Builder */
+
+    /* Configurator */
+
+    /* Help */
+
+    /* Help -> KeyboardSizeChart */
+    .keebPhoto {
+        @apply  flex rounded-lg w-11/12 lg:w-10/12 object-contain mx-auto;
+    }
+    .keebSizeCont div {
+        @apply  flex flex-col gap-y-2;
+    }
+    .keebSizeCont div p {
+        @apply  text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium;
+    }
+    .keebSizeCont div hr {
+        @apply lg:h-1.5 lg:w-11/12 mx-auto;
+        height: 1.5px;
+    }
+    /* Help -> KeyboardSizeChart */
+
+    /* Help -> FAQs */
+    .faqsContainer details {
+        @apply  w-full;
+    }
+    .faqSummary {
+        @apply  flex items-center justify-between p-4 rounded-lg cursor-pointer bg-gray-50
+                md:text-xl lg:text-2xl;
+    }
+    details p {
+        @apply  md:text-lg lg:text-xl;
+    }
+    /* Help -> FAQs */
+
+    /* Help */
 }

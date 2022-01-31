@@ -6,18 +6,25 @@ import anime from 'animejs';
 })
 export class AnimateService {
 
-  constructor() { }
+  constructor() {};
 
-  openDropdown() {
-    anime({
+  animateOpenButton: any;
+  animateBg: any;
+  animateCloseButton: any;
+  animateText: any;
+  animateLines: any;
+
+  initAnimations() {
+    this.animateOpenButton = anime({
       targets: '#openMenu',
       rotate: ['0deg', '360deg'],
       duration: 650,
       easing: 'cubicBezier(0.76, 0, 0.24, 1)',
+      autoplay: false
     });
-    anime({
+    this.animateBg = anime({
       targets: '#dropdownMenu',
-      height: ['0px', '100%'], //previous solution: document.documentElement.clientHeight.toString() + "px"
+      height: ['0px', '100%'],
       duration: 550,
       easing: 'cubicBezier(0.76, 0, 0.24, 1)',
       begin: function() {
@@ -26,75 +33,48 @@ export class AnimateService {
           document.getElementById('dropdownMenu')?.classList.add('opened');
         }
       },
+      autoplay: false
     });
-    anime({
+    this.animateCloseButton = anime({
       targets: '#closeMenu',
       rotate: ['0deg', '360deg'],
       opacity: [0, 1],
       duration: 950,
       easing: 'cubicBezier(0.76, 0, 0.24, 1)',
-      delay: 100,
+      delay: 300,
+      autoplay: false
     });
-    anime({
+    this.animateText = anime({
       targets: '.menu a',
       translateX: ['-100%', '0%'],
       duration: 650,
       delay: anime.stagger(150, {start: 150}),
       easing: 'cubicBezier(0.76, 0, 0.24, 1)',
+      autoplay: false
     });
-    anime({
+    this.animateLines = anime({
       targets: '.menu hr',
       width: ['0', '99%'],
       duration: 650,
       delay: anime.stagger(150, {start: 200}),
       easing: 'cubicBezier(0.76, 0, 0.24, 1)',
+      autoplay: false
     });
+  }
+
+  openDropdown() {
+    this.animateOpenButton.restart();
+    this.animateBg.restart();
+    this.animateCloseButton.restart();
+    this.animateText.restart();
+    this.animateLines.restart();
   };
 
   closeDropdown() {
-    anime({
-      targets: '#closeMenu',
-      rotate: ['360deg', '0deg'],
-      opacity: [1, 0],
-      duration: 950,
-      delay: 150,
-      easing: 'cubicBezier(0.76, 0, 0.24, 1)',
-      complete: function() {
-        if (document.getElementById('closeMenu')?.classList.contains('opened')) {
-          document.getElementById('closeMenu')?.classList.remove('opened');
-          document.getElementById('closeMenu')?.classList.add('hidden');
-        }
-      },
-    });
-    anime({
-      targets: '#dropdownMenu',
-      height: [document.getElementById('dropdownMenu')?.offsetHeight,'0px'], // previous solution: document.documentElement.clientHeight.toString() + "px"
-      duration: 550,
-      easing: 'cubicBezier(0.76, 0, 0.24, 1)',
-      delay: 640,
-      complete: function() {
-        if (document.getElementById('dropdownMenu')?.classList.contains('opened')) {
-          document.getElementById('dropdownMenu')?.classList.remove('opened');
-          document.getElementById('dropdownMenu')?.classList.add('hidden');
-        }
-      },
-    });
-    anime({
-      targets: '.menu a',
-      translateX: ['-100%', '0%'],
-      duration: 650,
-      delay: anime.stagger(150, {start: 150}),
-      easing: 'cubicBezier(0.76, 0, 0.24, 1)',
-      direction: 'reverse',
-    });
-    anime({
-      targets: '.menu hr',
-      width: ['0', '99%'],
-      duration: 650,
-      delay: anime.stagger(150, {start: 200}),
-      easing: 'cubicBezier(0.76, 0, 0.24, 1)',
-      direction: 'reverse',
-    });
+    if (document.getElementById('dropdownMenu')?.classList.contains('opened')) {
+      document.getElementById('dropdownMenu')?.classList.remove('opened');
+      document.getElementById('dropdownMenu')?.classList.add('hidden');
+    }
   };
 
 }

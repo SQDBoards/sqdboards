@@ -1,7 +1,7 @@
 <main *ngIf="(auth.user$ | async) as user">
     <p class="titleBig flex flex-col">
         Hi, {{ user.name }}
-        <span class="text-xs md:text-sm lg:text-lg font-sans text-center select-none">
+        <span class="littleInfo">
             Not you? Try <button class="text-indigo-900" (click)="auth.logout({ returnTo: document.location.origin })">signing out</button>
         </span>
     </p>

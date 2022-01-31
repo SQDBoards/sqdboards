@@ -4,6 +4,7 @@ module.exports = {
   mode: 'jit',
   content: [
     './src/**/*.*.{html,js}',
+    './src/**/**/*.*.{html,js}',
     './tailwind/tailwind.css'
   ],
   theme: {

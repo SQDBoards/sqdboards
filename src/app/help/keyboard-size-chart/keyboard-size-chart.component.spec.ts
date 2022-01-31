@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CasePlateComponent } from './case-plate.component';
+import { KeyboardSizeChartComponent } from './keyboard-size-chart.component';
 
-describe('CasePlateComponent', () => {
-  let component: CasePlateComponent;
-  let fixture: ComponentFixture<CasePlateComponent>;
+describe('KeyboardSizeChartComponent', () => {
+  let component: KeyboardSizeChartComponent;
+  let fixture: ComponentFixture<KeyboardSizeChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CasePlateComponent ]
+      declarations: [ KeyboardSizeChartComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CasePlateComponent);
+    fixture = TestBed.createComponent(KeyboardSizeChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

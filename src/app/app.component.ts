@@ -8,7 +8,7 @@ import { AnimateService } from './services/animate.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', './tailwind.css']
 })
-export class SQDBoardsMain implements AfterViewInit, OnInit {
+export class SQDBoardsMain implements OnInit {
 
   cart: number = 0;
 
@@ -32,8 +32,8 @@ export class SQDBoardsMain implements AfterViewInit, OnInit {
     }
 
   ngOnInit(): void {
+    this.anim.initAnimations();
     this.initializeLocalStorage();
   }
-    
-  ngAfterViewInit(): void {}
+
 }

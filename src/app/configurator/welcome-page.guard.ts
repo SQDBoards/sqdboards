@@ -13,7 +13,7 @@ export class WelcomePageGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (localStorage.getItem('skipConfiguratorWelcome')?.toString() === "true") {
-      this.router.navigateByUrl('configurator/pcb-size');
+      this.router.navigateByUrl('configurator/builder');
       return true;
     }
     return true;

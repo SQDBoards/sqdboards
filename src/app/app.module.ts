@@ -1,8 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { HttpCacheInterceptorModule } from '@ngneat/cashew';
@@ -17,13 +17,14 @@ import { OrdersComponent } from './user/orders/orders.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { UserGuard } from './user/user.guard';
 import { ConfiguratorComponent } from './configurator/configurator.component';
-import { PcbSizeComponent } from './configurator/pcb-size/pcb-size.component';
-import { CasePlateComponent } from './configurator/case-plate/case-plate.component';
-import { SwitchesStabsComponent } from './configurator/switches-stabs/switches-stabs.component';
-import { KcapsComponent } from './configurator/kcaps/kcaps.component';
 import { FinalizeComponent } from './configurator/finalize/finalize.component';
 import { WelcomeComponent } from './configurator/welcome/welcome.component';
 import { WelcomePageGuard } from './configurator/welcome-page.guard';
+import { BuilderComponent } from './configurator/builder/builder.component';
+import { HelpComponent } from './help/help.component';
+import { KeyboardSizeChartComponent } from './help/keyboard-size-chart/keyboard-size-chart.component';
+import { FaqsComponent } from './help/faqs/faqs.component';
+// import { RouterReuseStrat } from './router-reuse-strat';
 
 @NgModule({
   declarations: [
@@ -35,12 +36,12 @@ import { WelcomePageGuard } from './configurator/welcome-page.guard';
     OrdersComponent,
     SettingsComponent,
     ConfiguratorComponent,
-    PcbSizeComponent,
-    CasePlateComponent,
-    SwitchesStabsComponent,
-    KcapsComponent,
     FinalizeComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    BuilderComponent,
+    HelpComponent,
+    KeyboardSizeChartComponent,
+    FaqsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,12 +59,17 @@ import { WelcomePageGuard } from './configurator/welcome-page.guard';
         children: [
           { path: '', redirectTo: 'welcome', pathMatch: 'full' },
           { path: 'welcome', component: WelcomeComponent, canActivate: [WelcomePageGuard] },
-          { path: 'pcb-size', component: PcbSizeComponent },
-          { path: 'case-plate', component: CasePlateComponent },
-          { path: 'switches-stabs', component: SwitchesStabsComponent },
-          { path: 'kcaps', component: KcapsComponent },
+          { path: 'builder', component: BuilderComponent },
           { path: 'finalize', component: FinalizeComponent },
-        ]},
+        ]
+      },
+      { path: 'help',
+        children: [
+          { path: '', component: HelpComponent },
+          { path: 'keyboard-size-chart', component: KeyboardSizeChartComponent },
+          { path: 'faqs', component: FaqsComponent }
+        ],
+      },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', component: FofNotFoundComponent },
     ]),
@@ -73,7 +79,7 @@ import { WelcomePageGuard } from './configurator/welcome-page.guard';
       domain: 'sqdboards.eu.auth0.com',
       clientId: 'or172tB7I9o6fqmP4FyA7Ow1tvyGxrPs'
     }),
-    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [SQDBoardsMain]

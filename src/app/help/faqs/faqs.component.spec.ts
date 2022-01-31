@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PcbSizeComponent } from './pcb-size.component';
+import { FaqsComponent } from './faqs.component';
 
-describe('PcbSizeComponent', () => {
-  let component: PcbSizeComponent;
-  let fixture: ComponentFixture<PcbSizeComponent>;
+describe('FaqsComponent', () => {
+  let component: FaqsComponent;
+  let fixture: ComponentFixture<FaqsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PcbSizeComponent ]
+      declarations: [ FaqsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PcbSizeComponent);
+    fixture = TestBed.createComponent(FaqsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
