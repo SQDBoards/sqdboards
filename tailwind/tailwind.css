@@ -23,7 +23,14 @@
         @apply   px-2 sm:px-4 md:px-perc-[2] lg:px-perc-[9];
     }
     .littleInfo {
-        @apply  text-xs md:text-sm lg:text-lg font-sans text-center select-none
+        @apply  text-xs sm:text-sm lg:text-lg font-sans text-center select-none
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
     }
 }
 
@@ -238,6 +245,35 @@
     }
     .checkbox:checked + .check-icon {
         display: flex;
+    }
+    .itemList {
+        @apply  flex flex-row flex-wrap justify-evenly content-responsive gap-y-3 mt-2 sm:mt-3 md:mt-4 lg:mt-5
+                font-sans;
+    }
+    .itemTitle {
+        @apply  flex flex-nowrap font-medium overflow-hidden md:text-lg;
+    }
+    .itemDesc {
+        @apply  font-light md:text-lg;
+    }
+    .itemGal {
+        @apply  flex flex-row overflow-x-scroll overflow-y-hidden h-full max-w-[7rem] sm:max-w-[12rem] md:max-w-[24rem] snap-x snap-mandatory
+                mx-auto gap-x-3;
+    }
+    .itemGal img {
+        @apply  h-full object-cover max-w-[7rem] sm:max-w-[12rem] md:h-48;
+    }
+    .item {
+        @apply  flex flex-row gap-x-2 border-[line-width:3px] border-gray-900 px-2 py-2
+                sm:flex-col sm:gap-y-2 sm:px-3 sm:py-3;
+    }
+    .buttonBgOffset {
+        @apply  translate-x-[0.2rem] translate-y-[0.2rem];
+    }
+    .fullscreenImg {
+        @apply  flex w-fit max-w-full max-h-full min-w-full min-h-full fixed mx-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50
+                bg-zinc-800 bg-opacity-80
+                items-center justify-center;
     }
     /* Configurator -> Builder */
 

@@ -2,12 +2,13 @@
     <p class="titleBig flex flex-col w-fit mx-auto" id="typed-size"></p>
 </span>
 
-<div class="flex flex-row gap-x-5 my-2 overflow-x-scroll h-max content-responsive opacity-0 animateIn" style="-ms-overflow-style: none; scrollbar-width: none;">
-    <form class="mx-auto">
+<div class="flex flex-row gap-x-5 overflow-x-scroll h-max content-responsive opacity-0 animateIn" style="-ms-overflow-style: none; scrollbar-width: none;">
+    <form class="mx-auto"[formGroup]="pcbSizeGroup">
         <div role="radiogroup" class="mx-auto py-2 flex justify-center radioGroup">
             <div class="flex items-center">
                 <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="40% PCB Size Checkbox" type="radio" name="radio" class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                    <input aria-labelledby="40% PCB Size Checkbox" type="radio" value="40%" formControlName="pcbSize"
+                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
                     <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
                 </div>
                 <label id="label1" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">40%</label>
@@ -15,35 +16,40 @@
             
             <div class="flex items-center ml-6">
                 <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="60% PCB Size Checkbox" type="radio" name="radio" class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                    <input aria-labelledby="60% PCB Size Checkbox" type="radio" value="60%" formControlName="pcbSize"
+                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
                     <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
                 </div>
                 <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">60%</label>
             </div>
             <div class="flex items-center ml-6">
                 <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="65% PCB Size Checkbox" type="radio" name="radio" class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                    <input aria-labelledby="65% PCB Size Checkbox" type="radio" value="65%" formControlName="pcbSize"
+                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
                     <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
                 </div>
                 <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">65%</label>
             </div>
             <div class="flex items-center ml-6">
                 <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="75% PCB Size Checkbox" type="radio" name="radio" class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                    <input aria-labelledby="75% PCB Size Checkbox" type="radio" value="75%" formControlName="pcbSize"
+                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
                     <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
                 </div>
                 <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">75%</label>
             </div>
             <div class="flex items-center ml-6 text-center w-max">
                 <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="80% PCB Size Checkbox" type="radio" name="radio" class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                    <input aria-labelledby="80% PCB Size Checkbox" type="radio" value="80%" formControlName="pcbSize"
+                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
                     <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
                 </div>
                 <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">80% (TKL)</label>
             </div>
             <div class="flex items-center ml-6 text-center w-max">
                 <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="100% PCB Size Checkbox" type="radio" name="radio" class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                    <input aria-labelledby="100% PCB Size Checkbox" type="radio" value="100%" formControlName="pcbSize"
+                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
                     <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
                 </div>
                 <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">100% (Full-size)</label>
@@ -55,3 +61,34 @@
     Not sure?
     <a class="text-indigo-900" routerLink="/help/keyboard-size-chart">Size chart.</a>
 </span>
+
+<div *ngIf="(pcbs | async) as pcbs; else pcbsNF" class="itemList">
+    <div *ngFor="let pcb of pcbs; index as pcbi" class="item">
+        <span class="itemGal no-scrollbar">
+            <img *ngFor="let img of pcb.images; index as imgi" src="{{ img }}" alt="{{ pcb.title }} photo" class="snap-center sm:snap-start cursor-zoom-in" (click)="showFullImg(pcbi, imgi)">
+        </span>
+        <div class="flex flex-col">
+            <p class="itemTitle">{{ pcb.title }}</p>
+            <ul class="flex flex-col overflow-x-scroll no-scrollbar">
+                <li class="itemDesc" *ngIf="pcb.features.hotSwappable">Hot-swap support: yes.</li>
+                <li class="itemDesc" *ngIf="!pcb.features.hotSwappable">Hot-swap support: no.</li>
+                <li class="itemDesc">RGB: {{ pcb.features.rgb }}.</li>
+                <li class="itemDesc">USB: {{ pcb.features.usbType }}.</li>
+                <li class="itemDesc">Firmware: {{ pcb.features.firmware }}.</li>
+            </ul>
+            <a class="relative inline-block group focus:outline-none focus:ring w-fit mt-2 ml-auto sm:mx-auto">
+                <span class="absolute inset-0 transition-transform buttonBgOffset bg-rose-100 group-hover:translate-y-0 group-hover:translate-x-0 group-active:translate-x-0 group-active:translate-y-0"></span>
+            
+                <span class="relative inline-block px-6 py-2 sm:py-3 md:px-8 md:py-4 text-sm font-bold tracking-widest text-gray-900 uppercase border-2 border-current group-active:text-opacity-75 select-none">
+                Pick
+                </span>
+            </a>
+        </div>
+        <div *ngFor="let img of pcb.images; index as imgi" class="fullscreenImg hidden cursor-zoom-out" id="pcb{{ pcbi }}/{{ imgi }}" (click)="hideFullImg(pcbi, imgi)">
+            <img src="{{ img }}" alt="{{ pcb.title }} enlarged photo" class="object-cover max-w-full w-5/6 h-5/6">
+        </div>
+    </div>
+</div>
+<ng-template #pcbsNF>
+
+</ng-template>
