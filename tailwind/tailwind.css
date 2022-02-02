@@ -32,6 +32,25 @@
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
+    .centerWithTransform {
+        @apply  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    }
+    .fullscreenImg {
+        @apply  flex flex-col gap-y-6
+                w-fit max-w-full max-h-full min-w-full min-h-full
+                fixed mx-auto centerWithTransform z-50
+                backdrop-blur-[2px]
+                bg-zinc-800 bg-opacity-80
+                items-center justify-center;
+    }
+    .fullscreenImg .body {
+        @apply  overflow-hidden;
+    }
+    .zoomContainer {
+        @apply  flex overflow-scroll touch-manipulation
+                max-w-[90%] max-h-[45rem] sm:max-h-[37rem]
+                no-scrollbar;
+    }
 }
 
 @layer components {
@@ -257,24 +276,20 @@
         @apply  font-light md:text-lg;
     }
     .itemGal {
-        @apply  flex flex-row overflow-x-scroll overflow-y-hidden h-full max-w-[7rem] sm:max-w-[12rem] md:max-w-[24rem] snap-x snap-mandatory
+        @apply  flex flex-row overflow-x-scroll overflow-y-hidden h-full max-w-[9.5rem] sm:max-w-[12rem] md:max-w-[24rem] snap-x snap-mandatory
                 mx-auto gap-x-3;
     }
     .itemGal img {
-        @apply  h-full object-cover max-w-[7rem] sm:max-w-[12rem] md:h-48;
+        @apply  h-full object-cover max-w-[9.5rem] sm:max-w-[12rem] md:h-48;
     }
     .item {
         @apply  flex flex-row gap-x-2 border-[line-width:3px] border-gray-900 px-2 py-2
                 sm:flex-col sm:gap-y-2 sm:px-3 sm:py-3;
     }
     .buttonBgOffset {
-        @apply  translate-x-[0.2rem] translate-y-[0.2rem];
+        @apply  translate-x-[0.265rem] translate-y-[0.265rem];
     }
-    .fullscreenImg {
-        @apply  flex w-fit max-w-full max-h-full min-w-full min-h-full fixed mx-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50
-                bg-zinc-800 bg-opacity-80
-                items-center justify-center;
-    }
+    
     /* Configurator -> Builder */
 
     /* Configurator */

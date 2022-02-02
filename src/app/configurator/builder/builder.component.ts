@@ -103,12 +103,12 @@ export class BuilderComponent implements OnInit, AfterViewInit {
   }
 
   showFullImg(fIndex: number, sIndex: number) {
-    console.log('looking for element:', "pcb"+fIndex.toString()+"/"+sIndex.toString());
+    // console.log('looking for element:', "pcb"+fIndex.toString()+"/"+sIndex.toString());
     const showElement = document.getElementById("pcb"+fIndex.toString()+"/"+sIndex.toString());
     if (showElement) showElement.classList.remove("hidden");
   }
   hideFullImg(fIndex: number, sIndex: number) {
-    console.log('looking for element:', "pcb"+fIndex.toString()+"/"+sIndex.toString());
+    // console.log('looking for element:', "pcb"+fIndex.toString()+"/"+sIndex.toString());
     const showElement = document.getElementById("pcb"+fIndex.toString()+"/"+sIndex.toString());
     if (showElement) showElement.classList.add("hidden")
   }
