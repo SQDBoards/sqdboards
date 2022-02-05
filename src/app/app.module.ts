@@ -26,6 +26,9 @@ import { KeyboardSizeChartComponent } from './help/keyboard-size-chart/keyboard-
 import { FaqsComponent } from './help/faqs/faqs.component';
 // import { RouterReuseStrat } from './router-reuse-strat';
 
+import { SquiModule } from '@scriptsqd/squi';
+import { ZoomableDirective } from './zoomable.directive';
+
 @NgModule({
   declarations: [
     SQDBoardsMain,
@@ -41,7 +44,8 @@ import { FaqsComponent } from './help/faqs/faqs.component';
     BuilderComponent,
     HelpComponent,
     KeyboardSizeChartComponent,
-    FaqsComponent
+    FaqsComponent,
+    ZoomableDirective
   ],
   imports: [
     BrowserModule,
@@ -80,6 +84,7 @@ import { FaqsComponent } from './help/faqs/faqs.component';
       clientId: 'or172tB7I9o6fqmP4FyA7Ow1tvyGxrPs'
     }),
     ReactiveFormsModule,
+    SquiModule
   ],
   providers: [],
   bootstrap: [SQDBoardsMain]

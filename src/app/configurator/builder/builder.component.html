@@ -1,80 +1,32 @@
+<div id="zoom-container"></div>
+
 <span>
     <p class="titleBig flex flex-col w-fit mx-auto" id="typed-size"></p>
 </span>
 
-<div class="flex flex-row gap-x-5 overflow-x-scroll h-max content-responsive opacity-0 animateIn no-scrollbar">
-    <form class="mx-auto"[formGroup]="pcbSizeGroup">
-        <div role="radiogroup" class="mx-auto py-2 flex justify-center radioGroup">
-            <div class="flex items-center">
-                <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="40% PCB Size Checkbox" type="radio" value="40%" formControlName="pcbSize"
-                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
-                    <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
-                </div>
-                <label id="label1" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">40%</label>
+<div *ngIf="availSizes.length; else loader" class="flex flex-row gap-x-5 overflow-x-scroll h-max content-responsive opacity-0 animateIn no-scrollbar">
+    <form [formGroup]="pcbSizeGroup" class="mx-auto">
+            <div role="radiogroup" class="flex py-2 justify-center radioGroup">
+                <squi-radio *ngFor="let size of availSizes"
+                    squi-label="{{size}}"
+                    squi-value="{{size}}"
+                    squi-form-control-name="pcbSize">
+                </squi-radio>
             </div>
-            
-            <div class="flex items-center ml-6">
-                <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="60% PCB Size Checkbox" type="radio" value="60%" formControlName="pcbSize"
-                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
-                    <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
-                </div>
-                <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">60%</label>
-            </div>
-            <div class="flex items-center ml-6">
-                <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="65% PCB Size Checkbox" type="radio" value="65%" formControlName="pcbSize"
-                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
-                    <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
-                </div>
-                <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">65%</label>
-            </div>
-            <div class="flex items-center ml-6">
-                <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="75% PCB Size Checkbox" type="radio" value="75%" formControlName="pcbSize"
-                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
-                    <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
-                </div>
-                <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">75%</label>
-            </div>
-            <div class="flex items-center ml-6 text-center w-max">
-                <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="80% PCB Size Checkbox" type="radio" value="80%" formControlName="pcbSize"
-                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
-                    <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
-                </div>
-                <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">80% (TKL)</label>
-            </div>
-            <div class="flex items-center ml-6 text-center w-max">
-                <div class="bg-white rounded-full w-6 h-6 flex flex-shrink-0 justify-center items-center relative">
-                    <input aria-labelledby="100% PCB Size Checkbox" type="radio" value="100%" formControlName="pcbSize"
-                    class="checkbox appearance-none focus:opacity-100 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 focus:outline-none border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
-                    <div class="check-icon hidden border-4 border-zinc-700 rounded-full w-full h-full z-1"></div>
-                </div>
-                <label id="label2" class="ml-2 text-base leading-4 font-sans font-normal text-gray-800">100% (Full-size)</label>
-            </div>
-        </div>
     </form>
 </div>
+<ng-template #loader>
+    <p class="font-sans text-lg font-light opacity-0 animateIn mx-auto">loading...</p>
+</ng-template>
 <span class="littleInfo opacity-0 animateIn">
     Not sure?
     <a class="text-indigo-900" routerLink="/help/keyboard-size-chart">Size chart.</a>
 </span>
 
-<!-- <div class="fullscreenImg" id="pcb-1/-1">
-    <button (click)="hideFullImg(-1, -1)">
-        <img src="/assets/nav/close.svg" alt="Close (item name here) fullscreen image">
-    </button>
-    <div class="zoomContainer">
-        <img src="https://cdn.shopify.com/s/files/1/1473/3902/products/lADPDgtYyLOr33vNB9DNB9A_2000_2000.jpg?v=1631086544" alt=" enlarged photo">
-    </div>
-</div> -->
-
-<div *ngIf="(pcbs | async) as pcbs; else pcbsNF" class="itemList">
-    <div *ngFor="let pcb of pcbs; index as pcbi" class="item">
+<div class="itemList">
+    <div *ngFor="let pcb of showPcbs" class="item">
         <span class="itemGal no-scrollbar">
-            <img *ngFor="let img of pcb.images; index as imgi" src="{{ img }}" alt="{{ pcb.title }} photo" class="snap-center sm:snap-start cursor-zoom-in" (click)="showFullImg(pcbi, imgi)">
+            <img *ngFor="let img of pcb.images" src="{{ img }}" alt="{{ pcb.title }} photo" class="snap-center md:snap-start" zoomable>
         </span>
         <div class="flex flex-col">
             <p class="itemTitle">{{ pcb.title }}</p>
@@ -93,19 +45,5 @@
                 </span>
             </a>
         </div>
-        <div *ngFor="let img of pcb.images; index as imgi" class="fullscreenImg hidden" id="pcb{{ pcbi }}/{{ imgi }}">
-            <button (click)="hideFullImg(pcbi, imgi)" class="flex mr-auto w-12 sm:w-14 h-12 sm:h-14 items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="scale-150">
-                    <path d="M17.0562 5.67174L5.67175 17.0562C5.30075 17.4272 5.30075 18.0287 5.67175 18.3997L5.74246 18.4704C6.11346 18.8414 6.71497 18.8414 7.08597 18.4704L18.4704 7.08595C18.8414 6.71495 18.8414 6.11344 18.4704 5.74244L18.3997 5.67174C18.0287 5.30074 17.4272 5.30074 17.0562 5.67174Z" fill="white"/>
-                    <path d="M18.5415 17.1272L7.15704 5.74283C6.78604 5.37183 6.18454 5.37183 5.81354 5.74283L5.74283 5.81354C5.37183 6.18454 5.37183 6.78604 5.74283 7.15704L17.1272 18.5415C17.4982 18.9125 18.0998 18.9125 18.4708 18.5415L18.5415 18.4707C18.9125 18.0998 18.9125 17.4982 18.5415 17.1272Z" fill="white"/>
-                </svg>
-            </button>
-            <div class="zoomContainer">
-                <img src="{{ img }}" alt="{{ pcb.title }} enlarged photo" class="relative w-full h-full">
-            </div>
-        </div>
     </div>
 </div>
-<ng-template #pcbsNF>
-
-</ng-template>

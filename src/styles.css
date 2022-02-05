@@ -8,3 +8,11 @@ body {
     margin: 0;
     overflow-y: scroll;
 }
+
+.medium-zoom-overlay {
+    z-index: 45;
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+    opacity: 0.75 !important;
+}

@@ -32,24 +32,8 @@
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
-    .centerWithTransform {
-        @apply  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-    }
-    .fullscreenImg {
-        @apply  flex flex-col gap-y-6
-                w-fit max-w-full max-h-full min-w-full min-h-full
-                fixed mx-auto centerWithTransform z-50
-                backdrop-blur-[2px]
-                bg-zinc-800 bg-opacity-80
-                items-center justify-center;
-    }
-    .fullscreenImg .body {
-        @apply  overflow-hidden;
-    }
-    .zoomContainer {
-        @apply  flex overflow-scroll touch-manipulation
-                max-w-[90%] max-h-[45rem] sm:max-h-[37rem]
-                no-scrollbar;
+    .medium-zoom-image--opened {
+        @apply  z-50;
     }
 }
 
@@ -258,12 +242,6 @@
     /* Configurator -> Builder */
     .animateChoice {
         @apply transition-all opacity-0;
-    }
-    .checkbox:checked {
-        border: none;
-    }
-    .checkbox:checked + .check-icon {
-        display: flex;
     }
     .itemList {
         @apply  flex flex-row flex-wrap justify-evenly content-responsive gap-y-3 mt-2 sm:mt-3 md:mt-4 lg:mt-5
