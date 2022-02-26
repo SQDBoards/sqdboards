@@ -13,58 +13,54 @@ import { ScrollService } from 'src/app/scroll.service';
 @Component({
   selector: 'app-builder',
   templateUrl: './builder.component.html',
-  styleUrls: ['./builder.component.css']
+  styleUrls: ['./builder.component.css'],
 })
-export class BuilderComponent implements OnInit, AfterViewInit {
-
-  constructor(private notation: NotationService,
-              private formbuilder: FormBuilder,
-              private builderService: BuilderService,
-              public scroll: ScrollService) {};
+export class BuilderComponent implements AfterViewInit {
+  constructor(
+    private notation: NotationService,
+    private formbuilder: FormBuilder,
+    private builderService: BuilderService,
+    public scroll: ScrollService
+  ) {}
 
   // step 1 - pcb
   availSizes: string[] = [];
   pcbs?: Observable<pcb[]>;
   showPcbs: pcb[] = [];
   pcbSizeGroup: FormGroup = this.formbuilder.group({
-    pcbSize: [null, [
-      Validators.required
-    ]]
+    pcbSize: [null, [Validators.required]],
   });
-  
-
-  ngOnInit(): void {}
+  loading: boolean = false;
 
   ngAfterViewInit(): void {
-    const typed = new Typed("#typed-size", {
-      strings: ['It all starts with the size...<a class="notate" style="width: fit-content; margin: auto;">So pick yours:</a>'],
+    const typed = new Typed('#typed-size', {
+      strings: [
+        'It all starts with the size...<p class="notate" style="width: fit-content; margin: auto;">So pick yours:</p>',
+      ],
       typeSpeed: 35,
       showCursor: false,
       loop: false,
       onComplete: () => {
         this.notation.notate();
-        anime({
-          targets: '.animateIn',
-          opacity: ['0', '1']
-        }).restart();
-      }
+        document.getElementById('pcbChoice')!.style.display = 'flex';
+      },
     });
     typed.start();
 
     this.pcbs = this.builderService.getObjects('pcbs');
-    this.pcbs.subscribe(data => {
-      this.availSizes = this.builderService.getUniques(data, "size");
-    })
+    this.pcbs.subscribe((data) => {
+      this.availSizes = this.builderService.getUniques(data, 'size');
+    });
 
-    this.pcbSizeGroup.valueChanges
-      .subscribe((data) => {
-        this.pcbs?.subscribe((pcbs) => {
-          this.showPcbs = [];
-          pcbs.forEach((pcb) => {
-            pcb.size === data.pcbSize ? this.showPcbs.push(pcb) : null;
-          });
+    this.pcbSizeGroup.valueChanges.subscribe((data) => {
+      this.loading = true;
+      this.showPcbs = [];
+      this.pcbs?.subscribe((pcbs) => {
+        pcbs.forEach((pcb) => {
+          pcb.size === data.pcbSize ? this.showPcbs.push(pcb) : null;
         });
+        this.loading = false;
       });
+    });
   }
-
 }

@@ -1,38 +1,36 @@
 <div id="zoom-container"></div>
 
-<span>
-  <p class="titleBig flex flex-col w-fit mx-auto" id="typed-size"></p>
+<span class="prose">
+  <h3 class="flex flex-col w-fit mx-auto" id="typed-size"></h3>
 </span>
 
-<div
-  *ngIf="availSizes.length; else loader"
-  class="flex flex-row gap-x-5 overflow-x-scroll h-max content-responsive opacity-0 animateIn no-scrollbar"
->
-  <form [formGroup]="pcbSizeGroup" class="mx-auto">
-    <div role="radiogroup" class="flex py-2 justify-center radioGroup">
-      <squi-radio
-        *ngFor="let size of availSizes"
-        squi-label="{{ size }}"
-        squi-value="{{ size }}"
-        squi-form-control-name="pcbSize"
-      >
-      </squi-radio>
-    </div>
+<div role="radiogroup" class="hidden w-max py-1.5 justify-center" id="pcbChoice">
+  <form [formGroup]="pcbSizeGroup" class="flex flex-row gap-x-6 overflow-x-auto scroll-mx-2 no-scrollbar items-center justify-center">
+    <squi-radio
+      *ngFor="let size of availSizes"
+      squi-label="{{ size }}"
+      squi-value="{{ size }}"
+      squi-form-control-name="pcbSize"
+    >
+    </squi-radio>
   </form>
 </div>
+
 <ng-template #loader>
   <p class="font-sans text-lg font-light opacity-0 animateIn mx-auto">
     loading...
   </p>
 </ng-template>
-<span class="littleInfo opacity-0 animateIn">
+<span
+  class="text-xs sm:text-sm lg:text-lg font-sans text-center select-none opacity-0 animateIn"
+>
   Not sure?
   <a class="text-indigo-900" routerLink="/help/keyboard-size-chart"
     >Size chart.</a
   >
 </span>
 
-<div class="itemList content-responsive">
+<div class="itemList content-responsive" *isloading="loading">
   <div *ngFor="let pcb of showPcbs" class="item">
     <span
       class="itemGal no-scrollbar"

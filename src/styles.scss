@@ -11,9 +11,6 @@
     font-size: 0.5rem;
     line-height: 0.75rem;
   }
-  .littleInfo {
-    @apply text-xs sm:text-sm lg:text-lg font-sans text-center select-none;
-  }
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -27,8 +24,8 @@
   .content-responsive {
     @apply px-2 sm:px-4 md:px-[2%] lg:px-[9%];
   }
-  .titleBig {
-    @apply text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3 w-fit mx-auto;
+  .linkActive {
+    @apply transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] bg-rose-100 text-gray-900 w-max z-[-1];
   }
 }
 

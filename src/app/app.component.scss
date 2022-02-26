@@ -6,7 +6,6 @@
 
 .navbar {
   @apply grid grid-cols-[repeat(2,auto)] sm:grid-cols-[repeat(3,auto)]
-            z-10 sticky top-0
             items-center
             py-2 mb-3 sm:mb-6
             shadow bg-white;

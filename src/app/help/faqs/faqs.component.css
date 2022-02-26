@@ -1,10 +1,7 @@
-.faqsContainer details {
-  @apply w-full;
-}
-.faqSummary {
-  @apply flex items-center justify-between p-4 rounded-lg cursor-pointer bg-gray-50
-            md:text-xl lg:text-2xl;
-}
-details p {
-  @apply md:text-lg lg:text-xl;
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.5rem;
 }

@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
@@ -25,9 +25,9 @@ import { HelpComponent } from './help/help.component';
 import { KeyboardSizeChartComponent } from './help/keyboard-size-chart/keyboard-size-chart.component';
 import { FaqsComponent } from './help/faqs/faqs.component';
 
-import { SquiModule } from '@scriptsqd/squi';
-import { SwiperModule } from 'swiper/angular';
-import { BuilderReuse } from './builder-reuse';
+import { SquiModule } from '@scriptsqd/ngx-squi';
+import { LoadingDirective } from './loading.directive';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +45,10 @@ import { BuilderReuse } from './builder-reuse';
     HelpComponent,
     KeyboardSizeChartComponent,
     FaqsComponent,
+    LoadingDirective,
+    LoadingComponent,
+    LoadingDirective,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,10 +104,10 @@ import { BuilderReuse } from './builder-reuse';
       clientId: 'or172tB7I9o6fqmP4FyA7Ow1tvyGxrPs',
     }),
     ReactiveFormsModule,
-    SquiModule,
-    SwiperModule,
+    SquiModule
   ],
   providers: [],
+  entryComponents: [LoadingComponent],
   bootstrap: [SQDBoardsMain],
 })
 export class AppModule {}

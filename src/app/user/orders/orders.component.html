@@ -1,52 +1,54 @@
-
-<div *ngIf="(orders$ | async) as orders; else ordersLoading">
-    <div class="flex flex-col gap-y-3 px-2" *ngIf="!(orders.length === 0); else ordersNotFound">
-        <p class="titleBig">Your orders: </p>
-        <div class="group" *ngFor="let order of orders">
-            <div class="flex flex-col gap-y-2 lg:gap-y-4 px-3 py-1 lg:px-5 lg:py-2 font-sans">
-                <p class="flex flex-wrap w-fit text-lg md:text-2xl lg:text-3xl font-semibold bg-rose-100 px-1">Order #{{ order._id }}</p>
-                <!-- Short info -->
-                <span class="flex flex-row flex-wrap items-center gap-x-2 text-base md:text-lg font-normal">
-                    <!-- <p>{{ order.switches }} + {{ order.pcb }} in {{ order.case }}!</p> -->
-                    <span class="flex flex-row items-center gap-x-1">
-                        <object data="/assets/nav/orders/switch.svg" type="image/svg+xml" class="orderIcon"></object>
-                        <p>{{ order.specs.switches }} + </p>
-                    </span>
-                    <span class="flex flex-row items-center gap-x-1">
-                        <object data="/assets/nav/orders/pcb.svg" type="image/svg+xml" class="orderIcon"></object>
-                        <p>{{ order.specs.pcb }} in {{ order.specs.case }}</p>
-                    </span>
-                </span>
-                <p class="w-fit rounded-lg border-2 border-gray-900 px-2 py-1 lg:px-3 lg:py-1.5 text-gray-900 md:text-lg lg:text-xl">To the order!</p>
-            </div>
-            <hr class="orderSeparator">
-        </div>
+<div
+  *isloading="loading"
+  class="flex items-center justify-center content-responsive"
+>
+  <ng-container *ngIf="orders$ | async as orders">
+    <div
+      class="flex flex-col gap-y-3 px-2 prose"
+      *ngIf="!(orders.length === 0); else ordersNotFound"
+    >
+      <h2 class="text-center mb-0 mt-3">Your orders:</h2>
+      <div
+        class="flex flex-col gap-y-2 lg:gap-y-4 px-3 py-1 lg:px-5 lg:py-2 font-sans not-prose"
+        *ngFor="let order of orders"
+      >
+        <p
+          class="flex flex-wrap w-fit text-lg md:text-2xl font-semibold bg-rose-100 px-1"
+        >
+          Order #{{ order._id }}
+        </p>
+        <!-- Short info -->
+        <span
+          class="flex flex-row flex-wrap items-center gap-x-2 text-base md:text-lg font-normal"
+        >
+          <!-- <p>{{ order.switches }} + {{ order.pcb }} in {{ order.case }}!</p> -->
+          <span class="flex flex-row flex-wrap items-center gap-x-1">
+            <object
+              data="/assets/nav/orders/switch.svg"
+              type="image/svg+xml"
+              class="flex w-5 h-5"
+            ></object>
+            <p>{{ order.specs.switches }} +</p>
+          </span>
+          <span class="flex flex-row flex-wrap items-center gap-x-1">
+            <object
+              data="/assets/nav/orders/pcb.svg"
+              type="image/svg+xml"
+              class="flex w-5 h-5"
+            ></object>
+            <p>{{ order.specs.pcb }} in</p>
+            <p>{{ order.specs.case }}</p>
+          </span>
+        </span>
+        <p
+          class="w-fit rounded-lg border-2 border-gray-900 px-2 py-1 lg:px-3 lg:py-1.5 text-gray-900 md:text-lg lg:text-xl"
+        >
+          To the order!
+        </p>
+      </div>
     </div>
     <ng-template #ordersNotFound>
-        <p class="titleBig" id="ordersNF">Orders not found!</p>
+      <p class="titleBig" id="ordersNF">Orders not found!</p>
     </ng-template>
+  </ng-container>
 </div>
-
-<ng-template #ordersLoading>
-    <!-- <div class="flex flex-col border-2 border-gray-900 gap-y-2 rounded-lg px-3 py-1 font-sans">
-        <span class="flex flex-col flex-nowrap w-fit">
-            <p class="text-lg font-semibold">Order #</p>
-            <hr class="orderSpacer w-full bg-gray-900 border-0">
-        </span>
-        <span class="flex flex-row flex-wrap items-center gap-x-2 text-base font-normal">
-            <span class="flex flex-row items-center gap-x-1">
-                <object data="/assets/nav/orders/switch.svg" type="image/svg+xml" class="orderIcon"></object>
-                <p>switches + </p>
-            </span>
-            <span class="flex flex-row items-center gap-x-1">
-                <object data="/assets/nav/orders/pcb.svg" type="image/svg+xml" class="orderIcon"></object>
-                <p>pcb in </p>
-            </span>
-            <span class="flex flex-row items-center gap-x-1">
-                <object data="/assets/nav/orders/case.svg" type="image/svg+xml" class="orderIcon"></object>
-                <p>case</p>
-            </span>
-        </span>
-        <p class="w-fit rounded-lg border-2 border-gray-900 px-2 py-1 text-gray-900">To the order!</p>
-    </div> -->
-</ng-template>

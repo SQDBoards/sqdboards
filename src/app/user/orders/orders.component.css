@@ -5,14 +5,6 @@
   @apply flex flex-row items-center gap-x-1;
 }
 
-.orderIcon {
-  @apply flex w-5 h-5;
-}
-
-.orderSeparator {
-  @apply flex w-full h-0.5 sm:h-[0.175rem] bg-gray-900 group-last:hidden mt-3;
-}
-
 .icon {
   @apply flex h-4 object-contain;
 }
