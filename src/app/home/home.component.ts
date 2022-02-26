@@ -4,15 +4,21 @@ import { Deal } from '../deal';
 import { GetDealsService } from '../services/get-deals.service';
 import { NotationService } from '../services/notation.service';
 
+import SwiperCore, { Pagination } from 'swiper'
+import { ScrollService } from '../scroll.service';
+
+SwiperCore.use([Pagination]);
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css', '../tailwind.css']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   constructor(private gds$: GetDealsService,
-              private notation: NotationService) {};
+              private notation: NotationService,
+              public scroll: ScrollService) {};
 
   deals$?: Observable<Deal[]>;
   contentHasLoaded: boolean = false;

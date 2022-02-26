@@ -1,0 +1,13 @@
+.keebPhoto {
+  @apply flex rounded-lg w-11/12 lg:w-10/12 object-contain mx-auto;
+}
+.keebSizeCont div {
+  @apply flex flex-col gap-y-2;
+}
+.keebSizeCont div p {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium;
+}
+.keebSizeCont div hr {
+  @apply lg:h-1.5 lg:w-11/12 mx-auto;
+  height: 1.5px;
+}

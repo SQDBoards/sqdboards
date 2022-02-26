@@ -1,23 +1,12 @@
-const plugin = require("tailwindcss/plugin");
-
 module.exports = {
   mode: 'jit',
   content: [
-    './src/**/*.*.{html,js}',
-    './src/**/**/*.*.{html,js}',
-    './tailwind/tailwind.css'
+    './src/app/*.*.{html,js}',
+    './src/app/**/*.*.{html,js}',
+    './src/app/**/**/*.*.{html,js}'
   ],
   theme: {
-    extend: {
-      keyframes: {
-        rotateButtonIn: {
-          'to': {transform: 'rotate(360deg)'}
-        },
-        rotateButtonOut: {
-          'to': {transform: 'rotate(-360deg)'}
-        }
-      }
-    },
+    extend: {},
     fontFamily: {
       sans: ['Nunito', 'sans-serif']
     }
@@ -25,26 +14,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    plugin(function({ matchUtilities }) {
-      matchUtilities({
-        'grid-cols-auto': (value) => ({
-          'grid-template-columns': 'repeat(' + value + ',auto)'
-        }),
-        'grid-cols-min': (value) => ({
-          'grid-template-columns': 'repeat(' + value + ',min-content)'
-        }),
-        'grid-rows-auto': (value) => ({
-          'grid-template-rows': 'repeat(' + value + ',auto)'
-        }),
-        'border': (value) => ({
-          'border-width': value + 'px'
-        }),
-        'px-perc': (value) => ({
-          'padding-left': value + '%',
-          'padding-right': value + '%'
-        }),
-      })
-    })
-  ],
+  plugins: []
 }

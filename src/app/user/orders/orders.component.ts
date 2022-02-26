@@ -8,7 +8,7 @@ import { Order } from './order';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css', '../../tailwind.css']
+  styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit, AfterViewInit {
 

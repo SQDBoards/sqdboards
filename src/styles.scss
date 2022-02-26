@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap");
+
+@import "~swiper/css/bundle";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .text-xxs {
+    font-size: 0.5rem;
+    line-height: 0.75rem;
+  }
+  .littleInfo {
+    @apply text-xs sm:text-sm lg:text-lg font-sans text-center select-none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-desktop {
+    @apply md:px-[4%] lg:px-[14%];
+  }
+  .content-responsive {
+    @apply px-2 sm:px-4 md:px-[2%] lg:px-[9%];
+  }
+  .titleBig {
+    @apply text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3 w-fit mx-auto;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+}

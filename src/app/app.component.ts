@@ -1,12 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { AnimateService } from './services/animate.service';
 
 @Component({
   selector: 'root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', './tailwind.css']
+  styleUrls: ['./app.component.scss']
 })
 export class SQDBoardsMain implements OnInit {
 

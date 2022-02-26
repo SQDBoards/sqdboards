@@ -4,7 +4,7 @@ import Typed from 'typed.js';
 @Component({
   selector: 'app-fof-not-found',
   templateUrl: './fof-not-found.component.html',
-  styleUrls: ['./fof-not-found.component.css', '../tailwind.css']
+  styleUrls: ['./fof-not-found.component.css']
 })
 export class FofNotFoundComponent implements OnInit, AfterViewInit {
 

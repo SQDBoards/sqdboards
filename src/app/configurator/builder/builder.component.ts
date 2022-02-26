@@ -8,17 +8,19 @@ import Typed from 'typed.js';
 import { NotationService } from 'src/app/services/notation.service';
 import { pcb } from './models/pcb.model';
 import { BuilderService } from './builder.service';
+import { ScrollService } from 'src/app/scroll.service';
 
 @Component({
   selector: 'app-builder',
   templateUrl: './builder.component.html',
-  styleUrls: ['./builder.component.css', '../../tailwind.css']
+  styleUrls: ['./builder.component.css']
 })
 export class BuilderComponent implements OnInit, AfterViewInit {
 
   constructor(private notation: NotationService,
               private formbuilder: FormBuilder,
-              private builderService: BuilderService) {};
+              private builderService: BuilderService,
+              public scroll: ScrollService) {};
 
   // step 1 - pcb
   availSizes: string[] = [];

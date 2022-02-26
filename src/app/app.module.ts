@@ -24,10 +24,10 @@ import { BuilderComponent } from './configurator/builder/builder.component';
 import { HelpComponent } from './help/help.component';
 import { KeyboardSizeChartComponent } from './help/keyboard-size-chart/keyboard-size-chart.component';
 import { FaqsComponent } from './help/faqs/faqs.component';
-// import { RouterReuseStrat } from './router-reuse-strat';
 
 import { SquiModule } from '@scriptsqd/squi';
-import { ZoomableDirective } from './zoomable.directive';
+import { SwiperModule } from 'swiper/angular';
+import { BuilderReuse } from './builder-reuse';
 
 @NgModule({
   declarations: [
@@ -45,33 +45,49 @@ import { ZoomableDirective } from './zoomable.directive';
     HelpComponent,
     KeyboardSizeChartComponent,
     FaqsComponent,
-    ZoomableDirective
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'aboutus', component: AboutusComponent },
-      { path: 'user', component: UserComponent, canActivate: [UserGuard],
-      children: [
-        { path: '', redirectTo: 'profile', pathMatch: 'full' },
-        { path: 'profile', component: ProfileComponent },
-        { path: 'orders', component: OrdersComponent },
-        { path: 'settings', component: SettingsComponent },
-      ]},
-      { path: 'configurator', component: ConfiguratorComponent,
+      {
+        path: 'user',
+        component: UserComponent,
+        canActivate: [UserGuard],
+        children: [
+          { path: '', redirectTo: 'profile', pathMatch: 'full' },
+          { path: 'profile', component: ProfileComponent },
+          { path: 'orders', component: OrdersComponent },
+          { path: 'settings', component: SettingsComponent },
+        ],
+      },
+      {
+        path: 'configurator',
+        component: ConfiguratorComponent,
         children: [
           { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-          { path: 'welcome', component: WelcomeComponent, canActivate: [WelcomePageGuard] },
-          { path: 'builder', component: BuilderComponent },
+          {
+            path: 'welcome',
+            component: WelcomeComponent,
+            canActivate: [WelcomePageGuard],
+          },
+          {
+            path: 'builder',
+            component: BuilderComponent,
+          },
           { path: 'finalize', component: FinalizeComponent },
-        ]
+        ],
       },
-      { path: 'help',
+      {
+        path: 'help',
         children: [
           { path: '', component: HelpComponent },
-          { path: 'keyboard-size-chart', component: KeyboardSizeChartComponent },
-          { path: 'faqs', component: FaqsComponent }
+          {
+            path: 'keyboard-size-chart',
+            component: KeyboardSizeChartComponent,
+          },
+          { path: 'faqs', component: FaqsComponent },
         ],
       },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -81,12 +97,13 @@ import { ZoomableDirective } from './zoomable.directive';
     HttpCacheInterceptorModule.forRoot(),
     AuthModule.forRoot({
       domain: 'sqdboards.eu.auth0.com',
-      clientId: 'or172tB7I9o6fqmP4FyA7Ow1tvyGxrPs'
+      clientId: 'or172tB7I9o6fqmP4FyA7Ow1tvyGxrPs',
     }),
     ReactiveFormsModule,
-    SquiModule
+    SquiModule,
+    SwiperModule,
   ],
   providers: [],
-  bootstrap: [SQDBoardsMain]
+  bootstrap: [SQDBoardsMain],
 })
 export class AppModule {}

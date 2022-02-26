@@ -5,7 +5,7 @@ import { NotationService } from 'src/app/services/notation.service';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css', '../../tailwind.css']
+  styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit, AfterViewInit {
 

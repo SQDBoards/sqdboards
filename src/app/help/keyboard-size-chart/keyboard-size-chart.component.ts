@@ -4,7 +4,7 @@ import { NotationService } from 'src/app/services/notation.service';
 @Component({
   selector: 'app-keyboard-size-chart',
   templateUrl: './keyboard-size-chart.component.html',
-  styleUrls: ['./keyboard-size-chart.component.css', '../../tailwind.css']
+  styleUrls: ['./keyboard-size-chart.component.css']
 })
 export class KeyboardSizeChartComponent implements OnInit, AfterViewInit {
 

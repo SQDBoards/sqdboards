@@ -1,0 +1,7 @@
+#sectionSelector a {
+    @apply  px-2 md:py-0.5 md:px-3;
+}
+
+.linkActive {
+    @apply  transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] bg-rose-100 text-gray-900 w-max z-[-1];
+}
