@@ -2,11 +2,10 @@
   <p class="text-center text-lg sm:text-xl md:text-3xl font-sans font-semibold text-gray-900 my-3 w-fit mx-auto notate">Latest deals:</p>
   <div
     *ngIf="contentHasLoaded; else dealsPlaceholder"
-    class="currentDeals snap-x cursor-grab"
+    class="currentDeals snap-x cursor-grab no-scrollbar mx-1.5"
     #deals
     (mousedown)="scroll.startDragging($event, deals)"
     (mouseup)="scroll.stopDragging($event, deals)"
-    (mouseleave)="scroll.stopDragging($event, deals)"
     (mousemove)="scroll.moveEvent($event, deals)"
   >
     <div *ngFor="let deal of deals$ | async" class="deal snap-always">

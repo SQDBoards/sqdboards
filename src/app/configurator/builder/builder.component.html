@@ -38,7 +38,6 @@
       (mousedown)="this.scroll.startDragging($event, gal)"
       (mouseup)="this.scroll.stopDragging($event, gal)"
       (mousemove)="this.scroll.moveEvent($event, gal)"
-      (mouseleave)="this.scroll.stopDragging($event, gal)"
     >
       <img
         *ngFor="let img of pcb.images"

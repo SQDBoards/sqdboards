@@ -19,7 +19,7 @@
 }
 .text_button {
   @apply flex
-            font-sans text-gray-900 font-bold
+            font-sans text-gray-900 font-semibold
             text-xl md:text-2xl
             self-center;
 }

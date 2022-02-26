@@ -2,21 +2,14 @@ main {
   @apply flex justify-center flex-col gap-y-3 sm:gap-y-6;
 }
 .currentDeals {
-  @apply grid snap-mandatory overflow-scroll;
-  grid-auto-columns: 100%;
-  grid-auto-flow: column;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  --tw-pan-x: auto;
-  touch-action: var(--tw-touch-action);
-}
-.currentDeals::-webkit-scrollbar {
-  display: none;
+  @apply grid snap-mandatory overflow-scroll
+        gap-2.5
+        auto-cols-[100%] grid-flow-col;
 }
 
 .deal {
   @apply grid grid-rows-[repeat(2,auto)] grid-cols-[auto]
-          gap-y-3 mx-2 first:ml-2 first:mr-2 last:ml-2 last:mr-2
+          gap-y-3
           rounded-xl
           bg-white
           snap-center;

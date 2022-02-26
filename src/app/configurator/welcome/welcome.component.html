@@ -1,4 +1,6 @@
-<section class="prose prose-base content-responsive">
+<section
+  class="w-full flex flex-col prose prose-base lg:prose-lg max-w-none content-responsive"
+>
   <h2 class="text-center">Welcome to the Configurator!</h2>
   <p>
     We are happy to finally present you the awesome Configurator!<br />
@@ -21,12 +23,11 @@
   </p>
   So, now that you are familiar with the Configurator's powers, you can start
   with it right away!
-  <p class="ml-auto text-sm sm:text-base md:text-lg lg:text-xl text-right">
+  <p class="ml-auto text-sm text-right">
     Best wishes, your<br />SQDBoards Team!
   </p>
-</section>
-<span class="w-full inline-flex flex-wrap items-center justify-end px-2">
-  <button class="m-2" (click)="dontShowAgain()" routerLink="../builder">
+
+  <button class="w-fit m-2 place-self-flex-end" (click)="dontShowAgain()" routerLink="../builder">
     <a
       class="relative inline-block group focus:outline-none focus:ring w-fit mt-2 ml-auto sm:mx-auto"
     >
@@ -35,10 +36,10 @@
       ></span>
 
       <span
-        class="relative inline-block px-4 py-2 sm:py-3 md:px-8 md:py-4 text-sm font-bold tracking-widest text-gray-900 uppercase border-2 border-current group-active:text-opacity-75 select-none"
+        class="relative inline-block px-4 py-2 sm:py-3 text-sm font-bold tracking-widest text-gray-900 uppercase border-2 border-current group-active:text-opacity-75 select-none"
       >
         Don't show again
       </span>
     </a>
   </button>
-</span>
+</section>

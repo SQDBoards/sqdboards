@@ -1,6 +1,6 @@
 :host {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 640px) {
@@ -15,4 +15,7 @@
             text-base font-sans font-medium
             sm:text-lg md:text-xl lg:text-2xl
             gap-y-3;
+}
+.place-self-flex-end {
+  place-self: flex-end;
 }
