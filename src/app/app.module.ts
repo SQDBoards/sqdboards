@@ -28,6 +28,7 @@ import { FaqsComponent } from './help/faqs/faqs.component';
 import { SquiModule } from '@scriptsqd/ngx-squi';
 import { LoadingDirective } from './loading.directive';
 import { LoadingComponent } from './loading/loading.component';
+import { OrderPreviewComponent } from './user/orders/order-preview/order-preview.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LoadingComponent } from './loading/loading.component';
     LoadingComponent,
     LoadingDirective,
     LoadingComponent,
+    OrderPreviewComponent,
   ],
   imports: [
     BrowserModule,

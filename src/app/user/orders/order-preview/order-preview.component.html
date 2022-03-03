@@ -1,0 +1,38 @@
+<div
+  class="flex flex-col gap-y-2 p-1.5 border-[2.5px] border-gray-900 font-sans not-prose"
+>
+  <p
+    class="flex flex-wrap w-fit text-base md:text-lg font-semibold bg-rose-100 px-1"
+  >
+    Order #{{ order._id }}
+  </p>
+  <span
+    class="flex flex-row flex-wrap items-center gap-x-2 text-base md:text-base font-normal"
+  >
+    <span class="flex flex-row flex-wrap items-center gap-x-1">
+      <object
+        data="/assets/nav/orders/switch.svg"
+        type="image/svg+xml"
+        class="flex w-5 h-5"
+      ></object>
+      <p>{{ order.specs.switches }} +</p>
+    </span>
+    <span class="flex flex-row flex-wrap items-center gap-x-1">
+      <object
+        data="/assets/nav/orders/pcb.svg"
+        type="image/svg+xml"
+        class="flex w-5 h-5"
+      ></object>
+      <p>{{ order.specs.pcb }} in</p>
+      <p>{{ order.specs.case }}</p>
+    </span>
+  </span>
+  <button
+    class="flex place-self-flex-end border-2
+    border-rose-100 bg-transparent hover:bg-rose-100 transition-all duration-500
+    m-0.5 px-1.5 py-0.5 w-fit h-fit
+    font-semibold"
+  >
+    To order
+  </button>
+</div>
