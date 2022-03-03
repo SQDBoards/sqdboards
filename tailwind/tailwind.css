@@ -19,8 +19,21 @@
     .nav-desktop {
         @apply   md:px-perc-[4] lg:px-perc-[14];
     }
-    .content-desktop {
-        @apply   md:px-perc-[2] lg:px-perc-[9];
+    .content-responsive {
+        @apply   px-2 sm:px-4 md:px-perc-[2] lg:px-perc-[9];
+    }
+    .littleInfo {
+        @apply  text-xs sm:text-sm lg:text-lg font-sans text-center select-none
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .medium-zoom-image--opened {
+        @apply  z-50;
     }
 }
 
@@ -76,7 +89,7 @@
     /* Home component */
     main {
         @apply  flex justify-center flex-col gap-y-3 sm:gap-y-6
-                content-desktop;
+                content-responsive;
     }
     .currentDeals {
         @apply  grid snap-mandatory overflow-scroll;
@@ -92,7 +105,7 @@
     }
 
     .titleBig {
-        @apply  text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3;
+        @apply  text-center text-xl sm:text-2xl md:text-4xl font-sans font-semibold text-gray-900 my-3 w-fit mx-auto;
     }
     .deal {
         @apply  grid grid-rows-auto-[2] grid-cols-auto-[1]
@@ -167,9 +180,9 @@
     /* About Us component */
     .infoLong {
         @apply  flex flex-row flex-wrap
-        text-base sm:text-lg md:text-xl
+        text-base sm:text-lg md:text-xl lg:text-2xl
         font-sans text-left mx-2 gap-y-1
-        sm:content-desktop;
+        content-responsive;
     }
     /* About Us component */
 
@@ -216,5 +229,79 @@
     .icon {
         @apply  flex h-4 object-contain;
     }
+    /* User component */
 
+    /* Configurator */
+    .configuratorWelcome {
+        @apply  flex flex-col flex-wrap
+                text-base font-sans font-medium
+                sm:text-lg md:text-xl lg:text-2xl
+                gap-y-3;
+    }
+
+    /* Configurator -> Builder */
+    .animateChoice {
+        @apply transition-all opacity-0;
+    }
+    .itemList {
+        @apply  flex flex-row flex-wrap justify-evenly content-responsive gap-y-3 mt-2 sm:mt-3 md:mt-4 lg:mt-5
+                font-sans;
+    }
+    .itemTitle {
+        @apply  flex flex-nowrap font-medium overflow-hidden md:text-lg;
+    }
+    .itemDesc {
+        @apply  font-light md:text-lg;
+    }
+    .itemGal {
+        @apply  flex flex-row overflow-x-scroll overflow-y-hidden h-full max-w-[9.5rem] sm:max-w-[12rem] md:max-w-[24rem] snap-x snap-mandatory
+                mx-auto gap-x-3;
+    }
+    .itemGal img {
+        @apply  h-full object-cover max-w-[9.5rem] sm:max-w-[12rem] md:h-48;
+    }
+    .item {
+        @apply  flex flex-row gap-x-2 border-[line-width:3px] border-gray-900 px-2 py-2
+                sm:flex-col sm:gap-y-2 sm:px-3 sm:py-3;
+    }
+    .buttonBgOffset {
+        @apply  translate-x-[0.265rem] translate-y-[0.265rem];
+    }
+    
+    /* Configurator -> Builder */
+
+    /* Configurator */
+
+    /* Help */
+
+    /* Help -> KeyboardSizeChart */
+    .keebPhoto {
+        @apply  flex rounded-lg w-11/12 lg:w-10/12 object-contain mx-auto;
+    }
+    .keebSizeCont div {
+        @apply  flex flex-col gap-y-2;
+    }
+    .keebSizeCont div p {
+        @apply  text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium;
+    }
+    .keebSizeCont div hr {
+        @apply lg:h-1.5 lg:w-11/12 mx-auto;
+        height: 1.5px;
+    }
+    /* Help -> KeyboardSizeChart */
+
+    /* Help -> FAQs */
+    .faqsContainer details {
+        @apply  w-full;
+    }
+    .faqSummary {
+        @apply  flex items-center justify-between p-4 rounded-lg cursor-pointer bg-gray-50
+                md:text-xl lg:text-2xl;
+    }
+    details p {
+        @apply  md:text-lg lg:text-xl;
+    }
+    /* Help -> FAQs */
+
+    /* Help */
 }

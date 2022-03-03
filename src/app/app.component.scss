@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  @apply grid grid-cols-[repeat(2,auto)] sm:grid-cols-[repeat(3,auto)]
+            items-center
+            py-2 mb-3 sm:mb-6
+            shadow bg-white;
+}
+.logo {
+  @apply flex
+            object-contain
+            w-40 md:w-60
+            m-3 md:m-5 mx-auto md:mx-auto
+            select-none;
+}
+.text_button {
+  @apply flex
+            font-sans text-gray-900 font-semibold
+            text-xl md:text-2xl
+            self-center;
+}
+.graphic_button {
+  @apply flex
+            w-8 h-8 sm:w-8 sm:h-8 md:w-9 md:h-9
+            mx-1 sm:mx-1.5 md:mx-2;
+}
+
+footer {
+  @apply flex flex-col mt-auto pt-10 pb-2
+            before:w-full before:h-[0.1rem] before:bg-gray-900 before:rounded-full
+            gap-y-2 sm:gap-y-3;
+}
+footer ul {
+  @apply flex flex-row flex-wrap
+            justify-center
+            gap-x-1.5 sm:gap-x-2.5;
+}
+footer ul li {
+  @apply flex gap-x-1.5 sm:gap-x-2.5
+            after:inline-flex after:h-[75%] after:w-[1.3px] after:bg-gray-900 last:after:hidden
+            after:self-center;
+}
+footer ul li a {
+  @apply text-sm sm:text-lg font-sans;
+}
+.mediaIcon {
+  @apply flex w-7 h-7 sm:w-8 sm:h-8 pointer-events-none;
+}

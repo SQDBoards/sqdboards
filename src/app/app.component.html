@@ -1,90 +1,185 @@
-<!-- MOBILE MENU START -->
-<div class="menu hidden" id="dropdownMenu">
-  <button (click)="this.anim.closeDropdown()" class="w-min h-min">
-    <object data="/assets/nav/close.svg" type="image/svg+xml"
-    class="flex w-10 h-10 mx-0 pointer-events-none"
-    aria-label="Close menu"
-    id="closeMenu"></object>
+<div
+  class="hidden fixed flex-col gap-y-10 px-3 py-5 w-screen h-screen bg-gray-50 bg-opacity-95 z-50 overflow-hidden overscroll-contain"
+  id="menu"
+>
+  <button (click)="this.changeMenuState()" class="w-fit h-fit">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#000000"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
   </button>
-  <div class="flex flex-col mt-4 gap-y-2">
-    <a (click)="this.anim.closeDropdown()" routerLink="/home">Home</a>
-    <hr>
-    <a (click)="this.anim.closeDropdown()" routerLink="/configurator">Configurator</a>
-    <hr>
-    <a (click)="this.anim.closeDropdown()" routerLink="/contacts">Contacts</a>
-    <hr>
-    <a (click)="this.anim.closeDropdown()" routerLink="/aboutus">About Us</a>
+  <div class="flex flex-col overflow-auto overscroll-contain gap-y-3 flex-1">
+    <ul class="flex flex-col gap-y-4 text-xl font-semibold">
+      <li><a class="px-1" routerLink="/home" routerLinkActive="linkActive"(click)="this.changeMenuState()">Home</a></li>
+      <li>
+        <a class="px-1" routerLink="/configurator" routerLinkActive="linkActive"(click)="this.changeMenuState()"
+          >Configurator</a
+        >
+      </li>
+      <li>
+        <a class="px-1" routerLink="/aboutus" routerLinkActive="linkActive"(click)="this.changeMenuState()">About Us</a>
+      </li>
+    </ul>
+    <div class="w-11/12 flex flex-col mt-auto gap-y-2 mx-auto">
+      <hr class="w-full h-0.5 border-none bg-black" />
+      <span class="w-full inline-grid grid-cols-3 mb-1">
+        <p class="text-xs col-start-2 text-center">&copy; SQDBoards 2022</p>
+        <a
+          href="https://github.com/scriptSQD"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="col-start-3 justify-self-end self-center"
+        >
+          <object
+            data="/assets/social/github.svg"
+            type="image/svg+xml"
+            class="mediaIcon"
+          ></object>
+        </a>
+      </span>
+    </div>
   </div>
 </div>
-<!-- MOBILE MENU END -->
 
 <a href="/home" class="logo" id="logo">
-  <img src="/assets/nav/logo.png" type="image/png"
-  aria-label="SQD Board's Logo Image" alt="SQD Board's Logo Image" routerLink="/home"/>
+  <img
+    src="/assets/nav/logo.png"
+    type="image/png"
+    aria-label="SQD Board's Logo Image"
+    alt="SQD Board's Logo Image"
+    routerLink="/home"
+  />
 </a>
-<nav class="navbar">
-  <button class="w-min mx-2" (click)="this.anim.openDropdown()" id="openMenu">
-    <object data="/assets/nav/menu.svg" type="image/svg+xml"
-    class="graphic_button sm:col-start-1 sm:row-start-1 sm:hidden pointer-events-none"
-    aria-label="Open menu"
-    alt="Site menu"></object>
-  </button>
 
-  <!-- Medium screen only buttons START -->
-  <div class="hidden sm:flex col-span-full justify-self-center sm:gap-6 row-start-1">
-    <button class="text_button" routerLink="/home" routerLinkActive="activeRouter">Home</button>
-    <button class="text_button" routerLink="/configurator" routerLinkActive="activeRouter">Configurator</button>
-    <button class="text_button" routerLink="/aboutus" routerLinkActive="activeRouter">About Us</button>
-  </div>
-  <!-- Medium screen only buttons END -->
-
-  <!-- User personal zone START -->
-  <div class="flex justify-self-end sm:col-start-3 sm:row-start-1 mx-2">
-    <button *ngIf="(auth.isAuthenticated$ | async); else unauthorized" routerLink="/user">
-      <div *ngIf="auth.user$ | async as user">
-        <!-- <object data="{{ user.picture }}" type="image/svg+xml"
+<header class="z-20 sticky top-0">
+  <nav class="navbar nav-desktop">
+    <button
+      class="w-min mx-2 sm:hidden"
+      (click)="this.changeMenuState()"
+      id="openMenu"
+    >
+      <object
+        data="/assets/nav/menu.svg"
+        type="image/svg+xml"
         class="graphic_button pointer-events-none"
-        aria-label="User account options"
-        alt="User account options"></object> -->
-        <img src="{{ user.picture }}" alt="User profile" class="graphic_button pointer-events-none rounded-full">
-      </div>
+        aria-label="Open menu"
+        alt="Site menu"
+      ></object>
     </button>
-    <ng-template #unauthorized>
-      <button (click)="auth.loginWithRedirect()">
-        <object data="/assets/nav/account.svg" type="image/svg+xml"
-        class="graphic_button pointer-events-none"
-        aria-label="Login to account"
-        alt="Login to account"></object>
+
+    <!-- Medium screen only buttons START -->
+    <div
+      class="hidden sm:flex col-span-full justify-self-center sm:gap-6 row-start-1"
+    >
+      <button
+        class="text_button"
+        routerLink="/home"
+        routerLinkActive="activeRouter"
+      >
+        Home
       </button>
-    </ng-template>
-    <div class="flex items-center">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="graphic_button"
-      aria-label="Cart"
-      alt="Cart">
-        <path d="M15.6971 13.6743H8.52572C7.87309 13.6697 7.24099 13.4457 6.73106 13.0383C6.22113 12.631 5.86301 12.064 5.71429 11.4286L4.57143 6.78285C4.46629 6.35149 4.4609 5.90182 4.55567 5.46806C4.65045 5.03429 4.84289 4.62785 5.11837 4.27965C5.39385 3.93144 5.74511 3.65064 6.14543 3.45861C6.54575 3.26657 6.98459 3.16835 7.42858 3.17143H16.8571C17.3011 3.16835 17.74 3.26657 18.1403 3.45861C18.5406 3.65064 18.8919 3.93144 19.1673 4.27965C19.4428 4.62785 19.6353 5.03429 19.73 5.46806C19.8248 5.90182 19.8194 6.35149 19.7143 6.78285L18.5714 11.44C18.4171 12.0834 18.0485 12.6551 17.5261 13.0612C17.0037 13.4672 16.3587 13.6834 15.6971 13.6743ZM7.39429 4.6C7.16842 4.60069 6.94564 4.65247 6.74262 4.75148C6.53961 4.85048 6.36163 4.99414 6.22201 5.17168C6.08239 5.34923 5.98475 5.55607 5.93641 5.7767C5.88807 5.99734 5.89027 6.22605 5.94286 6.44571L7.08572 11.1029C7.16312 11.4292 7.34868 11.7198 7.61221 11.9273C7.87574 12.1348 8.20173 12.247 8.53715 12.2457H15.6971C16.0326 12.247 16.3586 12.1348 16.6221 11.9273C16.8856 11.7198 17.0712 11.4292 17.1486 11.1029L18.2914 6.44571C18.3452 6.22596 18.3482 5.99686 18.3003 5.77575C18.2524 5.55465 18.1549 5.34734 18.0151 5.16951C17.8752 4.99168 17.6967 4.84799 17.4932 4.74932C17.2896 4.65065 17.0662 4.59959 16.84 4.6H7.39429Z" fill="black"/>
-        <path d="M5.40572 7.99999C5.24253 7.99806 5.08492 7.94031 4.95912 7.83634C4.83332 7.73237 4.74692 7.58846 4.71429 7.42856L3.69143 2.98856C3.59698 2.58409 3.36806 2.22365 3.04211 1.96622C2.71616 1.70878 2.31249 1.56959 1.89715 1.57141H0.96572C0.77628 1.57141 0.594598 1.49616 0.460644 1.3622C0.326689 1.22825 0.251434 1.04657 0.251434 0.857128C0.251434 0.667688 0.326689 0.486006 0.460644 0.352052C0.594598 0.218097 0.77628 0.142842 0.96572 0.142842H1.89715C2.63532 0.140263 3.35255 0.388067 3.9317 0.845776C4.51084 1.30349 4.91766 1.94405 5.08572 2.66284L6.10286 7.10284C6.12488 7.19404 6.12856 7.28871 6.1137 7.38135C6.09884 7.47398 6.06573 7.56274 6.01629 7.64248C5.96685 7.72222 5.90207 7.79135 5.82571 7.84585C5.74934 7.90035 5.66291 7.93915 5.57144 7.95999C5.51774 7.97906 5.4622 7.99247 5.40572 7.99999ZM8.63429 19.8571C8.18222 19.8571 7.7403 19.7231 7.36442 19.4719C6.98853 19.2208 6.69557 18.8638 6.52257 18.4461C6.34957 18.0285 6.3043 17.5689 6.3925 17.1255C6.48069 16.6821 6.69839 16.2748 7.01805 15.9552C7.33771 15.6355 7.74499 15.4178 8.18837 15.3296C8.63176 15.2414 9.09134 15.2867 9.509 15.4597C9.92666 15.6327 10.2836 15.9257 10.5348 16.3015C10.786 16.6774 10.92 17.1193 10.92 17.5714C10.92 18.1776 10.6792 18.759 10.2505 19.1877C9.82188 19.6163 9.2405 19.8571 8.63429 19.8571ZM8.63429 16.6914C8.46251 16.6914 8.29458 16.7424 8.15174 16.8378C8.0089 16.9332 7.89758 17.0689 7.83184 17.2276C7.7661 17.3863 7.7489 17.5609 7.78241 17.7294C7.81592 17.8979 7.89865 18.0527 8.02012 18.1742C8.14159 18.2956 8.29636 18.3784 8.46484 18.4119C8.63333 18.4454 8.80797 18.4282 8.96668 18.3624C9.12539 18.2967 9.26104 18.1854 9.35648 18.0425C9.45192 17.8997 9.50286 17.7318 9.50286 17.56C9.50286 17.3296 9.41136 17.1087 9.24847 16.9458C9.08558 16.7829 8.86465 16.6914 8.63429 16.6914ZM16.5314 19.8571C16.0794 19.8571 15.6374 19.7231 15.2616 19.4719C14.8857 19.2208 14.5927 18.8638 14.4197 18.4461C14.2467 18.0285 14.2014 17.5689 14.2896 17.1255C14.3778 16.6821 14.5955 16.2748 14.9152 15.9552C15.2349 15.6355 15.6421 15.4178 16.0855 15.3296C16.5289 15.2414 16.9885 15.2867 17.4061 15.4597C17.8238 15.6327 18.1808 15.9257 18.4319 16.3015C18.6831 16.6774 18.8172 17.1193 18.8172 17.5714C18.8172 18.1776 18.5763 18.759 18.1477 19.1877C17.719 19.6163 17.1376 19.8571 16.5314 19.8571ZM16.5314 16.6914C16.3599 16.6925 16.1925 16.7444 16.0505 16.8406C15.9084 16.9367 15.7979 17.0727 15.7331 17.2315C15.6682 17.3903 15.6518 17.5648 15.686 17.7329C15.7201 17.901 15.8033 18.0552 15.925 18.1761C16.0467 18.2971 16.2015 18.3792 16.3698 18.4123C16.5381 18.4453 16.7125 18.4278 16.8708 18.3619C17.0292 18.296 17.1645 18.1846 17.2597 18.0419C17.3549 17.8992 17.4057 17.7315 17.4057 17.56C17.4057 17.4454 17.3831 17.332 17.3391 17.2263C17.2951 17.1205 17.2306 17.0245 17.1493 16.9438C17.068 16.8631 16.9716 16.7992 16.8656 16.7559C16.7595 16.7126 16.646 16.6907 16.5314 16.6914Z" fill="black"/>
-        <path d="M16.5314 16.6914H7.01143C6.42189 16.6914 5.8565 16.4573 5.43963 16.0404C5.02277 15.6235 4.78857 15.0581 4.78857 14.4686C4.78857 13.879 5.02277 13.3137 5.43963 12.8968C5.8565 12.4799 6.42189 12.2457 7.01143 12.2457H8.52572C8.71516 12.2457 8.89684 12.321 9.03079 12.4549C9.16475 12.5889 9.24 12.7706 9.24 12.96C9.24 13.1495 9.16475 13.3311 9.03079 13.4651C8.89684 13.599 8.71516 13.6743 8.52572 13.6743H7.01143C6.80077 13.6743 6.59874 13.758 6.44979 13.9069C6.30083 14.0559 6.21715 14.2579 6.21715 14.4686C6.21715 14.6792 6.30083 14.8813 6.44979 15.0302C6.59874 15.1792 6.80077 15.2629 7.01143 15.2629H16.5314C16.7209 15.2629 16.9026 15.3381 17.0365 15.4721C17.1705 15.606 17.2457 15.7877 17.2457 15.9772C17.2457 16.1666 17.1705 16.3483 17.0365 16.4822C16.9026 16.6162 16.7209 16.6914 16.5314 16.6914Z" fill="black"/>
-        <text
-        class="text-xxs text-gray-900 font-bold font-sans select-none"
-        fill="black" y="47.2%" x="61.2%" dominant-baseline="middle" text-anchor="middle">{{cart}}</text>
-      </svg>
-    </div>   
-  </div>
-  <!-- User personal zone END -->
-</nav>
+      <button
+        class="text_button"
+        routerLink="/configurator"
+        routerLinkActive="activeRouter"
+      >
+        Configurator
+      </button>
+      <button
+        class="text_button"
+        routerLink="/aboutus"
+        routerLinkActive="activeRouter"
+      >
+        About Us
+      </button>
+    </div>
+    <!-- Medium screen only buttons END -->
+
+    <!-- User personal zone START -->
+    <div class="flex justify-self-end sm:col-start-3 sm:row-start-1 mx-2">
+      <button
+        *ngIf="auth.isAuthenticated$ | async; else unauthorized"
+        routerLink="/user"
+      >
+        <div *ngIf="auth.user$ | async as user">
+          <img
+            src="{{ user.picture }}"
+            alt="User profile"
+            class="graphic_button pointer-events-none rounded-full"
+            (load)="pictureLoaded()"
+          />
+        </div>
+      </button>
+      <ng-template #unauthorized>
+        <button (click)="auth.loginWithRedirect()">
+          <object
+            data="/assets/nav/account.svg"
+            type="image/svg+xml"
+            class="graphic_button pointer-events-none"
+            aria-label="Login to account"
+            alt="Login to account"
+          ></object>
+        </button>
+      </ng-template>
+      <div class="flex items-center">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="graphic_button"
+          aria-label="Cart"
+          alt="Cart"
+        >
+          <path
+            d="M15.6971 13.6743H8.52572C7.87309 13.6697 7.24099 13.4457 6.73106 13.0383C6.22113 12.631 5.86301 12.064 5.71429 11.4286L4.57143 6.78285C4.46629 6.35149 4.4609 5.90182 4.55567 5.46806C4.65045 5.03429 4.84289 4.62785 5.11837 4.27965C5.39385 3.93144 5.74511 3.65064 6.14543 3.45861C6.54575 3.26657 6.98459 3.16835 7.42858 3.17143H16.8571C17.3011 3.16835 17.74 3.26657 18.1403 3.45861C18.5406 3.65064 18.8919 3.93144 19.1673 4.27965C19.4428 4.62785 19.6353 5.03429 19.73 5.46806C19.8248 5.90182 19.8194 6.35149 19.7143 6.78285L18.5714 11.44C18.4171 12.0834 18.0485 12.6551 17.5261 13.0612C17.0037 13.4672 16.3587 13.6834 15.6971 13.6743ZM7.39429 4.6C7.16842 4.60069 6.94564 4.65247 6.74262 4.75148C6.53961 4.85048 6.36163 4.99414 6.22201 5.17168C6.08239 5.34923 5.98475 5.55607 5.93641 5.7767C5.88807 5.99734 5.89027 6.22605 5.94286 6.44571L7.08572 11.1029C7.16312 11.4292 7.34868 11.7198 7.61221 11.9273C7.87574 12.1348 8.20173 12.247 8.53715 12.2457H15.6971C16.0326 12.247 16.3586 12.1348 16.6221 11.9273C16.8856 11.7198 17.0712 11.4292 17.1486 11.1029L18.2914 6.44571C18.3452 6.22596 18.3482 5.99686 18.3003 5.77575C18.2524 5.55465 18.1549 5.34734 18.0151 5.16951C17.8752 4.99168 17.6967 4.84799 17.4932 4.74932C17.2896 4.65065 17.0662 4.59959 16.84 4.6H7.39429Z"
+            fill="black"
+          />
+          <path
+            d="M5.40572 7.99999C5.24253 7.99806 5.08492 7.94031 4.95912 7.83634C4.83332 7.73237 4.74692 7.58846 4.71429 7.42856L3.69143 2.98856C3.59698 2.58409 3.36806 2.22365 3.04211 1.96622C2.71616 1.70878 2.31249 1.56959 1.89715 1.57141H0.96572C0.77628 1.57141 0.594598 1.49616 0.460644 1.3622C0.326689 1.22825 0.251434 1.04657 0.251434 0.857128C0.251434 0.667688 0.326689 0.486006 0.460644 0.352052C0.594598 0.218097 0.77628 0.142842 0.96572 0.142842H1.89715C2.63532 0.140263 3.35255 0.388067 3.9317 0.845776C4.51084 1.30349 4.91766 1.94405 5.08572 2.66284L6.10286 7.10284C6.12488 7.19404 6.12856 7.28871 6.1137 7.38135C6.09884 7.47398 6.06573 7.56274 6.01629 7.64248C5.96685 7.72222 5.90207 7.79135 5.82571 7.84585C5.74934 7.90035 5.66291 7.93915 5.57144 7.95999C5.51774 7.97906 5.4622 7.99247 5.40572 7.99999ZM8.63429 19.8571C8.18222 19.8571 7.7403 19.7231 7.36442 19.4719C6.98853 19.2208 6.69557 18.8638 6.52257 18.4461C6.34957 18.0285 6.3043 17.5689 6.3925 17.1255C6.48069 16.6821 6.69839 16.2748 7.01805 15.9552C7.33771 15.6355 7.74499 15.4178 8.18837 15.3296C8.63176 15.2414 9.09134 15.2867 9.509 15.4597C9.92666 15.6327 10.2836 15.9257 10.5348 16.3015C10.786 16.6774 10.92 17.1193 10.92 17.5714C10.92 18.1776 10.6792 18.759 10.2505 19.1877C9.82188 19.6163 9.2405 19.8571 8.63429 19.8571ZM8.63429 16.6914C8.46251 16.6914 8.29458 16.7424 8.15174 16.8378C8.0089 16.9332 7.89758 17.0689 7.83184 17.2276C7.7661 17.3863 7.7489 17.5609 7.78241 17.7294C7.81592 17.8979 7.89865 18.0527 8.02012 18.1742C8.14159 18.2956 8.29636 18.3784 8.46484 18.4119C8.63333 18.4454 8.80797 18.4282 8.96668 18.3624C9.12539 18.2967 9.26104 18.1854 9.35648 18.0425C9.45192 17.8997 9.50286 17.7318 9.50286 17.56C9.50286 17.3296 9.41136 17.1087 9.24847 16.9458C9.08558 16.7829 8.86465 16.6914 8.63429 16.6914ZM16.5314 19.8571C16.0794 19.8571 15.6374 19.7231 15.2616 19.4719C14.8857 19.2208 14.5927 18.8638 14.4197 18.4461C14.2467 18.0285 14.2014 17.5689 14.2896 17.1255C14.3778 16.6821 14.5955 16.2748 14.9152 15.9552C15.2349 15.6355 15.6421 15.4178 16.0855 15.3296C16.5289 15.2414 16.9885 15.2867 17.4061 15.4597C17.8238 15.6327 18.1808 15.9257 18.4319 16.3015C18.6831 16.6774 18.8172 17.1193 18.8172 17.5714C18.8172 18.1776 18.5763 18.759 18.1477 19.1877C17.719 19.6163 17.1376 19.8571 16.5314 19.8571ZM16.5314 16.6914C16.3599 16.6925 16.1925 16.7444 16.0505 16.8406C15.9084 16.9367 15.7979 17.0727 15.7331 17.2315C15.6682 17.3903 15.6518 17.5648 15.686 17.7329C15.7201 17.901 15.8033 18.0552 15.925 18.1761C16.0467 18.2971 16.2015 18.3792 16.3698 18.4123C16.5381 18.4453 16.7125 18.4278 16.8708 18.3619C17.0292 18.296 17.1645 18.1846 17.2597 18.0419C17.3549 17.8992 17.4057 17.7315 17.4057 17.56C17.4057 17.4454 17.3831 17.332 17.3391 17.2263C17.2951 17.1205 17.2306 17.0245 17.1493 16.9438C17.068 16.8631 16.9716 16.7992 16.8656 16.7559C16.7595 16.7126 16.646 16.6907 16.5314 16.6914Z"
+            fill="black"
+          />
+          <path
+            d="M16.5314 16.6914H7.01143C6.42189 16.6914 5.8565 16.4573 5.43963 16.0404C5.02277 15.6235 4.78857 15.0581 4.78857 14.4686C4.78857 13.879 5.02277 13.3137 5.43963 12.8968C5.8565 12.4799 6.42189 12.2457 7.01143 12.2457H8.52572C8.71516 12.2457 8.89684 12.321 9.03079 12.4549C9.16475 12.5889 9.24 12.7706 9.24 12.96C9.24 13.1495 9.16475 13.3311 9.03079 13.4651C8.89684 13.599 8.71516 13.6743 8.52572 13.6743H7.01143C6.80077 13.6743 6.59874 13.758 6.44979 13.9069C6.30083 14.0559 6.21715 14.2579 6.21715 14.4686C6.21715 14.6792 6.30083 14.8813 6.44979 15.0302C6.59874 15.1792 6.80077 15.2629 7.01143 15.2629H16.5314C16.7209 15.2629 16.9026 15.3381 17.0365 15.4721C17.1705 15.606 17.2457 15.7877 17.2457 15.9772C17.2457 16.1666 17.1705 16.3483 17.0365 16.4822C16.9026 16.6162 16.7209 16.6914 16.5314 16.6914Z"
+            fill="black"
+          />
+          <text
+            class="text-xxs text-gray-900 font-bold font-sans select-none"
+            fill="black"
+            y="47.2%"
+            x="61.2%"
+            dominant-baseline="middle"
+            text-anchor="middle"
+          >
+            {{ cart }}
+          </text>
+        </svg>
+      </div>
+    </div>
+    <!-- User personal zone END -->
+  </nav>
+</header>
 
 <router-outlet></router-outlet>
 
-<footer>
+<footer class="nav-desktop mx-2">
   <ul>
     <li>
-      <a href="">About Us</a>
+      <a routerLink="/aboutus">About Us</a>
     </li>
     <li>
       <a href="">Delivery</a>
-    </li>
-    <li>
-      <a href="">Partnerships</a>
     </li>
     <li>
       <a href="">Contacts</a>
@@ -95,16 +190,25 @@
     <li>
       <a href="">Restocks</a>
     </li>
+    <li>
+      <a routerLink="/help/faqs">FAQs</a>
+    </li>
   </ul>
-  <div class="flex flex-row gap-x-4 place-self-end">
-    <a href="https://github.com/scriptSQD" target="_blank" rel="noopener noreferrer">
-      <object data="/assets/social/github.svg" type="image/svg+xml"
-      class="mediaIcon"></object>
-    </a>
-
-    <a href="">
-      <object data="/assets/social/instagram.svg" type="image/svg+xml"
-      class="mediaIcon"></object>
+  <div class="grid grid-cols-3">
+    <p class="text-xs self-center justify-self-center col-start-2">
+      &copy; SQDBoards 2022
+    </p>
+    <a
+      href="https://github.com/scriptSQD"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="col-start-3 justify-self-end self-center"
+    >
+      <object
+        data="/assets/social/github.svg"
+        type="image/svg+xml"
+        class="mediaIcon"
+      ></object>
     </a>
   </div>
 </footer>

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap");
+
+@import "~swiper/css/bundle";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .text-xxs {
+    font-size: 0.5rem;
+    line-height: 0.75rem;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-desktop {
+    @apply md:px-[4%] lg:px-[14%];
+  }
+  .content-responsive {
+    @apply px-4 sm:px-6 md:px-[2%] lg:px-[9%];
+  }
+  .linkActive {
+    @apply transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] bg-rose-100 text-gray-900 w-max z-[-1];
+  }
+  .place-self-flex-end {
+    place-self: flex-end;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+}

@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  :host {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.configuratorWelcome {
+  @apply flex flex-col flex-wrap
+            text-base font-sans font-medium
+            sm:text-lg md:text-xl lg:text-2xl
+            gap-y-3;
+}

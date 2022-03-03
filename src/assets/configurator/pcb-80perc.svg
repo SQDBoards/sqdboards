@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 795 315">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 120px;
+        font-family: GothamRounded-Bold, Gotham Rounded;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <rect class="cls-1" x="10" y="10" width="775" height="295" rx="44.44434"/>
+        <path d="M740.55566,20A34.4445,34.4445,0,0,1,775,54.44458V260.55542A34.4446,34.4446,0,0,1,740.55566,295H54.44434A34.4446,34.4446,0,0,1,20,260.55542V54.44458A34.4445,34.4445,0,0,1,54.44434,20H740.55566m0-20H54.44434A54.50592,54.50592,0,0,0,0,54.44458V260.55542A54.50592,54.50592,0,0,0,54.44434,315H740.55566A54.50592,54.50592,0,0,0,795,260.55542V54.44458A54.50592,54.50592,0,0,0,740.55566,0Z"/>
+      </g>
+      <text class="cls-2" transform="translate(76.02539 192.23972)">TKL (80%)</text>
+    </g>
+  </g>
+</svg>

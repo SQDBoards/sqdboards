@@ -8,7 +8,7 @@ import { Order } from './order';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css', '../../tailwind.css']
+  styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit, AfterViewInit {
 
@@ -17,13 +17,16 @@ export class OrdersComponent implements OnInit, AfterViewInit {
 
   userId!: string;
   orders$!: Observable<Order[]>;
+  loading: boolean = false;
 
   ngOnInit(): void {
     this.auth.user$.subscribe(
       (user) => {  // retrieve userid
+        this.loading = true;
         this.orderService.getOrdersByUid(user?.sub?.split('|')[1]!).subscribe(
           (data) => {
             this.orders$ = of(data);
+            this.loading = false;
           }  // actually retrieve data from api call
         )  // subscription scope
       }, err => {

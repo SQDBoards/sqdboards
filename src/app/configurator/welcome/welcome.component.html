@@ -1,0 +1,40 @@
+<section
+  class="w-full flex flex-col prose prose-base lg:prose-lg max-w-none content-responsive"
+>
+  <h2 class="text-center">Welcome to the Configurator!</h2>
+  <p>
+    We are happy to finally present you the awesome Configurator!<br />
+    You may have already heard what Configurator is about, but let us remind
+    you. Basically, this tool is about:
+  </p>
+
+  <ul>
+    <li>Helping you to pick compatible components for you keyboard,</li>
+    <li>
+      Allowing you to see your keyboard before it arrives with the power of 3D,
+      <em>*Work In Progress</em>
+    </li>
+    <li>Applying different modifications to your new keyboard.</li>
+  </ul>
+  <p class="text-red-900">
+    Note: not all features are available as of now, as we are still working on
+    some of them. Please, give us some time to polish the features and provide
+    you with the best experience!
+  </p>
+  So, now that you are familiar with the Configurator's powers, you can start
+  with it right away!
+  <p class="ml-auto text-sm text-right">
+    Best wishes, your<br />SQDBoards Team!
+  </p>
+
+  <button
+    class="w-fit m-2 place-self-flex-end"
+    (click)="dontShowAgain()"
+    routerLink="../builder"
+  >
+    <squi-button
+      squi-label="Don't show again"
+      squi-color="#ffe4e6"
+    ></squi-button>
+  </button>
+</section>

@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.animateChoice {
+  @apply transition-all opacity-0;
+}
+.itemList {
+  @apply flex flex-row flex-wrap justify-evenly gap-y-3 mt-2 sm:mt-3 md:mt-4 lg:mt-5
+            font-sans;
+}
+.itemTitle {
+  @apply flex flex-nowrap font-medium overflow-hidden md:text-lg;
+}
+.itemDesc {
+  @apply font-light md:text-lg;
+}
+.itemGal {
+  @apply grid grid-flow-col auto-cols-[45%] md:auto-cols-[72%]
+         max-w-[22rem] mx-auto
+         overflow-x-auto items-center
+         snap-x snap-mandatory
+         gap-3;
+}
+.itemGal img {
+  @apply h-auto object-cover;
+}
+.item {
+  @apply flex flex-col gap-y-2 border-[line-width:3px] border-gray-900 px-2 py-2 sm:px-3 sm:py-3;
+}
+.buttonBgOffset {
+  @apply translate-x-[0.265rem] translate-y-[0.265rem];
+}

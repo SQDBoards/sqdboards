@@ -1,29 +1,86 @@
-<main>
-    <p class="titleBig">Latest deals: </p>
-    <div *ngIf="contentHasLoaded; else dealsPlaceholder" class="currentDeals snap-x">
-      <div *ngFor="let deal of (deals$ | async)" class="deal">
-        <img src="{{'/assets/deals/' + deal.illustr}}" alt="" class="dealIllustr">
+<main class="content-responsive flex flex-col">
+  <ng-container *ngIf="!contentFailedToLoad">
+    <p
+      class="text-center text-lg sm:text-xl md:text-3xl font-sans font-semibold text-gray-900 my-3 w-fit mx-auto notate"
+    >
+      Latest deals:
+    </p>
+    <div
+      *ngIf="contentHasLoaded; else dealsPlaceholder"
+      class="currentDeals snap-x cursor-grab no-scrollbar mx-1.5"
+      #deals
+      (mousedown)="scroll.startDragging($event, deals)"
+      (mouseup)="scroll.stopDragging($event, deals)"
+      (mousemove)="scroll.moveEvent($event, deals)"
+    >
+      <div *ngFor="let deal of deals$ | async" class="deal snap-always">
+        <img
+          src="{{ '/assets/deals/' + deal.illustr }}"
+          alt=""
+          class="dealIllustr pointer-events-none"
+        />
         <div class="dealInfo">
-          <p class="dealTitle"><b>{{deal.name}}</b></p>
-          <p class="dealDesc">{{deal.desc}}</p>
-          <button class="toDeal" *ngIf="!deal.toDeal; else defaultToDeal">To Deal!</button>
+          <p class="dealTitle select-none">
+            <b>{{ deal.name }}</b>
+          </p>
+          <p class="dealDesc select-none">{{ deal.desc }}</p>
+          <button class="toDeal select-none" *ngIf="!deal.toDeal; else defaultToDeal">
+            To Deal!
+          </button>
           <ng-template #defaultToDeal>
-            <button class="toDeal">{{deal.toDeal}}</button>
+            <button class="toDeal select-none">{{ deal.toDeal }}</button>
           </ng-template>
         </div>
       </div>
     </div>
-    <ng-template #dealsPlaceholder>
+    <ng-template #dealsPlaceholder class="">
       <div class="deal">
-        <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg"
-        class="flex col-start-1 row-start-1 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 animate-spin m-auto my-4">
-          <path d="M36.574 18.287C36.574 21.9038 35.5015 25.4394 33.4921 28.4467C31.4827 31.454 28.6267 33.7979 25.2851 35.182C21.9436 36.5661 18.2667 36.9282 14.7194 36.2226C11.1721 35.517 7.91363 33.7753 5.35615 31.2179C2.79866 28.6604 1.057 25.4019 0.351388 21.8546C-0.35422 18.3073 0.00792325 14.6304 1.39202 11.2889C2.77612 7.94735 5.12001 5.09132 8.12729 3.08192C11.1346 1.07251 14.6702 0 18.287 0C18.6848 0 19.0664 0.158035 19.3477 0.43934C19.629 0.720644 19.787 1.10218 19.787 1.5C19.787 1.89782 19.629 2.27936 19.3477 2.56066C19.0664 2.84196 18.6848 3 18.287 3C15.2635 3 12.3079 3.89657 9.79401 5.57632C7.28007 7.25608 5.3207 9.64358 4.16366 12.4369C3.00663 15.2303 2.70389 18.304 3.29374 21.2693C3.8836 24.2347 5.33954 26.9586 7.47747 29.0965C9.61539 31.2345 12.3393 32.6904 15.3047 33.2803C18.2701 33.8701 21.3438 33.5674 24.1371 32.4103C26.9304 31.2533 29.3179 29.2939 30.9977 26.78C32.6774 24.2661 33.574 21.3105 33.574 18.287C33.574 17.8892 33.732 17.5076 34.0133 17.2263C34.2947 16.945 34.6762 16.787 35.074 16.787C35.4718 16.787 35.8534 16.945 36.1347 17.2263C36.416 17.5076 36.574 17.8892 36.574 18.287V18.287Z" fill="black"/>
-        </svg>          
+        <svg
+          width="37"
+          height="37"
+          viewBox="0 0 37 37"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="flex col-start-1 row-start-1 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 animate-spin m-auto my-4"
+        >
+          <path
+            d="M36.574 18.287C36.574 21.9038 35.5015 25.4394 33.4921 28.4467C31.4827 31.454 28.6267 33.7979 25.2851 35.182C21.9436 36.5661 18.2667 36.9282 14.7194 36.2226C11.1721 35.517 7.91363 33.7753 5.35615 31.2179C2.79866 28.6604 1.057 25.4019 0.351388 21.8546C-0.35422 18.3073 0.00792325 14.6304 1.39202 11.2889C2.77612 7.94735 5.12001 5.09132 8.12729 3.08192C11.1346 1.07251 14.6702 0 18.287 0C18.6848 0 19.0664 0.158035 19.3477 0.43934C19.629 0.720644 19.787 1.10218 19.787 1.5C19.787 1.89782 19.629 2.27936 19.3477 2.56066C19.0664 2.84196 18.6848 3 18.287 3C15.2635 3 12.3079 3.89657 9.79401 5.57632C7.28007 7.25608 5.3207 9.64358 4.16366 12.4369C3.00663 15.2303 2.70389 18.304 3.29374 21.2693C3.8836 24.2347 5.33954 26.9586 7.47747 29.0965C9.61539 31.2345 12.3393 32.6904 15.3047 33.2803C18.2701 33.8701 21.3438 33.5674 24.1371 32.4103C26.9304 31.2533 29.3179 29.2939 30.9977 26.78C32.6774 24.2661 33.574 21.3105 33.574 18.287C33.574 17.8892 33.732 17.5076 34.0133 17.2263C34.2947 16.945 34.6762 16.787 35.074 16.787C35.4718 16.787 35.8534 16.945 36.1347 17.2263C36.416 17.5076 36.574 17.8892 36.574 18.287V18.287Z"
+            fill="black"
+          />
+        </svg>
         <div class="dealInfo">
-          <p class="dealTitle w-5/12 h-6 sm:h-8 md:h-10 bg-gray-300 animate-pulse rounded-lg"></p>
-          <p class="dealDesc w-11/12 h-24 bg-gray-300 rounded-lg animate-pulse"></p>
-          <button class="toDeal after:hidden w-1/4 h-9 sm:h-11 md:h-12 bg-gray-300 animate-pulse"></button>
+          <p
+            class="dealTitle w-5/12 h-6 sm:h-8 md:h-10 bg-gray-300 animate-pulse rounded-lg"
+          ></p>
+          <p
+            class="dealDesc w-11/12 h-24 bg-gray-300 rounded-lg animate-pulse"
+          ></p>
+          <button
+            class="w-2/12 flex col-start-1 row-start-4 rounded-lg p-2 gap-x-2 after:hidden h-9 sm:h-11 md:h-12 bg-gray-300 animate-pulse m-3"
+          ></button>
         </div>
       </div>
     </ng-template>
+  </ng-container>
+  <div
+    *ngIf="contentFailedToLoad"
+    class="flex flex-col place-self-center items-center justify-center prose"
+  >
+    <h2>Oops... Deals failed to load.</h2>
+    <p>This may have happend due to a few reasons:</p>
+    <ul>
+      <li>A problem on our end (broken API),</li>
+      <li>
+        A problem on your end (API endpoint address blocked, or inaccessible due
+        to firewall settings),
+      </li>
+      <li>Sudden internet connection loss.</li>
+    </ul>
+    <button
+      (click)="retrieveDeals()"
+      class="px-2 py-1 border-2 border-rose-100 bg-transparent"
+    >
+      Retry?
+    </button>
+  </div>
 </main>
