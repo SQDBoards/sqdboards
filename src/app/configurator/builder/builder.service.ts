@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable, Type } from "@angular/core";
-import { catchError, Observable, retry } from "rxjs";
+import { Injectable } from "@angular/core";
+import { withCache } from "@ngneat/cashew";
+import { Observable, retry } from "rxjs";
 
 const Headers = new HttpHeaders({ "Content-Type": "application/json" });
 
@@ -22,7 +23,7 @@ export class BuilderService {
 
   getObjects(name: string): Observable<any> {
     return this.http
-      .get("/api/" + name, { headers: Headers })
+      .get("/api/" + name, { headers: Headers, context: withCache() })
       .pipe(retry(2));
   }
 }

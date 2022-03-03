@@ -23,7 +23,7 @@
     "@angular/router": "~13.2.3",
     "@auth0/auth0-angular": "^1.9.0",
     "@ngneat/cashew": "^3.0.0",
-    "@scriptsqd/ngx-squi": "^0.0.3",
+    "@scriptsqd/ngx-squi": "^0.0.5",
     "@types/animejs": "^3.1.4",
     "animejs": "^3.2.1",
     "express": "^4.17.3",
