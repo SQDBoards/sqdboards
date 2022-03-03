@@ -13,25 +13,22 @@
       (mouseup)="scroll.stopDragging($event, deals)"
       (mousemove)="scroll.moveEvent($event, deals)"
     >
-      <div
-        *ngFor="let deal of deals$ | async; else: failed"
-        class="deal snap-always"
-      >
+      <div *ngFor="let deal of deals$ | async" class="deal snap-always">
         <img
           src="{{ '/assets/deals/' + deal.illustr }}"
           alt=""
           class="dealIllustr pointer-events-none"
         />
         <div class="dealInfo">
-          <p class="dealTitle">
+          <p class="dealTitle select-none">
             <b>{{ deal.name }}</b>
           </p>
-          <p class="dealDesc">{{ deal.desc }}</p>
-          <button class="toDeal" *ngIf="!deal.toDeal; else defaultToDeal">
+          <p class="dealDesc select-none">{{ deal.desc }}</p>
+          <button class="toDeal select-none" *ngIf="!deal.toDeal; else defaultToDeal">
             To Deal!
           </button>
           <ng-template #defaultToDeal>
-            <button class="toDeal">{{ deal.toDeal }}</button>
+            <button class="toDeal select-none">{{ deal.toDeal }}</button>
           </ng-template>
         </div>
       </div>
