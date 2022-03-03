@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 import { Order } from '../user/orders/order';
-import { ErrorHandlerService } from './error-handler.service';
 
 const Headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -11,13 +10,11 @@ const Headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 })
 export class OrderService {
 
-  constructor(private http: HttpClient,
-              private errHndl: ErrorHandlerService) {};
+  constructor(private http: HttpClient) {};
 
   getOrdersByUid(uid: string): Observable<Order[]> {
     return this.http.get<Order[]>('/api/ordersByUid/' + uid, { headers: Headers }).pipe(
-      retry(5),
-      catchError(this.errHndl.handleError<Order[]>('getOrdersByUid'))
+      retry(5)
     );
   };
 

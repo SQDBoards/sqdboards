@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "twcss": "tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --watch"
+    "twcss": "tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --watch",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -22,7 +23,7 @@
     "@angular/router": "~13.2.3",
     "@auth0/auth0-angular": "^1.9.0",
     "@ngneat/cashew": "^3.0.0",
-    "@scriptsqd/ngx-squi": "^0.0.2",
+    "@scriptsqd/ngx-squi": "^0.0.3",
     "@types/animejs": "^3.1.4",
     "animejs": "^3.2.1",
     "express": "^4.17.3",
@@ -45,14 +46,31 @@
     "@types/node": "^17.0.19",
     "@types/punycode": "^2.1.0",
     "autoprefixer": "^10.4.2",
+    "husky": "^7.0.4",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.16",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "lint-staged": "^12.3.4",
     "postcss-import": "^14.0.2",
+    "prettier": "^2.5.1",
     "tailwindcss": "^3.0.23",
     "typescript": "~4.5.5"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": false,
+    "semi": true,
+    "quoteProps": "consistent",
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "avoid"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
