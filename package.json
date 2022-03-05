@@ -7,7 +7,6 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "twcss": "tailwindcss -i ./tailwind/tailwind.css -o ./src/app/tailwind.css --watch",
     "prepare": "husky install"
   },
   "private": true,
