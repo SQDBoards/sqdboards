@@ -12,6 +12,7 @@
       (mousedown)="scroll.startDragging($event, deals)"
       (mouseup)="scroll.stopDragging($event, deals)"
       (mousemove)="scroll.moveEvent($event, deals)"
+      (mouseout)="scroll.stopDragging($event, deals)"
     >
       <div *ngFor="let deal of deals$ | async" class="deal snap-always">
         <img
