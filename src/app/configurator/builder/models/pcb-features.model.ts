@@ -1,6 +1,6 @@
-export class features {
-    hotSwappable!: boolean;
-    rgb!: string;
-    usbType!: string;
-    firmware!: string;
+export interface features {
+    hotSwappable: boolean;
+    rgb: string;
+    usbType: string;
+    firmware: string;
 }

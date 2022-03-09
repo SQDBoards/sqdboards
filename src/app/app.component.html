@@ -20,14 +20,32 @@
   </button>
   <div class="flex flex-col overflow-auto overscroll-contain gap-y-3 flex-1">
     <ul class="flex flex-col gap-y-4 text-xl font-semibold">
-      <li><a class="px-1" routerLink="/home" routerLinkActive="linkActive"(click)="this.changeMenuState()">Home</a></li>
       <li>
-        <a class="px-1" routerLink="/configurator" routerLinkActive="linkActive"(click)="this.changeMenuState()"
+        <a
+          class="px-1"
+          routerLink="/home"
+          routerLinkActive="linkActive"
+          (click)="this.changeMenuState()"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="px-1"
+          routerLink="/configurator"
+          routerLinkActive="linkActive"
+          (click)="this.changeMenuState()"
           >Configurator</a
         >
       </li>
       <li>
-        <a class="px-1" routerLink="/aboutus" routerLinkActive="linkActive"(click)="this.changeMenuState()">About Us</a>
+        <a
+          class="px-1"
+          routerLink="/aboutus"
+          routerLinkActive="linkActive"
+          (click)="this.changeMenuState()"
+          >About Us</a
+        >
       </li>
     </ul>
     <div class="w-11/12 flex flex-col mt-auto gap-y-2 mx-auto">
@@ -51,7 +69,11 @@
   </div>
 </div>
 
-<a href="/home" class="logo" id="logo">
+<a
+  href="/home"
+  class="flex object-contain w-40 md:w-56 m-3 mx-auto select-none"
+  id="logo"
+>
   <img
     src="/assets/nav/logo.svg"
     type="image/png"
@@ -62,7 +84,9 @@
 </a>
 
 <header class="z-20 sticky top-0">
-  <nav class="navbar nav-desktop">
+  <nav
+    class="grid grid-cols-[repeat(2,auto)] sm:grid-cols-[repeat(3,auto)] items-center py-2 shadow bg-white nav-desktop"
+  >
     <button
       class="w-min mx-2 sm:hidden"
       (click)="this.changeMenuState()"
@@ -171,7 +195,7 @@
   </nav>
 </header>
 
-<router-outlet></router-outlet>
+<router-outlet class="my-1"></router-outlet>
 
 <footer class="nav-desktop mx-2">
   <ul>

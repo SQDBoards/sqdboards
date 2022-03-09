@@ -4,10 +4,7 @@ import { Deal } from "../deal";
 import { GetDealsService } from "../services/get-deals.service";
 import { NotationService } from "../services/notation.service";
 
-import SwiperCore, { Pagination } from "swiper";
 import { ScrollService } from "../scroll.service";
-
-SwiperCore.use([Pagination]);
 
 @Component({
   selector: "app-home",
