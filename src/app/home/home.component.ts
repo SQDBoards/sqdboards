@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
       (res: any) => {
         this.deals$ = of(res);
         this.contentHasLoaded = true;
+        this.contentFailedToLoad = false;
         this.notation.notate();
       },
       err => {
