@@ -2,46 +2,43 @@
   <h3 class="flex flex-col w-fit mx-auto" id="typed-size"></h3>
 </span>
 
-<div
-  role="radiogroup"
-  class="hidden w-max py-1.5 justify-center"
-  id="pcbChoice"
->
+<div role="radiogroup" class="hidden w-max py-3 justify-center" id="pcbChoice">
   <form
     [formGroup]="pcbFilters"
     class="flex flex-row gap-x-6 overflow-x-auto scroll-mx-2 no-scrollbar items-center justify-center"
-    style="width: calc(100% + 2px)"
     *isloading="availSizes.length === 0"
   >
-    <div x-data="dropdown()">
+    <div>
       <button
-        class="flex w-24 max-w-[6rem] bg-transparent border-[0.125rem] rounded border-slate-200 p-[0.2rem]"
-        id="open-color-menu-arrow"
-        x-spread="trigger"
+        class="flex w-24 max-w-[6rem] bg-transparent border-[2px] border-slate-200 p-[0.2rem]"
+        id="sizeFilterDropdownToggle"
+        data-dropdown="sizeFilterDropdown"
       >
         <span
-          class="text-base leading-none text-center w-full font-semibold mx-0.5"
+          class="text-base leading-none text-center w-full font-semibold mx-0.5 pointer-events-none"
         >
           Size
           <p class="overflow-hidden text-ellipsis text-xs font-normal">
-            {{ pcbFilters.value.size }}
+            {{
+              pcbFilters.value.size
+                ? pcbFilters.value.size.length === 0
+                  ? "All"
+                  : pcbFilters.value.size
+                : "All"
+            }}
           </p>
         </span>
       </button>
       <div
-        class="absolute flex flex-col w-fit p-2 bg-white rounded-[0.25rem] drop-shadow mt-1"
-        id="color-menu"
-        x-spread="dropdown"
-        x-cloak
+        id="sizeFilterDropdown"
+        class="dd absolute hidden flex-col w-fit p-2 bg-white drop-shadow mt-1"
       >
-        <select class="no-scrollbar rounded-sm" formControlName="size" multiple>
+        <select class="no-scrollbar p-1.5" formControlName="size" multiple>
           <option *ngFor="let size of availSizes" value="{{ size }}">
             {{ size }} sized
           </option>
         </select>
-        <span
-          class="prose prose-sm font-sans text-center select-none opacity-0 animateIn"
-        >
+        <span class="prose prose-sm font-sans text-center select-none">
           Not sure?
           <a
             target="_blank"
@@ -57,8 +54,8 @@
   </form>
 </div>
 
-<ng-container *ngIf="typedFinish">
-  <div class="itemList content-responsive" *isloading="loading">
+<div class="hidden w-full content-responsive" id="pcbsContainer">
+  <div class="itemList" *isloading="loading">
     <form
       class="w-full flex flex-col gap-y-2 items-center justify-center"
       [formGroup]="pcbChoice"
@@ -136,4 +133,4 @@
       </button>
     </form>
   </div>
-</ng-container>
+</div>

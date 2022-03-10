@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { AfterViewInit, Component, HostListener } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
 
@@ -8,7 +8,6 @@ import { BuilderService } from "../../builder.service";
 import { pcb } from "../../models/pcb.model";
 
 import Typed from "typed.js";
-import anime from "animejs";
 
 @Component({
   selector: "app-pcb",
@@ -23,6 +22,29 @@ export class PcbComponent implements AfterViewInit {
     public scroll: ScrollService
   ) {}
 
+  @HostListener("click", ["$event"]) clicklistener(event: any) {
+    if (
+      !event.target.id.includes("Dropdown") &&
+      !event.target.id.includes("DropdownToggle") &&
+      !event.target.parentElement.id.includes("Dropdown")
+    ) {
+      this.closeAllDropdowns();
+    } else if (
+      event.target.id.includes("Dropdown") ||
+      event.target.id.includes("DropdownToggle")
+    ) {
+      this.toggleDropdown(event.target.dataset["dropdown"]);
+    }
+  }
+  toggleDropdown(id: any) {
+    document.getElementById(id)?.classList.toggle("show");
+  }
+  closeAllDropdowns() {
+    const dd_list = document.getElementsByClassName("dd");
+    for (let i = 0; i < dd_list.length; i++) {
+      dd_list.item(i)?.classList.remove("show");
+    }
+  }
   stringify(obj: Object) {
     return JSON.stringify(obj);
   }
@@ -39,7 +61,6 @@ export class PcbComponent implements AfterViewInit {
   }
 
   // step 1 - pcb size
-  typedFinish: boolean = false;
   availSizes: string[] = [];
   pcbFilters: FormGroup = this.formbuilder.group({
     size: [null],
@@ -107,13 +128,7 @@ export class PcbComponent implements AfterViewInit {
       onComplete: () => {
         this.notation.notate();
         document.getElementById("pcbChoice")!.style.display = "flex";
-        anime({
-          targets: ".animateIn",
-          opacity: [0, 1],
-          duration: 350,
-          easing: "easeOutQuart"
-        });
-        this.typedFinish = true;
+        document.getElementById("pcbsContainer")!.style.display = "flex";
       }
     });
     typed.start();

@@ -27,7 +27,6 @@
     "animejs": "^3.2.1",
     "express": "^4.17.3",
     "firebase": "^9.6.7",
-    "kutty": "^0.6.0",
     "medium-zoom": "^1.0.6",
     "rough-notation": "^0.5.1",
     "rxfire": "^6.0.3",
