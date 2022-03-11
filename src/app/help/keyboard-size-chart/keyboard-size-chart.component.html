@@ -1,40 +1,107 @@
-<p class="titleBig notate">Keyboard sizes: </p>
-
-<div class="flex flex-col font-sans mx-2 keebSizeCont gap-y-2 content-responsive">    
-    <p class="titleBig">40%</p>
+<section
+  class="group prose prose-h1:my-4 prose-h2:mt-0 prose-p:mb-0 flex flex-col max-w-[90ch]"
+>
+  <h1 class="text-center">Keyboard sizes - which one is right for you?</h1>
+  <article>
+    <img src="/assets/help/40perc-kbd.jpeg" alt="40% Keyboard" />
     <div>
-        <img src="/assets/help/40perc-kbd.jpeg" alt="40% Keyboard Photo" class="keebPhoto">
-        <hr class="my-2 rounded-full bg-gray-700">
-        <p>Features: minimal functionality with no Number row, F-key row, NumPad, Navigation arrows and with a few mandatory modificator keys.</p>
+      <h2>40% - the Tiniest</h2>
+      <p>
+        40% keyboards are the most barebones keyboard available that you can
+        still type on. On top of everything removed for 60% keyboards (no number
+        pad, function row, arrow keys, home cluster), 40% keyboards also get rid
+        of all the numbers on the top row. That's right, there are no numbers on
+        this keyboard layout. In addition, you also get rid of all the
+        non-letter keys such as the semi-colon, quotes, etc.
+      </p>
     </div>
-    <p class="titleBig">60%</p>
+  </article>
+  <article>
+    <img src="/assets/help/60perc-kbd.webp" alt="60% Keyboard" />
     <div>
-        <img src="/assets/help/60perc-kbd.webp" alt="60% Keyboard Photo" class="keebPhoto">
-        <hr class="my-2 rounded-full bg-gray-700">
-        <p>Features: better functionality, compared to 40%. Now has Number row, but still with no Numpad, Navigation arrows and F-key row.</p>
+      <h2>60% - what Many Consider</h2>
+      <p>
+        60% keyboards are popular in the gaming and mechanical keyboard
+        enthusiast keyboard community. Not quite a common as TKL or fullsized,
+        but there are a lot of different 60% keyboards available online. Due to
+        their small, compact, and symmetrical shape, they are the most common
+        size for custom keyboard builds.
+      </p>
     </div>
-    <p class="titleBig">65%</p>
+  </article>
+  <article>
+    <span
+      class="cursor-grab no-scrollbar grid grid-flow-col auto-cols-[91%] gap-2 scroll-px-1 max-w-sm overflow-scroll snap-mandatory snap-x"
+      #gallery
+      (mousedown)="this.scroll.startDragging($event, gallery)"
+      (mouseup)="this.scroll.stopDragging($event, gallery)"
+      (mousemove)="this.scroll.moveEvent($event, gallery)"
+    >
+      <img
+        src="/assets/help/65perc-kbd.jpg"
+        alt="65% Keyboard 'All Keys Smushed Together' layout"
+        class="snap-center pointer-events-none"
+      />
+      <img
+        src="/assets/help/65perc-kbd.png"
+        alt="65% Keyboard 'Separate Home Cluster & Arrow Keys' layout"
+        class="snap-center pointer-events-none"
+      />
+    </span>
     <div>
-        <img src="/assets/help/65perc-kbd.jpg" alt="65% Keyboard Photo" class="keebPhoto">
-        <hr class="my-2 rounded-full bg-gray-700">
-        <p>Features: basically 60% with Navigation arrows and a few more navigation keys (PgUp/Down, PrtSc, Delete).</p>
+      <h2>65% - Slightly Bigger</h2>
+      <p>
+        65% keyboards take compactness to a whole new level. Instead of just
+        getting rid of the number pad, these keyboards also drop the function
+        row and the home cluster (on some layouts)! Who needs those extra keys
+        anyways? This is the smallest keyboard size you can get that will still
+        have arrow keys. Like 75% keyboards, 65% are less common but have a
+        small fan-base in the keyboard community. Two different layouts are
+        presented on photos.
+      </p>
     </div>
-    <p class="titleBig">75%</p>
+  </article>
+  <article>
+    <img src="/assets/help/75perc-kbd.webp" alt="75% Keyboard" />
     <div>
-        <img src="/assets/help/75perc-kbd.webp" alt="75% Keyboard Photo" class="keebPhoto">
-        <hr class="my-2 rounded-full bg-gray-700">
-        <p>Features: 65%, expanded with F-key row and one more navigation key (Pause).</p>
+      <h2>75% - Something Undiscovered</h2>
+      <p>
+        75% keyboards have an interesting design. They are a slightly more
+        compact version of a tenkeyless board, they place the arrow keys and
+        home cluster right next to each other and align the home cluster
+        vertically to save space. This allows for everything to be packed in
+        tight and snug. There are a lot less 75% keyboards on the market, so
+        your options will be limited.
+      </p>
     </div>
-    <p class="titleBig">80%</p>
+  </article>
+  <article>
+    <img src="/assets/help/80perc-kbd.webp" alt="80% Keyboard" />
     <div>
-        <img src="/assets/help/80perc-kbd.webp" alt="80% Keyboard Photo" class="keebPhoto">
-        <hr class="my-2 rounded-full bg-gray-700">
-        <p>Features: AKA TKL, has all the 100% functionality, apart from NumPad.</p>
+      <h2>80% (aka TKL) - The Long Runner</h2>
+      <p>
+        Tenkeyless keyboards typically have 87 keys, the perfect layout to
+        balance size and functionality. Unlike full-sized keyboards, they do not
+        have a number pad which makes the keyboard more compact and easier to
+        take on the go. Most people don't use the number pad heavily, so they
+        are able to get rid of the extra baggage without it impacting their
+        typing too much.
+      </p>
     </div>
-    <p class="titleBig">100%</p>
+  </article>
+  <article>
+    <img src="/assets/help/100perc-kbd.webp" alt="100% Keyboard" />
     <div>
-        <img src="/assets/help/100perc-kbd.webp" alt="100% Keyboard Photo" class="keebPhoto">
-        <hr class="my-2 rounded-full bg-gray-700">
-        <p>Features: basic 100% keyboard, has all keys and NumPad.</p>
+      <h2>100% (aka Full-Size) - The One We All Started With</h2>
+      <p>
+        Full-sized keyboards are the go-to for people who need to do lots of
+        data entry and require frequent use of the number pad. Full-sized
+        keyboards are standard in offices and is what most people think of when
+        they imagine a keyboard. The full-sized keyboards come standard with a
+        number pad, home cluster, function keys, and arrow keys. The number pad
+        is typically located on the right, but some keyboards come with it on
+        the left.
+      </p>
     </div>
-</div>
+  </article>
+</section>

@@ -1,13 +1,28 @@
-.keebPhoto {
-  @apply flex rounded-lg w-11/12 lg:w-10/12 object-contain mx-auto;
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.75rem;
 }
-.keebSizeCont div {
-  @apply flex flex-col gap-y-2;
+
+article {
+  @apply grid grid-flow-row auto-rows-max md:auto-cols-auto md:grid-flow-col gap-x-3 py-8 first-of-type:pt-0 last-of-type:pb-0
+  items-center;
 }
-.keebSizeCont div p {
-  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium;
+
+@media screen and (min-width: 768px) {
+  article:nth-child(odd) > img {
+    grid-column: 2;
+  }
 }
-.keebSizeCont div hr {
-  @apply lg:h-1.5 lg:w-11/12 mx-auto;
-  height: 1.5px;
+
+article > div {
+  @apply flex flex-col;
+}
+
+img {
+  display: flex;
+  object-fit: cover;
+  max-width: 26rem;
+  width: 100%;
 }
