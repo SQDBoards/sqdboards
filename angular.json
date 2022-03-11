@@ -75,8 +75,7 @@
               "browserTarget": "sqd-keyboards:build:production"
             },
             "development": {
-              "browserTarget": "sqd-keyboards:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "sqd-keyboards:build:development"
             }
           },
           "defaultConfiguration": "development"

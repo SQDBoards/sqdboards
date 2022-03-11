@@ -9,7 +9,6 @@ import { AuthService } from "@auth0/auth0-angular";
 })
 export class SQDBoardsMain implements OnInit {
   cart: number = 0;
-  userPicLoaded = false;
 
   _openmenu: boolean = false;
 
@@ -31,10 +30,6 @@ export class SQDBoardsMain implements OnInit {
     if (!localStorage.getItem("skipConfiguratorWelcome")) {
       localStorage.setItem("skipConfiguratorWelcome", JSON.parse("false"));
     }
-  }
-
-  pictureLoaded() {
-    this.userPicLoaded = !this.userPicLoaded;
   }
 
   changeMenuState(): void {

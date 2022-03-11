@@ -1,5 +1,8 @@
 :host {
-  margin-top: -2rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .kbdComponent {
   @apply flex flex-row items-center gap-x-1;

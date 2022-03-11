@@ -13,11 +13,9 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   getOrdersByUid(uid: string): Observable<Order[]> {
-    return this.http
-      .get<Order[]>("/api/ordersByUid/" + uid, {
-        headers: Headers,
-        context: withCache()
-      })
-      .pipe(retry(5));
+    return this.http.get<Order[]>("/api/ordersByUid/" + uid, {
+      headers: Headers,
+      context: withCache()
+    });
   }
 }

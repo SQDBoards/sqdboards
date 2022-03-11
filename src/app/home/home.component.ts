@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { Deal } from "../deal";
 import { GetDealsService } from "../services/get-deals.service";
 import { NotationService } from "../services/notation.service";
 
 import { ScrollService } from "../scroll.service";
+import { Deal } from "../models/deal.model";
 
 @Component({
   selector: "app-home",
@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   retrieveDeals() {
     this.gds$.getDeals().subscribe(
       (res: any) => {
-        this.deals$ = of(res);
+        console.log(res.data)
+        this.deals$ = of(res.data);
         this.contentHasLoaded = true;
         this.contentFailedToLoad = false;
         this.notation.notate();

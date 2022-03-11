@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
@@ -31,6 +31,10 @@ import { LoadingComponent } from "./loading/loading.component";
 import { OrderPreviewComponent } from "./user/orders/order-preview/order-preview.component";
 import { PcbComponent } from "./configurator/builder/steps/pcb/pcb.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { RouteToCMSInterceptor } from "./route-to-cms.interceptor";
+import { FetchFailedDirective } from './fetch-failed.directive';
+import { FetchFailedComponent } from './fetch-failed.component';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { AppRoutingModule } from "./app-routing.module";
     LoadingDirective,
     LoadingComponent,
     OrderPreviewComponent,
-    PcbComponent
+    PcbComponent,
+    FetchFailedDirective,
+    FetchFailedComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +74,9 @@ import { AppRoutingModule } from "./app-routing.module";
     SquiModule
   ],
   entryComponents: [LoadingComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: RouteToCMSInterceptor, multi: true }
+  ],
   bootstrap: [SQDBoardsMain]
 })
 export class AppModule {}
