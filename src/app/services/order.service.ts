@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { withCache } from "@ngneat/cashew";
-import { Observable, retry } from "rxjs";
+import { Observable } from "rxjs";
 import { Order } from "../user/orders/order";
 
 const Headers = new HttpHeaders({ "Content-Type": "application/json" });

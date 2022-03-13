@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpParams
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { toCMS } from "./toCMS.context-token";
@@ -20,7 +21,8 @@ export class RouteToCMSInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     if (request.context.get(toCMS))
       request = request.clone({
-        url: cmsUrl + request.url
+        url: cmsUrl + request.url,
+        params: new HttpParams().set("populate", "*")
       });
     return next.handle(request);
   }

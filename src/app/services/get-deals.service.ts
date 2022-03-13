@@ -22,7 +22,7 @@ export class GetDealsService {
       .subscribe(res => {
         console.log(res);
       });
-    return this.http.get<Deal[]>("/deals?populate=*", {
+    return this.http.get<Deal[]>("/deals", {
       headers: Headers,
       context: toCMSContext()
     });
