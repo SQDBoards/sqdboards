@@ -9,14 +9,15 @@ main {
 
 .deal {
   @apply grid grid-rows-[100%] grid-cols-[auto]
-          max-h-[38rem]
+          max-h-[40rem]
+          h-[26rem] sm:h-[32rem] lg:h-[40rem]
           gap-y-3
           rounded-xl
           bg-white
           snap-center;
 }
 .dealInfo {
-  @apply grid grid-flow-row auto-rows-max gap-y-1 md:gap-y-3
+  @apply grid grid-flow-row auto-rows-max gap-y-1.5
           bg-gradient-to-t from-zinc-900
           row-span-full col-span-full h-min
           font-sans text-white
@@ -25,13 +26,13 @@ main {
   place-self: flex-end;
 }
 .dealTitle {
-  @apply flex mx-3 text-xl md:text-3xl;
+  @apply flex mx-3 text-xl md:text-2xl;
 }
 .dealDesc {
-  @apply flex font-light mx-3 text-base md:text-2xl;
+  @apply flex font-light mx-3 text-base md:text-xl;
 }
 .toDeal {
-  @apply flex m-3 w-fit h-fit bg-white rounded-lg
+  @apply flex mx-3 my-0.5 w-fit h-fit bg-white rounded-lg
           p-2 gap-x-2
           text-black
           text-base md:text-lg

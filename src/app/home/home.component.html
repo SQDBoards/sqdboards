@@ -30,6 +30,9 @@
               <button class="toDeal select-none">
                 {{ d.button ? d.button : "To Deal" }}
               </button>
+              <p *ngIf="d.cover_attribution" class="text-center font-light text-sm my-1 select-none">
+                Image attribution: {{ d.cover_attribution }}
+              </p>
             </div>
           </ng-container>
         </div>

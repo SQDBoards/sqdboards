@@ -1,9 +1,17 @@
-import { features } from "./pcb-features.model";
+import { StrapiMediaMulti } from "src/app/models/strapi-media.array.model";
 
-export class pcb {
-    _id!: string;
-    size!: string;
-    images!: string[];
-    title!: string;
-    features!: features;
+export interface pcb {
+  id: number;
+  attributes: {
+    title: string;
+    size: string;
+    images: StrapiMediaMulti;
+    features: {
+      hotswap_support: boolean;
+      rgb_support: boolean;
+      rgb_type: string;
+      usb_type: string;
+      firmware: string;
+    };
+  };
 }

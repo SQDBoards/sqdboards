@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { NgForm } from "@angular/forms";
 import {
   ActivatedRouteSnapshot,
   CanDeactivate,
@@ -26,6 +25,7 @@ export class LeaveGuard implements CanDeactivate<PcbComponent> {
     | UrlTree {
     // If user is navigating to Configurator - he's being redirected to builder and nothing changes
     // So no need to display a confirm
+    if (!component.pcbChoice?.dirty) return true;
     if (
       nextState?.url.toString() == "/configurator/welcome" ||
       nextState?.url.toString() == "/configurator/builder"

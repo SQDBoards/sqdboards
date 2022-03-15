@@ -8,6 +8,12 @@ module.exports = {
     extend: {},
     fontFamily: {
       sans: ["Nunito", "sans-serif"]
+    },
+    screens: {
+      xs: "330px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px"
     }
   },
   variants: {

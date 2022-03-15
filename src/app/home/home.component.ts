@@ -3,7 +3,7 @@ import { Observable, of } from "rxjs";
 import { GetDealsService } from "../services/get-deals.service";
 import { NotationService } from "../services/notation.service";
 
-import { ScrollService } from "../scroll.service";
+import { ScrollService } from "../services/scroll.service";
 import { Deal } from "../models/deal.model";
 
 @Component({
@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
   retrieveDeals() {
     this.gds$.getDeals().subscribe(
       (res: any) => {
-        console.log(res.data)
         this.deals$ = of(res.data);
         this.contentHasLoaded = true;
         this.contentFailedToLoad = false;

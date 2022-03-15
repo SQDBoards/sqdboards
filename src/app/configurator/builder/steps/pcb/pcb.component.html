@@ -1,14 +1,14 @@
 <span class="prose">
-  <h3 class="flex flex-col w-fit mx-auto" id="typed-size"></h3>
+  <h3 class="flex flex-col w-fit mx-auto text-center" id="typed-size"></h3>
 </span>
 
-<div role="radiogroup" class="hidden w-max py-3 justify-center" id="pcbChoice">
+<div role="radiogroup" class="hidden w-full mx-2 py-3 justify-center" id="pcbChoice">
   <form
     [formGroup]="pcbFilters"
-    class="flex flex-row gap-x-6 overflow-x-auto scroll-mx-2 no-scrollbar items-center justify-center"
+    class="flex flex-col xs:flex-row gap-y-1 xs:gap-y-0 gap-x-2 mx-3 no-scrollbar items-center overflow-x-scroll no-scrollbar"
     *isloading="availSizes.length === 0"
   >
-    <div>
+    <span>
       <button
         class="flex w-24 max-w-[6rem] bg-transparent border-[2px] border-slate-200 p-[0.2rem]"
         id="sizeFilterDropdownToggle"
@@ -31,7 +31,7 @@
       </button>
       <div
         id="sizeFilterDropdown"
-        class="dd absolute hidden flex-col w-fit p-2 bg-white drop-shadow mt-1"
+        class="dd absolute hidden flex-col w-fit p-2 bg-white shadow mt-1 z-10"
       >
         <select class="no-scrollbar p-1.5" formControlName="size" multiple>
           <option *ngFor="let size of availSizes" value="{{ size }}">
@@ -49,8 +49,106 @@
             >Size chart.</a
           >
         </span>
+        <button
+          class="text-center text-sm font-light my-1"
+          (click)="clearFilter('size')"
+        >
+          Reset
+        </button>
       </div>
-    </div>
+    </span>
+    <span>
+      <button
+        class="flex w-24 max-w-[6rem] bg-transparent border-[2px] border-slate-200 p-[0.2rem]"
+        id="hotswapFilterDropdownToggle"
+        data-dropdown="hotswapFilterDropdown"
+      >
+        <span
+          class="text-base leading-none text-center w-full font-semibold mx-0.5 pointer-events-none"
+        >
+          Hotswap
+
+          <p
+            class="overflow-hidden text-ellipsis text-xs font-normal capitalize"
+          >
+            {{
+              pcbFilters.value.hotswap != null
+                ? pcbFilters.value.hotswap
+                : "All"
+            }}
+          </p>
+        </span>
+      </button>
+      <div
+        id="hotswapFilterDropdown"
+        class="dd absolute hidden flex-col w-fit p-2 bg-white shadow mt-1 items-center justify-center gap-y-1.5 z-10"
+      >
+        <label
+          for="hotswap_support"
+          class="flex flex-row gap-x-1 items-center justify-center"
+        >
+          <input
+            type="checkbox"
+            id="hotswap_support"
+            formControlName="hotswap"
+            class="rounded-[0.25rem]"
+          />
+          Supports hotswap</label
+        >
+        <button
+          class="text-center text-sm font-light"
+          (click)="clearFilter('hotswap')"
+        >
+          Reset
+        </button>
+      </div>
+    </span>
+    <span>
+      <button
+        class="flex w-24 max-w-[6rem] bg-transparent border-[2px] border-slate-200 p-[0.2rem]"
+        id="rgbFilterDropdownToggle"
+        data-dropdown="rgbFilterDropdown"
+      >
+        <span
+          class="text-base leading-none text-center w-full font-semibold mx-0.5 pointer-events-none"
+        >
+          RGB
+
+          <p
+            class="overflow-hidden text-ellipsis text-xs font-normal capitalize"
+          >
+            {{
+              pcbFilters.value.rgb != null
+                ? pcbFilters.value.rgb
+                : "All"
+            }}
+          </p>
+        </span>
+      </button>
+      <div
+        id="rgbFilterDropdown"
+        class="dd absolute hidden flex-col w-fit p-2 bg-white shadow mt-1 items-center justify-center gap-y-1.5 z-10"
+      >
+        <label
+          for="rgb_support"
+          class="flex flex-row gap-x-1 items-center justify-center"
+        >
+          <input
+            type="checkbox"
+            id="rgb_support"
+            formControlName="rgb"
+            class="rounded-[0.25rem]"
+          />
+          Supports RGB</label
+        >
+        <button
+          class="text-center text-sm font-light"
+          (click)="clearFilter('rgb')"
+        >
+          Reset
+        </button>
+      </div>
+    </span>
   </form>
 </div>
 
@@ -72,24 +170,38 @@
             (mousemove)="this.scroll.moveEvent($event, gal)"
           >
             <img
-              *ngFor="let img of pcb.images"
-              src="{{ img }}"
-              alt="{{ pcb.title }} photo"
+              *ngFor="let img of pcb.attributes.images.data"
+              src="{{ img.attributes.url }}"
+              alt="{{ pcb.attributes.title }} photo"
               class="snap-center pointer-events-none snap-always"
             />
           </span>
           <div class="flex flex-col">
-            <p class="itemTitle">{{ pcb.title }} ({{ pcb.size }})</p>
+            <p class="itemTitle">
+              {{ pcb.attributes.title }} ({{ pcb.attributes.size }})
+            </p>
             <ul class="flex flex-col overflow-x-scroll no-scrollbar">
-              <li class="itemDesc" *ngIf="pcb.features.hotSwappable">
+              <li
+                class="itemDesc"
+                *ngIf="pcb.attributes.features.hotswap_support"
+              >
                 Hot-swap support: yes.
               </li>
-              <li class="itemDesc" *ngIf="!pcb.features.hotSwappable">
+              <li
+                class="itemDesc"
+                *ngIf="!pcb.attributes.features.hotswap_support"
+              >
                 Hot-swap support: no.
               </li>
-              <li class="itemDesc">RGB: {{ pcb.features.rgb }}.</li>
-              <li class="itemDesc">USB: {{ pcb.features.usbType }}.</li>
-              <li class="itemDesc">Firmware: {{ pcb.features.firmware }}.</li>
+              <li class="itemDesc">
+                RGB: {{ pcb.attributes.features.rgb_type }}.
+              </li>
+              <li class="itemDesc">
+                USB: {{ pcb.attributes.features.usb_type }}.
+              </li>
+              <li class="itemDesc">
+                Firmware: {{ pcb.attributes.features.firmware }}.
+              </li>
             </ul>
           </div>
           <input
@@ -118,7 +230,7 @@
         </div>
       </section>
       <p class="text-center">
-        You picked: {{ pcbChoice.value.pcb?.title || "nothing" }}
+        You picked: {{ pcbChoice.value.pcb?.attributes.title || "nothing" }}
       </p>
       <button
         class="place-self-flex-end"

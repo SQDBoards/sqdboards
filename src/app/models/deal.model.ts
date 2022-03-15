@@ -7,5 +7,6 @@ export interface Deal {
     description: string;
     button: string;
     cover: StrapiMedia;
+    cover_attribution: string;
   };
 }
