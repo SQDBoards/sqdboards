@@ -9,7 +9,8 @@ import {
 import { Observable } from "rxjs";
 import { toCMS } from "./toCMS.context-token";
 
-const cmsUrl: string = "https://sqdboards-strapi.herokuapp.com/api";
+// const cmsUrl: string = "https://sqdboards-strapi.herokuapp.com/api";
+const cmsUrl: string = "http://localhost:1337/api";
 
 @Injectable()
 export class RouteToCMSInterceptor implements HttpInterceptor {

@@ -4,9 +4,9 @@ import { Component, Input, OnInit } from "@angular/core";
   selector: "app-fetch-failed",
   template: `
     <div
-      class="flex flex-col place-self-center items-center justify-center prose"
+      class="flex flex-col place-self-center items-center justify-center prose content-responsive"
     >
-      <h2>Oops... Something failed to load.</h2>
+      <h3>Oops... Something failed to load.</h3>
       <p>This may have happend due to a few reasons:</p>
       <ul>
         <li>A problem on our end (broken API),</li>
@@ -34,8 +34,6 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class FetchFailedComponent implements OnInit {
   constructor() {}
-
-  @Input() callbackFn: any;
 
   ngOnInit(): void {}
 }

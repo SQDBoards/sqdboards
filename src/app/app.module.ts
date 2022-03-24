@@ -31,6 +31,9 @@ import { LoadingDirective } from "./directives/loading.directive";
 import { LoadingComponent } from "./directives/loading.component";
 import { FetchFailedDirective } from "./directives/fetch-failed.directive";
 import { FetchFailedComponent } from "./directives/fetch-failed.component";
+import { LoginComponent } from './userauth/login/login.component';
+import { SignupComponent } from './userauth/signup/signup.component';
+import { ForgotPasswordComponent } from './userauth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { FetchFailedComponent } from "./directives/fetch-failed.component";
     OrderPreviewComponent,
     PcbComponent,
     FetchFailedDirective,
-    FetchFailedComponent
+    FetchFailedComponent,
+    LoginComponent,
+    SignupComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +77,11 @@ import { FetchFailedComponent } from "./directives/fetch-failed.component";
   ],
   entryComponents: [LoadingComponent, FetchFailedComponent],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: RouteToCMSInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RouteToCMSInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [SQDBoardsMain]
 })

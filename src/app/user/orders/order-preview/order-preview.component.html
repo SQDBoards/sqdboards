@@ -1,10 +1,10 @@
 <div
-  class="flex flex-col gap-y-2 p-1.5 border-[2.5px] border-gray-900 font-sans not-prose"
+  class="flex flex-col gap-y-2 p-1.5 border-[2px] border-gray-900 font-sans not-prose"
 >
   <p
     class="flex flex-wrap w-fit text-base md:text-lg font-semibold bg-rose-100 px-1"
   >
-    Order #{{ order._id }}
+    Order #{{ order.id }}
   </p>
   <span
     class="flex flex-row flex-wrap items-center gap-x-2 text-base md:text-base font-normal"
@@ -15,7 +15,7 @@
         type="image/svg+xml"
         class="flex w-5 h-5"
       ></object>
-      <p>{{ order.specs.switches }} +</p>
+      <p>{{ order.specifications.switches }} +</p>
     </span>
     <span class="flex flex-row flex-wrap items-center gap-x-1">
       <object
@@ -23,8 +23,8 @@
         type="image/svg+xml"
         class="flex w-5 h-5"
       ></object>
-      <p>{{ order.specs.pcb }} in</p>
-      <p>{{ order.specs.case }}</p>
+      <p>{{ order.specifications.pcb.title }} in</p>
+      <p>{{ order.specifications.case }}</p>
     </span>
   </span>
   <button

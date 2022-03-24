@@ -23,18 +23,17 @@ export class HomeComponent implements OnInit {
   contentFailedToLoad: boolean = false;
 
   retrieveDeals() {
-    this.gds$.getDeals().subscribe(
-      (res: any) => {
+    this.gds$.getDeals().subscribe({
+      next: (res: any) => {
         this.deals$ = of(res.data);
         this.contentHasLoaded = true;
         this.contentFailedToLoad = false;
         this.notation.notate();
       },
-      err => {
+      error: err => {
         this.contentFailedToLoad = true;
-        console.error(err);
       }
-    );
+    });
   }
 
   ngOnInit(): void {

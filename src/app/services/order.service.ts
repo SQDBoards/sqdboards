@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { withCache } from "@ngneat/cashew";
 import { Observable } from "rxjs";
+import { toCMSContext } from "../misc/toCMS.context";
 import { Order } from "../user/orders/order";
-
-const Headers = new HttpHeaders({ "Content-Type": "application/json" });
 
 @Injectable({
   providedIn: "root"
@@ -12,10 +11,15 @@ const Headers = new HttpHeaders({ "Content-Type": "application/json" });
 export class OrderService {
   constructor(private http: HttpClient) {}
 
-  getOrdersByUid(uid: string): Observable<Order[]> {
-    return this.http.get<Order[]>("/api/ordersByUid/" + uid, {
-      headers: Headers,
-      context: withCache()
+  orders(token: string | null): Observable<{ data: Order[] }> {
+    return this.http.get<{ data: Order[] }>("/orders", {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      context: withCache({
+        context: toCMSContext()
+      })
     });
   }
 }

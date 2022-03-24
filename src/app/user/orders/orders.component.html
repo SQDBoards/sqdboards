@@ -3,14 +3,14 @@
     *isloading="loading"
     class="flex items-center justify-center content-responsive"
   >
-    <ng-container *ngIf="orders$ | async as orders">
+    <ng-container *ngIf="orders">
       <section class="flex flex-col gap-y-3 px-2 prose">
-        <ng-container *ngIf="orders.length !== 0; else nf">
+        <ng-container *ngIf="orders.data.length !== 0; else nf">
           <h2 class="text-center mb-0 mt-3">Your orders:</h2>
-          <app-order-preview
-            *ngFor="let order of orders"
-            [orderList]="order"
-          ></app-order-preview>
+            <app-order-preview
+              *ngFor="let order of orders.data"
+              [orderList]="order"
+            ></app-order-preview>
         </ng-container>
         <ng-template #nf>
           <h2>Orders not found!</h2>

@@ -1,24 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'loading',
-  template: `<div class="spin"></div>`,
+  selector: "loading",
+  template: `<div class="spin" [ngStyle]="styles"></div>`,
   styles: [
     `
-    :host {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
+      :host {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       .spin {
         display: inline-block;
-        width: 50px;
-        height: 50px;
-        border: 3px solid white;
+        border: 3px solid;
         border-radius: 50%;
-        border-top-color: #000000;
         animation: spin 1s cubic-bezier(0.76, 0, 0.24, 1) infinite;
         -webkit-animation: spin 1s cubic-bezier(0.76, 0, 0.24, 1) infinite;
       }
@@ -32,11 +27,11 @@ import { Component, OnInit } from '@angular/core';
           -webkit-transform: rotate(360deg);
         }
       }
-    `,
-  ],
+    `
+  ]
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
   constructor() {}
 
-  ngOnInit(): void {}
+  styles!: {};
 }
