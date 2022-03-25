@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap");
 
+@import "~viewerjs/dist/viewer.css";
+@import "~swiper/css";
+@import "~swiper/css/pagination";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,4 +42,8 @@ body {
 body {
   margin: 0;
   overflow-y: scroll;
+}
+
+.swiper-pagination {
+  bottom: 0px !important;
 }

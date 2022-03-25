@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, HostListener, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { filter, Observable } from "rxjs";
+import { Observable } from "rxjs";
 
 import { ScrollService } from "src/app/services/scroll.service";
 import { NotationService } from "src/app/services/notation.service";
@@ -8,6 +8,10 @@ import { BuilderService } from "../../builder.service";
 import { pcb } from "../../models/pcb.model";
 
 import Typed from "typed.js";
+
+import SwiperCore, { Pagination } from "swiper";
+
+SwiperCore.use([Pagination]);
 
 @Component({
   selector: "app-pcb",

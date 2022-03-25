@@ -2,7 +2,11 @@
   <h3 class="flex flex-col w-fit mx-auto text-center" id="typed-size"></h3>
 </span>
 
-<div role="radiogroup" class="hidden w-full mx-2 py-3 justify-center" id="pcbChoice">
+<div
+  role="radiogroup"
+  class="hidden w-full mx-2 py-3 justify-center"
+  id="pcbChoice"
+>
   <form
     [formGroup]="pcbFilters"
     class="flex flex-col xs:flex-row gap-y-1 xs:gap-y-0 gap-x-2 mx-3 no-scrollbar items-center overflow-x-scroll no-scrollbar"
@@ -117,11 +121,7 @@
           <p
             class="overflow-hidden text-ellipsis text-xs font-normal capitalize"
           >
-            {{
-              pcbFilters.value.rgb != null
-                ? pcbFilters.value.rgb
-                : "All"
-            }}
+            {{ pcbFilters.value.rgb != null ? pcbFilters.value.rgb : "All" }}
           </p>
         </span>
       </button>
@@ -162,20 +162,29 @@
     >
       <section class="flex flex-row flex-wrap gap-x-1 gap-y-1 justify-center">
         <div *ngFor="let pcb of showPcbs; index as i" class="item">
-          <span
-            class="itemGal no-scrollbar"
-            #gal
-            (mousedown)="this.scroll.startDragging($event, gal)"
-            (mouseup)="this.scroll.stopDragging($event, gal)"
-            (mousemove)="this.scroll.moveEvent($event, gal)"
+          <swiper
+            class="no-scrollbar max-w-full"
+            [slidesPerView]="1"
+            [spaceBetween]="25"
+            [loop]="true"
+            [pagination]="true"
           >
-            <img
+            <ng-template
+              swiperSlide
               *ngFor="let img of pcb.attributes.images.data"
-              src="{{ img.attributes.url }}"
-              alt="{{ pcb.attributes.title }} photo"
-              class="snap-center pointer-events-none snap-always"
-            />
-          </span>
+            >
+              <img
+                src="{{ img.attributes.url }}"
+                alt="{{ pcb.attributes.title }} photo"
+                class="snap-center snap-always select-none"
+                ngxViewer
+                [viewerOptions]="{
+                  navbar: false,
+                  toolbar: false
+                }"
+              />
+            </ng-template>
+          </swiper>
           <div class="flex flex-col">
             <p class="itemTitle">
               {{ pcb.attributes.title }} ({{ pcb.attributes.size }})

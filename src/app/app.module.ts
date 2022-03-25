@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { AuthModule } from "@auth0/auth0-angular";
 import { HttpCacheInterceptorModule } from "@ngneat/cashew";
 
 import { SQDBoardsMain } from "./app.component";
@@ -31,10 +30,13 @@ import { LoadingDirective } from "./directives/loading.directive";
 import { LoadingComponent } from "./directives/loading.component";
 import { FetchFailedDirective } from "./directives/fetch-failed.directive";
 import { FetchFailedComponent } from "./directives/fetch-failed.component";
-import { LoginComponent } from './userauth/login/login.component';
-import { SignupComponent } from './userauth/signup/signup.component';
-import { ForgotPasswordComponent } from './userauth/forgot-password/forgot-password.component';
-import { InputComponent } from './user/profile/input/input.component';
+import { LoginComponent } from "./userauth/login/login.component";
+import { SignupComponent } from "./userauth/signup/signup.component";
+import { ForgotPasswordComponent } from "./userauth/forgot-password/forgot-password.component";
+import { InputComponent } from "./user/profile/input/input.component";
+
+import { NgxViewerModule } from "ngx-viewer";
+import { SwiperModule } from "swiper/angular";
 
 @NgModule({
   declarations: [
@@ -70,12 +72,10 @@ import { InputComponent } from './user/profile/input/input.component';
     AppRoutingModule,
     HttpClientModule,
     HttpCacheInterceptorModule.forRoot(),
-    AuthModule.forRoot({
-      domain: "sqdboards.eu.auth0.com",
-      clientId: "or172tB7I9o6fqmP4FyA7Ow1tvyGxrPs"
-    }),
     ReactiveFormsModule,
-    SquiModule
+    SquiModule,
+    NgxViewerModule,
+    SwiperModule
   ],
   entryComponents: [LoadingComponent, FetchFailedComponent],
   providers: [
