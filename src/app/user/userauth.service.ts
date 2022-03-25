@@ -13,7 +13,7 @@ export class UserAuthService {
   User$: BehaviorSubject<UserModel> | undefined = new BehaviorSubject<any>(
     null
   );
-  isAuth$?: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isAuth$?: ReplaySubject<boolean> = new ReplaySubject<boolean>();
   jwt: string | null = localStorage.getItem("token");
 
   constructor(private http: HttpClient) {

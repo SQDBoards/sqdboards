@@ -34,6 +34,7 @@ import { FetchFailedComponent } from "./directives/fetch-failed.component";
 import { LoginComponent } from './userauth/login/login.component';
 import { SignupComponent } from './userauth/signup/signup.component';
 import { ForgotPasswordComponent } from './userauth/forgot-password/forgot-password.component';
+import { InputComponent } from './user/profile/input/input.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ForgotPasswordComponent } from './userauth/forgot-password/forgot-passw
     FetchFailedComponent,
     LoginComponent,
     SignupComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,87 @@
-<!-- <div *ngIf="auth.user$ | async as user" class="flex flex-col gap-y-10">
-    <img src="{{ user.picture }}" alt="User profile picture" class="flex mx-auto rounded-full w-28 h-28">
-    
-    <form action="" class="flex flex-col gap-y-10 font-sans text-lg" #userProfile="ngForm" (submit)="updateUser(model)" ngNativeValidate>
-        <div class="inputBlock">
-            <label for="name" class="inputTitle">Display name: </label>
-            <input type="text" name="name" id="name" class="inputField" required [(ngModel)]="model.name" [value]="user.name" placeholder="Some Cool Name for Display">
-        </div>
-    
-        <div class="inputBlock">
-            <label for="email" class="inputTitle">Email: </label>
-            <input type="email" name="email" id="" class="inputField w-11/12" required [(ngModel)]="model.email" [value]="user.email" placeholder="example@provider.com">
-        </div>
+<section class="prose prose-h2:mb-1.5">
+  <h2>Customise your profile:</h2>
+  <form
+    class="flex flex-col items-center justify-center space-y-2"
+    [formGroup]="customizeGroup"
+    id="custom"
+    *ngIf="auth.User$ | async as user"
+    (ngSubmit)="save()"
+  >
+    <label
+      for="pfp"
+      class="group grid not-prose max-w-[8rem] max-h-[8rem] w-full h-full object-contain cursor-pointer"
+    >
+      <img
+        src="https://api.multiavatar.com/{{ user.username }}.svg"
+        alt="{{ user.username }} profile picture"
+        class="col-start-1 row-start-1"
+      />
+      <div
+        class="flex opacity-0 group-hover:opacity-100 rounded-full bg-black bg-opacity-75 col-start-1 row-start-1 items-center justify-center transition-all"
+      >
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-8 h-8 fill-white"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M28.604 0C31.82 0 34.594 1.074 36.624 3.108C38.746 5.232 39.91 8.322 39.906 11.81L39.9089 25.8028C39.9124 25.8566 39.913 25.9106 39.9108 25.9645L39.906 28.1C39.906 35.162 35.36 39.908 28.594 39.908H11.302C4.542 39.908 0 35.162 0 28.1V11.808C0 4.746 4.542 0 11.302 0H28.604ZM29.1572 21.6646C27.9812 21.6646 26.6012 23.6106 25.3792 25.3286C23.7032 27.6886 21.9692 30.1306 19.3572 30.1306C17.5912 30.1306 15.9732 29.4506 14.5472 28.8486C12.2792 27.8926 11.2512 27.5866 10.2452 28.4146C8.23139 30.0741 6.24156 33.0959 5.32725 34.5829C6.77035 36.0707 8.82032 36.908 11.302 36.908H28.594C33.644 36.908 36.906 33.452 36.906 28.1L36.906 26.502L36.8599 26.4534C35.109 24.6495 32.0857 21.6646 29.1572 21.6646ZM28.604 3H11.302C6.26 3 3 6.458 3 11.808V28.1C3 29.4372 3.2035 30.656 3.58744 31.7321C4.74482 29.9847 6.49278 27.6188 8.3392 26.0986C10.8432 24.0386 13.5392 25.1706 15.7112 26.0846C16.9892 26.6226 18.1972 27.1306 19.3572 27.1306C20.4212 27.1306 21.7552 25.2506 22.9352 23.5926C24.5732 21.2806 26.4332 18.6646 29.1572 18.6646C32.1467 18.6646 34.8543 20.5017 36.9081 22.3249L36.906 11.808C36.91 9.082 36.078 6.806 34.502 5.228C33.046 3.77 31.008 3 28.604 3ZM13.714 8.379C16.576 8.381 18.904 10.709 18.906 13.569V13.571C18.906 16.433 16.578 18.761 13.714 18.761C10.85 18.761 8.522 16.433 8.522 13.571C8.522 10.707 10.85 8.379 13.714 8.379ZM13.712 11.379C12.504 11.379 11.522 12.361 11.522 13.571C11.522 14.779 12.504 15.761 13.714 15.761C14.922 15.761 15.906 14.779 15.906 13.573C15.904 12.363 14.92 11.381 13.712 11.379Z"
+          />
+        </svg>
+      </div>
+      <input class="hidden" id="pfp" formControlName="profilePicture" />
+    </label>
+    <app-input
+      input-label="Username"
+      input-formcontrolname="username"
+      input-placeholder="{{ auth.User$?.value?.username }}"
+    ></app-input>
 
-        <span class="flex flex-col gap-y-2">
-            <button type="submit" [disabled]="!userProfile.valid || !userProfile.dirty" class="flex px-6 py-0.5 w-fit mx-auto border-2 border-gray-900 rounded-xl" id="submitProfile">Save</button>
-            <div class="flex mx-auto text-sm font-sans text-gray-500">
-                <p [hidden]="userProfile.dirty">Nothing to save!</p>
-            </div>
-        </span>
-    </form>
-</div> -->
+    <ng-container
+      *isloading="
+        loading;
+        &quot;loader-width&quot;: '35px';
+        &quot;loader-margin&quot;: '0.375rem'
+      "
+    >
+      <p
+        *ngIf="saveFailed | async as failure"
+        class="px-1.5 py-1 text-red-500 text-center"
+      >
+        {{ failure.error.error.message }}
+      </p>
+    </ng-container>
 
-<p class="titleBig">Coming soon!</p>
+    <button
+      class="relative inline-flex items-center px-8 py-3 overflow-hidden text-rose-300 border border-current rounded group active:text-rose-200 focus:outline-none focus:ring focus:ring-rose-200"
+      type="submit"
+    >
+      <span
+        class="absolute right-0 transition-transform translate-x-full group-hover:-translate-x-4"
+      >
+        <svg
+          class="w-5 h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </span>
+
+      <span class="text-sm font-medium transition-all group-hover:mr-4">
+        Save
+      </span>
+    </button>
+  </form>
+</section>
