@@ -1,8 +1,0 @@
-{
-    "/api/*": {
-      "target": "https://sqdboards-api.herokuapp.com/",
-      "pathRewrite": {"^/api" : ""},
-      "changeOrigin": true,
-      "secure": true
-    }
-}

@@ -18,6 +18,10 @@ import { ProfileComponent } from "./user/profile/profile.component";
 import { SettingsComponent } from "./user/settings/settings.component";
 import { UserComponent } from "./user/user.component";
 import { UserGuard } from "./user/user.guard";
+import { AuthGuard } from "./userauth/auth.guard";
+import { ForgotPasswordComponent } from "./userauth/forgot-password/forgot-password.component";
+import { LoginComponent } from "./userauth/login/login.component";
+import { SignupComponent } from "./userauth/signup/signup.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -62,6 +66,14 @@ const routes: Routes = [
       { path: "faqs", component: FaqsComponent }
     ]
   },
+  { path: "login", component: LoginComponent, canActivate: [AuthGuard] },
+  { path: "signup", component: SignupComponent, canActivate: [AuthGuard] },
+  // Inactive now
+  // {
+  //   path: "forgot-password",
+  //   component: ForgotPasswordComponent,
+  //   canActivate: [AuthGuard]
+  // },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: FofNotFoundComponent }
 ];

@@ -1,25 +1,39 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
-import { Observable, tap } from 'rxjs';
+import { Injectable } from "@angular/core";
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree
+} from "@angular/router";
+import { Observable } from "rxjs";
+import { UserAuthService } from "./userauth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UserGuard implements CanActivate {
-
-  constructor(private auth: AuthService) {};
+  constructor(private auth: UserAuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.auth.isAuthenticated$.pipe(
-      tap(is => {
-        if (!is) {
-          this.auth.loginWithRedirect();
-        };
-      }),
-    );
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    let authStatus: boolean | null = null;
+    this.auth.isAuth$?.subscribe({
+      next: res => {
+        authStatus = res;
+      }
+    });
+    if (authStatus != null && authStatus) return true;
+    else if (authStatus != null && !authStatus) {
+      this.router.navigateByUrl("/login");
+      return false;
+    }
+    return true;
   }
-  
 }

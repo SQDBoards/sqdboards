@@ -1,40 +1,41 @@
-<main *ngIf="auth.user$ | async as user">
-  <h2 class="flex flex-col text-center md:text-lg">
-    Hi, {{ user.name }}
+<main *ngIf="auth.User$ | async as user" class="flex flex-col">
+  <header class="prose flex flex-col place-self-center">
+    <h2 class="flex flex-col text-center m-0">Hi, {{ user.username || user.email }}</h2>
     <span
       class="text-xs sm:text-sm lg:text-base font-sans text-center select-none"
     >
       Not you? Try
-      <button
-        class="text-indigo-900"
-        (click)="auth.logout({ returnTo: document.location.origin })"
-      >
+      <button class="text-indigo-900" (click)="auth.logout()">
         signing out
       </button>
     </span>
-  </h2>
+  </header>
 
   <div
-    class="flex flex-row justify-center gap-x-10 text-lg my-2 lg:text-xl font-sans text-gray-900 font-normal border-b-[1.5px] border-gray-900 w-11/12 mx-auto"
+    class="flex flex-row overflow-hidden justify-center text-lg my-2 lg:text-xl font-sans text-gray-900 font-normal border-b-[1.5px] border-gray-900 w-11/12 mx-auto md:w-auto md:mx-32"
   >
-    <a
-      routerLink="./profile"
-      routerLinkActive="linkActive"
-      class="px-1.5 md:py-0.5 md:px-2"
-      >Profile</a
+    <span
+      class="flex flex-row overflow-x-scroll place-self-center gap-x-10 no-scrollbar"
     >
-    <a
-      routerLink="./orders"
-      routerLinkActive="linkActive"
-      class="px-1.5 md:py-0.5 md:px-2"
-      >Orders</a
-    >
-    <a
-      routerLink="./settings"
-      routerLinkActive="linkActive"
-      class="px-1.5 md:py-0.5 md:px-2"
-      >Settings</a
-    >
+      <a
+        routerLink="./profile"
+        routerLinkActive="linkActive"
+        class="px-1.5 md:py-0.5 md:px-2"
+        >Profile</a
+      >
+      <a
+        routerLink="./orders"
+        routerLinkActive="linkActive"
+        class="px-1.5 md:py-0.5 md:px-2"
+        >Orders</a
+      >
+      <a
+        routerLink="./settings"
+        routerLinkActive="linkActive"
+        class="px-1.5 md:py-0.5 md:px-2"
+        >Settings</a
+      >
+    </span>
   </div>
 
   <router-outlet></router-outlet>

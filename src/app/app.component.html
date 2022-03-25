@@ -2,7 +2,7 @@
   class="hidden fixed flex-col gap-y-10 px-3 py-5 w-screen h-screen bg-gray-50 bg-opacity-95 z-50 overflow-hidden overscroll-contain"
   id="menu"
 >
-  <button (click)="this.changeMenuState()" class="w-fit h-fit">
+  <button (click)="this.toggleById('menu')" class="w-fit h-fit">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="40"
@@ -25,7 +25,7 @@
           class="px-1"
           routerLink="/home"
           routerLinkActive="linkActive"
-          (click)="this.changeMenuState()"
+          (click)="this.toggleById('menu')"
           >Home</a
         >
       </li>
@@ -34,7 +34,7 @@
           class="px-1"
           routerLink="/configurator"
           routerLinkActive="linkActive"
-          (click)="this.changeMenuState()"
+          (click)="this.toggleById('menu')"
           >Configurator</a
         >
       </li>
@@ -43,17 +43,19 @@
           class="px-1"
           routerLink="/aboutus"
           routerLinkActive="linkActive"
-          (click)="this.changeMenuState()"
+          (click)="this.toggleById('menu')"
           >About Us</a
         >
       </li>
     </ul>
     <div class="w-11/12 flex flex-col mt-auto gap-y-2 mx-auto">
       <hr class="w-full h-0.5 border-none bg-black" />
-      <span class="w-full inline-grid grid-cols-3 mb-1">
-        <p class="text-xs col-start-2 text-center">&copy; SQDBoards 2022</p>
+      <span class="w-full inline-grid mb-1">
+        <p class="text-xs col-start-2 text-center break-all place-self-center">
+          &copy; SQDBoards 2022
+        </p>
         <a
-          href="https://github.com/scriptSQD"
+          href="https://github.com/SQDBoards"
           target="_blank"
           rel="noopener noreferrer"
           class="col-start-3 justify-self-end self-center"
@@ -71,7 +73,7 @@
 
 <a
   href="/home"
-  class="flex object-contain w-40 md:w-56 m-3 mx-auto select-none"
+  class="flex object-contain py-3 w-full select-none justify-center bg-white z-30"
   id="logo"
 >
   <img
@@ -80,6 +82,7 @@
     aria-label="SQD Board's Logo Image"
     alt="SQD Board's Logo Image"
     routerLink="/home"
+    class="max-w-[13rem] mx-1"
   />
 </a>
 
@@ -89,7 +92,7 @@
   >
     <button
       class="w-min mx-2 sm:hidden"
-      (click)="this.changeMenuState()"
+      (click)="this.toggleById('menu')"
       id="openMenu"
     >
       <object
@@ -132,20 +135,20 @@
     <!-- User personal zone START -->
     <div class="flex justify-self-end sm:col-start-3 sm:row-start-1 mx-2">
       <button
-        *ngIf="auth.isAuthenticated$ | async; else unauthorized"
+        *ngIf="auth.isAuth$ | async; else unauthorized"
         routerLink="/user"
       >
-        <div *ngIf="auth.user$ | async as user">
+        <div *ngIf="auth.User$ | async as user">
+          <!-- This is a temporary placeholder. User picture should be stored in CMS and provided in API request -->
           <img
-            src="{{ user.picture }}"
+            src="https://api.multiavatar.com/{{ user.username }}.svg"
             alt="User profile"
             class="graphic_button pointer-events-none rounded-full"
-            (load)="pictureLoaded()"
           />
         </div>
       </button>
       <ng-template #unauthorized>
-        <button (click)="auth.loginWithRedirect()">
+        <button routerLink="/login">
           <object
             data="/assets/nav/account.svg"
             type="image/svg+xml"
@@ -223,7 +226,7 @@
       &copy; SQDBoards 2022
     </p>
     <a
-      href="https://github.com/scriptSQD"
+      href="https://github.com/SQDBoards"
       target="_blank"
       rel="noopener noreferrer"
       class="col-start-3 justify-self-end self-center"

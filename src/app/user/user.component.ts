@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { UserAuthService } from './userauth.service';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class UserComponent implements OnInit {
   constructor(
-    public auth: AuthService,
+    public auth: UserAuthService,
     @Inject(DOCUMENT) public document: Document
   ) {}
 

@@ -4,39 +4,35 @@ main {
 .currentDeals {
   @apply grid snap-mandatory overflow-scroll
         gap-2.5
-        auto-cols-[100%] grid-flow-col;
+        auto-cols-[100%] lg:auto-cols-[0.5fr] grid-flow-col;
 }
 
 .deal {
-  @apply grid grid-rows-[repeat(2,auto)] grid-cols-[auto]
+  @apply grid grid-rows-[100%] grid-cols-[auto]
+          max-h-[40rem]
+          h-[26rem] sm:h-[32rem] lg:h-[40rem]
           gap-y-3
           rounded-xl
           bg-white
           snap-center;
 }
 .dealInfo {
-  @apply grid grid-rows-[repeat(4,auto)] gap-y-1 md:gap-y-3
+  @apply grid grid-flow-row auto-rows-max gap-y-1.5
           bg-gradient-to-t from-zinc-900
-          row-start-2 col-start-1
+          row-span-full col-span-full h-min
           font-sans text-white
           rounded-b-xl
-          md:px-[15%]
-          pt-20;
+          pt-11;
+  place-self: flex-end;
 }
 .dealTitle {
-  @apply flex col-start-1 row-start-2
-          mx-3 text-xl md:text-3xl;
+  @apply flex mx-3 text-xl md:text-2xl;
 }
 .dealDesc {
-  @apply flex col-start-1 row-start-3
-          font-light
-          mx-3
-          text-base md:text-2xl;
+  @apply flex font-light mx-3 text-base md:text-xl;
 }
 .toDeal {
-  @apply flex col-start-1 row-start-4
-          m-3
-          w-fit bg-white rounded-lg
+  @apply flex mx-3 my-0.5 w-fit h-fit bg-white rounded-lg
           p-2 gap-x-2
           text-black
           text-base md:text-lg
@@ -45,8 +41,7 @@ main {
 .dealIllustr {
   @apply flex row-span-full col-span-full
           justify-self-center self-center
-          object-cover w-full
-          h-96 md:h-[41rem]
+          object-cover h-full
           rounded-xl
           cursor-default select-none;
 }

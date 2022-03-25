@@ -1,0 +1,160 @@
+<form
+  class="flex flex-col p-8 rounded-lg shadow-md bg-white max-w-md place-self-center overflow-hidden space-y-4 mx-2"
+  [formGroup]="signupForm"
+  (submit)="signup()"
+>
+  <div class="flex flex-col max-w-[23ch]">
+    <h2 class="text-lg font-medium">Create an account.</h2>
+    <p class="text-sm font-normal">
+      And experience all benefits, prepared for our users!
+    </p>
+  </div>
+  <!-- Steps container -->
+  <div
+    class="grid grid-flow-col auto-cols-[100%] gap-8 overflow-clip max-w-[23ch]"
+    id="steps-container"
+  >
+    <!-- Step 1 -->
+    <div class="flex flex-col space-y-4" id="step-1">
+      <div>
+        <label for="email" class="text-sm font-medium">Email</label>
+        <div class="relative mt-1">
+          <input
+            type="email"
+            id="email"
+            [formControl]="email"
+            class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm invalid:border-red-400"
+            placeholder="Enter email"
+            (keydown.enter)="email.valid ? nextStep() : null"
+          />
+          <span class="absolute inset-y-0 inline-flex items-center right-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <button
+        type="button"
+        [disabled]="email.invalid"
+        class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 disabled:bg-gray-500 rounded-lg"
+        (click)="nextStep()"
+      >
+        Continue
+      </button>
+      <p class="text-sm text-center text-gray-500">
+        Already have an account?
+        <a class="underline" routerLink="/login">Log in</a>
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="flex flex-col space-y-4" id="step-2">
+      <div>
+        <label for="username" class="text-sm font-medium">Username</label>
+        <div class="relative mt-1">
+          <input
+            type="username"
+            id="username"
+            formControlName="username"
+            class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm invalid:border-red-400 border"
+            placeholder="Enter username"
+            tabindex="2"
+          />
+          <span class="absolute inset-y-0 inline-flex items-center right-4">
+            <svg
+              viewBox="0 0 41 41"
+              class="w-5 h-5 text-gray-400"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+            >
+              <path
+                d="M28.9722 0.424744C35.7522 0.424744 40.2922 5.18474 40.2922 12.2647V28.6067C40.2922 35.6667 35.7522 40.4247 28.9722 40.4247H11.6322C4.85221 40.4247 0.292206 35.6667 0.292206 28.6067V12.2647C0.292206 5.18474 4.85221 0.424744 11.6322 0.424744H28.9722ZM20.2722 17.3867C19.3122 17.3867 18.5322 18.1847 18.5322 19.1467V27.9867C18.5322 28.9467 19.3122 29.7267 20.2722 29.7267C21.2522 29.7267 22.0322 28.9467 22.0322 27.9867V19.1467C22.0322 18.1847 21.2522 17.3867 20.2722 17.3867ZM20.3122 11.0467C19.3322 11.0467 18.5522 11.8267 18.5522 12.8067C18.5522 13.7647 19.3322 14.5467 20.2722 14.5467C21.2722 14.5467 22.0522 13.7647 22.0522 12.8067C22.0522 11.8267 21.2722 11.0467 20.3122 11.0467Z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div>
+        <label for="password" class="text-sm font-medium">Password</label>
+        <div class="relative mt-1">
+          <input
+            type="password"
+            id="password"
+            formControlName="passwd"
+            class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm invalid:border-red-400"
+            placeholder="Enter password"
+            tabindex="2"
+          />
+          <span
+            class="absolute inset-y-0 inline-flex items-center right-4 cursor-pointer"
+            (click)="authService.revealPass()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div class="flex flex-row gap-x-2">
+        <button
+          type="button"
+          class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 disabled:bg-gray-500 rounded-lg"
+          (click)="prevStep()"
+        >
+          Back
+        </button>
+        <button
+          type="submit"
+          class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 disabled:bg-gray-500 rounded-lg"
+          [disabled]="signupForm.invalid"
+        >
+          Sign up
+        </button>
+      </div>
+      <ng-container
+        *isloading="
+          loading;
+          loader-width: '35px';
+          loader-margin: '0.375rem'
+        "
+      >
+        <p
+          *ngIf="signupFailed | async as failure"
+          class="px-1.5 py-1 text-red-500 text-center"
+        >
+          {{ failure.error.error.message }}
+        </p>
+      </ng-container>
+    </div>
+  </div>
+</form>

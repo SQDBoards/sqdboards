@@ -28,7 +28,7 @@
            gap-3;
 }
 .itemGal img {
-  @apply h-36 sm:h-40 md:h-64 object-cover;
+  @apply h-36 sm:h-40 md:h-48 object-contain;
 }
 .item {
   @apply flex flex-col

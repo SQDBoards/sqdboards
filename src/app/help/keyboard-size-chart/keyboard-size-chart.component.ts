@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { ScrollService } from "src/app/scroll.service";
+import { ScrollService } from "src/app/services/scroll.service";
 import { NotationService } from "src/app/services/notation.service";
 
 @Component({
