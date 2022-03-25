@@ -1,32 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
-import { UserModel } from './model/userProfile';
-import { ProfileManipulationService } from './services/profile-manipulation.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ReplaySubject } from "rxjs";
+import { AuthResponseError } from "../auth.model";
+import { UserAuthService } from "../userauth.service";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
+  constructor(public auth: UserAuthService, private fb: FormBuilder) {}
 
-  constructor(public auth: AuthService,
-              private pm: ProfileManipulationService) {};
+  saveFailed: ReplaySubject<AuthResponseError> =
+    new ReplaySubject<AuthResponseError>();
+  loading: boolean = false;
 
-  // model: UserModel = new UserModel();
-  // userId: string | undefined;
+  customizeGroup: FormGroup = this.fb.group({
+    profilePicture: [],
+    username: [null, [Validators.required, Validators.minLength(4)]]
+  });
 
-  // updateUser(model: UserModel) {
-  //   // console.log(JSON.stringify(model));
-  //   this.pm.updateAccount(JSON.stringify(model), this.userId);
-  // }
-
-  ngOnInit(): void {
-    // this.auth.user$.subscribe((data) => {
-    //   this.model.name = data?.name;
-    //   this.model.email = data?.email;
-    //   this.userId = data?.sub;
-    // })
+  save() {
+    console.log(this.customizeGroup.value);
   }
 
+  ngOnInit(): void {}
 }

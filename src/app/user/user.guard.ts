@@ -23,10 +23,17 @@ export class UserGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.auth.isAuth$?.value) return true;
-    else {
+    let authStatus: boolean | null = null;
+    this.auth.isAuth$?.subscribe({
+      next: res => {
+        authStatus = res;
+      }
+    });
+    if (authStatus != null && authStatus) return true;
+    else if (authStatus != null && !authStatus) {
       this.router.navigateByUrl("/login");
       return false;
     }
+    return true;
   }
 }

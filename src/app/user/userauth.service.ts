@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { BehaviorSubject, ReplaySubject } from "rxjs";
 import { toCMSContext } from "../misc/toCMS.context";
 import { AuthResponseError, AuthResponseSuccess } from "./auth.model";
@@ -13,7 +12,7 @@ export class UserAuthService {
   User$: BehaviorSubject<UserModel> | undefined = new BehaviorSubject<any>(
     null
   );
-  isAuth$?: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isAuth$?: ReplaySubject<boolean> = new ReplaySubject<boolean>();
   jwt: string | null = localStorage.getItem("token");
 
   constructor(private http: HttpClient) {

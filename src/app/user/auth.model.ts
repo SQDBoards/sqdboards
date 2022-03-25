@@ -1,5 +1,5 @@
 import { HttpStatusCode } from "@angular/common/http";
-import { UserModel } from "./profile/model/userProfile";
+import { UserModel } from "./user-model";
 
 export interface AuthResponseError {
   error: {
