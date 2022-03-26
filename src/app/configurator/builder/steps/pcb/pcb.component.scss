@@ -40,3 +40,12 @@
 .show {
   display: flex;
 }
+
+#zoomist-container {
+  z-index: 100;
+}
+
+.zoomist-image img {
+  user-select: none;
+  max-width: none;
+}

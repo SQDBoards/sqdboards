@@ -1,6 +1,12 @@
-import { AfterViewInit, Component, HostListener, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit
+} from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Observable } from "rxjs";
+import { Observable, ReplaySubject, takeUntil } from "rxjs";
 
 import { ScrollService } from "src/app/services/scroll.service";
 import { NotationService } from "src/app/services/notation.service";
@@ -9,16 +15,17 @@ import { pcb } from "../../models/pcb.model";
 
 import Typed from "typed.js";
 
-import SwiperCore, { Pagination } from "swiper";
+import SwiperCore, { Lazy, Pagination } from "swiper";
+import Zoomist from "zoomist";
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Lazy]);
 
 @Component({
   selector: "app-pcb",
   templateUrl: "./pcb.component.html",
   styleUrls: ["./pcb.component.scss"]
 })
-export class PcbComponent implements OnInit, AfterViewInit {
+export class PcbComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private notation: NotationService,
     private formbuilder: FormBuilder,
@@ -172,8 +179,61 @@ export class PcbComponent implements OnInit, AfterViewInit {
     this.getPcbSizes();
   }
 
+  // listen to esc
+  // to close zoomist container
+  @HostListener("document:keydown.escape") closeZoomist(close?: boolean) {
+    const container = document.getElementById("zoomist-container");
+
+    if (close) {
+      this.zoomist?.destroy();
+      container?.classList.toggle("show");
+      return;
+    } else if (container?.classList.contains("show")) {
+      this.zoomist?.destroy();
+      container?.classList.toggle("show");
+      return;
+    }
+  }
+
+  zoomist?: Zoomist;
+
+  openZoomist(el: HTMLElement) {
+    const container = document.getElementById("zoomist-container");
+    container?.classList.toggle("show");
+    container?.setAttribute("data-zoomist-src", el.getAttribute("src")!);
+
+    this.zoomist = new Zoomist(container!, {
+      fill: "cover",
+      bounds: false,
+      height: "0%",
+      zoomRatio: 0.2,
+      maxRatio: 2.25,
+      on: {
+        ready: () => {
+          this.zoomist!.image.setAttribute("draggable", "false");
+          this.zoomist!.image.style.maxWidth = "none";
+          this.zoomist!.image.style.cursor = "grab";
+          document.body.style.touchAction = "none";
+        },
+        dragStart: () => {
+          this.zoomist!.image.style.cursor = "grabbing";
+        },
+        dragEnd: () => {
+          this.zoomist!.image.style.cursor = "grab";
+        },
+        destroy: () => {
+          document.body.style.touchAction = "";
+        }
+      }
+    });
+  }
+
+  // notifiers and destroyables
+  typed: any;
+  compDestroyed$: ReplaySubject<void> = new ReplaySubject<void>();
+
   ngAfterViewInit(): void {
-    const typed = new Typed("#typed-size", {
+    this.typed = new Typed("#typed-size", {
       strings: [
         'It all starts with the size...<p class="notate" style="width: fit-content; margin: auto;">So pick yours:</p>'
       ],
@@ -186,8 +246,19 @@ export class PcbComponent implements OnInit, AfterViewInit {
         document.getElementById("pcbsContainer")!.style.display = "flex";
       }
     });
-    typed.start();
+    this.typed.start();
 
-    this.pcbFilters.valueChanges.subscribe(data => this.applyFilters(data));
+    this.pcbFilters.valueChanges
+      .pipe(takeUntil(this.compDestroyed$))
+      .subscribe(data => this.applyFilters(data));
+  }
+
+  ngOnDestroy(): void {
+    // destroy all async/timed-out events
+    // so they don't cause any problems
+    this.typed.destroy();
+
+    this.compDestroyed$.next();
+    this.compDestroyed$.complete();
   }
 }

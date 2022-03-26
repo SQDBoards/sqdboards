@@ -167,21 +167,25 @@
             [slidesPerView]="1"
             [spaceBetween]="25"
             [loop]="true"
-            [pagination]="true"
+            [pagination]="{ dynamicBullets: true }"
+            [lazy]="{
+              enabled: true,
+              loadOnTransitionStart: true,
+              loadPrevNext: true,
+              loadPrevNextAmount: 1
+            }"
           >
             <ng-template
               swiperSlide
               *ngFor="let img of pcb.attributes.images.data"
+              class="w-64 h-64"
             >
               <img
-                src="{{ img.attributes.url }}"
-                alt="{{ pcb.attributes.title }} photo"
-                class="snap-center snap-always select-none"
-                ngxViewer
-                [viewerOptions]="{
-                  navbar: false,
-                  toolbar: false
-                }"
+                attr.aria-describedby="{{ pcb.attributes.title }} photo"
+                class="swiper-lazy snap-center snap-always select-none cursor-pointer"
+                [attr.data-src]="img.attributes.url"
+                #el
+                (click)="openZoomist(el)"
               />
             </ng-template>
           </swiper>
@@ -254,4 +258,29 @@
       </button>
     </form>
   </div>
+</div>
+
+<div
+  id="zoomist-container"
+  class="hidden fixed py-8 px-6 top-0 left-0 bg-gray-900 bg-opacity-60 w-screen h-screen justify-center items-center"
+>
+  <button
+    (click)="closeZoomist(true)"
+    class="absolute top-4 left-4 w-max h-max z-50 bg-gray-900 rounded-full p-1"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#fff"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
 </div>

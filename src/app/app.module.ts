@@ -35,7 +35,6 @@ import { SignupComponent } from "./userauth/signup/signup.component";
 import { ForgotPasswordComponent } from "./userauth/forgot-password/forgot-password.component";
 import { InputComponent } from "./user/profile/input/input.component";
 
-import { NgxViewerModule } from "ngx-viewer";
 import { SwiperModule } from "swiper/angular";
 
 @NgModule({
@@ -74,7 +73,6 @@ import { SwiperModule } from "swiper/angular";
     HttpCacheInterceptorModule.forRoot(),
     ReactiveFormsModule,
     SquiModule,
-    NgxViewerModule,
     SwiperModule
   ],
   entryComponents: [LoadingComponent, FetchFailedComponent],
