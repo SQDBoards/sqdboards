@@ -203,11 +203,11 @@ export class PcbComponent implements OnInit, AfterViewInit, OnDestroy {
     container?.setAttribute("data-zoomist-src", el.getAttribute("src")!);
 
     this.zoomist = new Zoomist(container!, {
-      fill: "cover",
+      fill: "contain",
       bounds: false,
       height: "0%",
       zoomRatio: 0.2,
-      maxRatio: 2.25,
+      maxRatio: 4,
       on: {
         ready: () => {
           this.zoomist!.image.setAttribute("draggable", "false");
